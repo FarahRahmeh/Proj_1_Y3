@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class CategoryShimmer extends StatelessWidget {
   const CategoryShimmer({
     Key? key,
-    this.itemCount = 6,
+    this.itemCount =2,
   }) : super(key: key);
 
   final int itemCount;

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../utils/constans/sizes.dart';
 import '../../../utils/constans/texts.dart';
 
 class RegisterForm extends StatelessWidget {
@@ -14,7 +15,7 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RegisterController());
+    final controller = Get.find<RegisterController>();
     return Form(
       key: controller.registerFormKey,
       child: Column(
@@ -31,6 +32,7 @@ class RegisterForm extends StatelessWidget {
             validator: (value) =>
                 Validator.validateEmptyText(value, 'User Name'),
           ),
+          const SizedBox(height: Sizes.spaceBtwInputFields),
 
           ///!Email
           TextFormField(
@@ -41,6 +43,7 @@ class RegisterForm extends StatelessWidget {
             ),
             validator: (value) => Validator.validateEmail(value),
           ),
+          const SizedBox(height: Sizes.spaceBtwInputFields),
 
           ///!Password
           Obx(() => TextFormField(
@@ -58,6 +61,7 @@ class RegisterForm extends StatelessWidget {
                 obscureText: controller.hidePassword.value,
                 validator: (value) => Validator.validatePassword(value),
               )),
+          const SizedBox(height: Sizes.spaceBtwInputFields),
 
           ///!Password Comfirmation
           Obx(() => TextFormField(
@@ -77,9 +81,7 @@ class RegisterForm extends StatelessWidget {
                 obscureText: controller.hidePasswordConfirmation.value,
               )),
 
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: Sizes.spaceBtwInputFields),
 
           ///
           ///

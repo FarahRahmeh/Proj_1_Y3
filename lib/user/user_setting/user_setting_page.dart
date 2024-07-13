@@ -1,6 +1,7 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/list_tile/setting_menu_tile.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
+import 'package:booktaste/controllers/theme/theme_controller.dart';
 import 'package:booktaste/user/user_address/address_page.dart';
 import 'package:booktaste/user/user_profile/user_profile.dart';
 import 'package:booktaste/utils/constans/colors.dart';
@@ -11,12 +12,14 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../common/widgets/custom_shapes/Containers/primary_header_container.dart';
 import '../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../utils/constans/sizes.dart';
+import '../../utils/popups/dialogs.dart';
 
 class UserSettingsPage extends StatelessWidget {
   const UserSettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themeController = Get.find<ThemeController>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -68,7 +71,7 @@ class UserSettingsPage extends StatelessWidget {
                     icon: Iconsax.safe_home_copy,
                     title: 'Addresses',
                     subTitle: 'blah blahhh blahhhhh',
-                    onTap: () => Get.to(() => const AddressPage()),
+                    onTap: () => Get.to(() => const AddBookPage()),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.notification_copy,
@@ -102,11 +105,68 @@ class UserSettingsPage extends StatelessWidget {
                     height: Sizes.spaceBtwItems,
                   ),
 
+                  //! Theme Tile
                   SettingsMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'Load Data',
-                      subTitle: 'Upload Data to your Cloud Firebase'),
-
+                      icon: Iconsax.brush,
+                      // Iconsax.brush_3_copy,
+                      title: 'Theme Mode',
+                      subTitle: 'Change to dark , light or system theme mode',
+                      onTap: () {
+                        return MyDialogs.defaultDialog(
+                          showOnlyOnConfirm: true,
+                          confirmText: 'Close',
+                          context: context,
+                          title: 'Theme Mode :',
+                          content: SizedBox(
+                            height: 170,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Obx(() => RadioListTile(
+                                      title: Text('system'),
+                                      value: ThemeMode.system,
+                                      groupValue:
+                                          themeController.themeMode.value,
+                                      onChanged: (value) {
+                                        if (value != null) {
+                                          themeController
+                                              .changeThemeMode(value);
+                                        }
+                                      },
+                                    )),
+                                Obx(() => RadioListTile(
+                                      title: Text('dark'),
+                                      value: ThemeMode.dark,
+                                      groupValue:
+                                          themeController.themeMode.value,
+                                      onChanged: (value) {
+                                        if (value != null) {
+                                          themeController
+                                              .changeThemeMode(value);
+                                        }
+                                      },
+                                    )),
+                                Obx(() => RadioListTile(
+                                      title: Text('light'),
+                                      value: ThemeMode.light,
+                                      groupValue:
+                                          themeController.themeMode.value,
+                                      onChanged: (value) {
+                                        if (value != null) {
+                                          themeController
+                                              .changeThemeMode(value);
+                                        }
+                                      },
+                                    )),
+                              ],
+                            ),
+                          ),
+                          onConfirm: () {
+                            Get.back();
+                          },
+                        );
+                      }),
                   SettingsMenuTile(
                     icon: Iconsax.location,
                     title: 'Geolocation',

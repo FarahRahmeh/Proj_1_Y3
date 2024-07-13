@@ -10,9 +10,9 @@ class AllBooksRepository extends GetxController {
       Uri.parse('$baseUrl/allBooks'),
     );
     if (response.statusCode == 200) {
-      print("success");
+      print("success all books");
       var books = response.body;
-      return AllBooksFromJson(books);
+      return allBooksFromJson(books);
     } else {
       print(response.statusCode);
       return null;

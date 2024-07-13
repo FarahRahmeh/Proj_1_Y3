@@ -11,6 +11,7 @@ class MyGridLayout extends StatelessWidget {
     this.crossAxisCount = 2,
     this.mainAxisSpacing = 4,
     this.padding = EdgeInsets.zero,
+    // this.scrollDirection = Axis.vertical,
   });
 
   final int itemCount;
@@ -19,10 +20,12 @@ class MyGridLayout extends StatelessWidget {
   final int crossAxisCount;
   final double mainAxisSpacing;
   final EdgeInsetsGeometry? padding;
+  // final Axis scrollDirection;
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      // scrollDirection: scrollDirection,
       itemCount: itemCount,
       shrinkWrap: true,
       padding: padding,

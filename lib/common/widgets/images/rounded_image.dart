@@ -17,6 +17,7 @@ class RoundedImage extends StatelessWidget {
     this.isNetworkImage = false,
     this.onPressed,
     this.borderRadius = Sizes.md,
+    this.title = '',
   });
 
   final double? width, height;
@@ -29,6 +30,7 @@ class RoundedImage extends StatelessWidget {
   final bool isNetworkImage;
   final VoidCallback? onPressed;
   final double borderRadius;
+  final String title;
 
   @override
   Widget build(BuildContext context) {

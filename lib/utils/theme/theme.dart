@@ -2,8 +2,12 @@ import 'package:booktaste/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/checkbox_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/chip_theme.dart';
+import 'package:booktaste/utils/theme/custom_themes/dialog_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/elevated_button_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/outlined_button_theme.dart';
+import 'package:booktaste/utils/theme/custom_themes/radio_theme.dart';
+import 'package:booktaste/utils/theme/custom_themes/switch_theme.dart';
+import 'package:booktaste/utils/theme/custom_themes/text_button_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/text_field_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/text_theme.dart';
 import 'package:booktaste/utils/constans/colors.dart';
@@ -27,7 +31,10 @@ class MyAppTheme {
     elevatedButtonTheme: MyElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: MyOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: MyTextFormFieldTheme.lightInputDecorationTheme,
-
+    textButtonTheme: MyTextButtonTheme.lightTextButtonTheme,
+    dialogTheme: MyDialogTheme.lightDialogTheme,
+    switchTheme: MySwitchTheme.lightSwitchTheme,
+    radioTheme: MyRadioTheme.lightRadioTheme,
     // cardColor: beige2,
     // fontFamily: 'Poppins',
   );
@@ -46,5 +53,9 @@ class MyAppTheme {
     elevatedButtonTheme: MyElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: MyOutlinedButtonTheme.darkOutlinedButtonTheme,
     inputDecorationTheme: MyTextFormFieldTheme.darkInputDecorationTheme,
+    textButtonTheme: MyTextButtonTheme.darkTextButtonTheme,
+    dialogTheme: MyDialogTheme.darkDialogTheme,
+    switchTheme: MySwitchTheme.darkSwitchTheme,
+    radioTheme: MyRadioTheme.darkRadioTheme,
   );
 }

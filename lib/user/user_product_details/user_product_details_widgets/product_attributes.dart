@@ -56,7 +56,7 @@ class ProductAttributes extends StatelessWidget {
                           ),
 
                           //Sale Price
-                          ProductPriceText(price: '20'),
+                          ProductPriceText(title: '20'),
                         ],
                       ),
                       Row(

@@ -4,6 +4,7 @@ import 'package:booktaste/common/widgets/custom_shapes/Containers/search_contain
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/notification/notification_counter_icon.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
+import 'package:booktaste/controllers/category/all_categories_controller.dart';
 import 'package:booktaste/user/user_all_brands/all_brands_page.dart';
 import 'package:booktaste/user/user_library/user_library_widgets/category_tab.dart';
 import 'package:booktaste/utils/constans/colors.dart';
@@ -19,8 +20,10 @@ class UserLibrary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categoriesCtrl = Get.find<AllCategoriesController>();
+
     return DefaultTabController(
-      length: 5, //= number of tabs
+      length: categoriesCtrl.allCategoriesList.length, //= number of tabs
       child: Scaffold(
         //!Appbar
         appBar: MyAppBar(
@@ -47,60 +50,55 @@ class UserLibrary extends StatelessWidget {
                     : MyColors.white,
                 expandedHeight: 440,
                 automaticallyImplyLeading: false,
-                flexibleSpace: Padding(
-                  padding: const EdgeInsets.all(Sizes.defaultSpace),
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      //!    --Search bar
-                      SizedBox(height: Sizes.spaceBtwItems),
-                      SearchContainer(
-                        text: 'Search in Library',
-                        showBorder: true,
-                        showBackground: false,
-                        padding: EdgeInsets.zero,
-                      ),
-                      SizedBox(height: Sizes.spaceBtwSections),
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Padding(
+                    padding: const EdgeInsets.all(Sizes.defaultSpace),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //!    --Search bar
+                        SizedBox(height: Sizes.spaceBtwItems),
+                        SearchContainer(
+                          text: 'Search in Library',
+                          showBorder: true,
+                          showBackground: false,
+                          padding: EdgeInsets.zero,
+                        ),
+                        SizedBox(height: Sizes.spaceBtwSections),
 
-                      //! ---Featured brands
-                      SectionHeading(
-                        title: 'Featured ~~~',
-                        onPressed: () => Get.to(() => AllBrandsPage()),
-                      ),
-                      const SizedBox(height: Sizes.spaceBtwItems / 1.5),
+                        //! ---Featured brands
+                        SectionHeading(
+                          title: 'Featured ~~~',
+                          onPressed: () => Get.to(() => AllBrandsPage()),
+                        ),
+                        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
 
-                      MyGridLayout(
-                          mainAxisExtent: 80,
-                          itemCount: 4,
-                          itemBuilder: (_, index) {
-                            return XCard();
-                          }),
-                    ],
+                        MyGridLayout(
+                            mainAxisExtent: 80,
+                            itemCount: 4,
+                            itemBuilder: (_, index) {
+                              return XCard();
+                            }),
+                      ],
+                    ),
                   ),
                 ),
 
                 ///! Tabs
                 bottom: MyTapBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Science')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                  tabs: categoriesCtrl.allCategoriesList
+                      .map((category) => Tab(
+                            child: Text(category.genre),
+                          ))
+                      .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-            ],
+            children: categoriesCtrl.allCategoriesList
+                .map((category) => CategoryTab(category: category.genre))
+                .toList(),
           ),
         ),
       ),

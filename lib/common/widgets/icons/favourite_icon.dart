@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../controllers/favourites/favourite_controller.dart';
+import '../../../utils/helpers/helper_functions.dart';
 import 'circular_icon.dart';
 
 class FavouriteIcon extends StatelessWidget {
@@ -15,6 +16,8 @@ class FavouriteIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
+
     final BookModel book =
         BookModel(author: 'writer', cover: Images.cover6, name: 'Book');
 
@@ -28,9 +31,10 @@ class FavouriteIcon extends StatelessWidget {
               controller.addFavToList(book);
             }
           },
-          backgroundColor: beige2.withOpacity(0.8),
+          backgroundColor:
+              dark ? lightBrown.withOpacity(0.5) : beige2.withOpacity(0.7),
           icon: controller.isFav(book) ? Iconsax.heart : Iconsax.heart_copy,
-          color: controller.isFav(book) ? pinkish : pinkishMore,
+          color: pinkishMore,
         ));
   }
 }

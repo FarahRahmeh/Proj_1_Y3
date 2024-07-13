@@ -1,10 +1,8 @@
 import 'package:booktaste/common/widgets/custom_shapes/Containers/primary_header_container.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
+import 'package:booktaste/controllers/cafe/cafes_controller.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
-import 'package:booktaste/user/user_all_books/all_books_page.dart';
-import 'package:booktaste/user/user_home/user_home_controller.dart';
-import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/constans/texts.dart';
@@ -21,27 +19,24 @@ class UserHomePage extends StatelessWidget {
   // final allcategoriescontroller = Get.put(AllCategoriesController());
   UserHomePage({super.key});
 
-  final allbookscontroller = Get.put(AllBooksController());
-    final cafescontroller = Get.put(CafesController());
-
+  final allbookscontroller = Get.find<AllBooksController>();
+  final cafescontroller = Get.find<CafesController>();
 
   @override
   Widget build(BuildContext context) {
-    
-  
     return Scaffold(
         body: SingleChildScrollView(
       ///!Heading
       child: Column(
         children: [
           PrimaryHeaderContainer(
-            height: 380,
+            height: 390,
             child: Column(
               children: [
                 ///!Appbar
                 UserHomePageAppbar(),
 
-                SizedBox(
+                const SizedBox(
                   height: Sizes.spaceBtwSections,
                 ),
 
@@ -50,7 +45,7 @@ class UserHomePage extends StatelessWidget {
                 SearchContainer(
                   text: Texts.homeSearchTitle,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: Sizes.spaceBtwSections,
                 ),
 
@@ -64,11 +59,11 @@ class UserHomePage extends StatelessWidget {
                         title: 'Categories', //~------------ same color
                         showActionButton: false,
                       ),
-                      SizedBox(
-                        height: Sizes.spaceBtwItems,
+                      const SizedBox(
+                        height: Sizes.spaceBtwItems / 2,
                       ),
 
-                      ///---Categories
+                      ///!---Categories List
                       UserHomeCategories(), //--->inside here //~------------ same color
                     ],
                   ),
@@ -81,10 +76,10 @@ class UserHomePage extends StatelessWidget {
           ),
 
           ///! Body
-          Padding(
-            padding: const EdgeInsets.only(left: Sizes.defaultSpace),
+          const Padding(
+            padding: EdgeInsets.only(left: Sizes.defaultSpace),
             child: SectionHeading(
-              title: 'Cafes',
+              title: 'Cafés',
               showActionButton: false,
             ),
           ),
@@ -94,25 +89,25 @@ class UserHomePage extends StatelessWidget {
               children: [
                 ///! Promo Slider
                 PromoSlider(
-                    banners: [
-                      Images.promoBanner,
-                      Images.success,
-                      Images.promoBanner,
-                      Images.onboarding_1,
-                      Images.onboarding_1,
-                      Images.onboarding_1,
-                      Images.onboarding_1,
-                    ],
-                  ),
-                
-                const SizedBox(
-                  height: Sizes.spaceBtwSections,
+                  banners: [
+                    Images.cover2,
+                    // Images.success,
+                    // Images.promoBanner,
+                    // Images.onboarding_1,
+                    // Images.onboarding_1,
+                    // Images.onboarding_1,
+                    // Images.onboarding_1,
+                  ],
                 ),
+
+                const SizedBox(height: Sizes.sm
+                    // Sizes.spaceBtwSections / 2,
+                    ),
 
                 //! Heading
                 SectionHeading(
                   title: 'Popular Books',
-                  onPressed: () => null,
+                  onPressed: () {},
                   // Get.to(() => AllProductsPage()),
                 ),
                 const SizedBox(
@@ -122,7 +117,11 @@ class UserHomePage extends StatelessWidget {
                 ///!Popular products
                 Obx(() {
                   if (cafescontroller.isLoading.value) {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(
+                        child: Image.asset(
+                      width: 90,
+                      Images.coffeeLoading,
+                    ));
                   } else {
                     return MyGridLayout(
                       itemCount: allbookscontroller.booksList.length,

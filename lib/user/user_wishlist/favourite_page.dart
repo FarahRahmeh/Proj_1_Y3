@@ -6,6 +6,7 @@ import 'package:booktaste/common/widgets/products/product_card/product_card_vert
 import 'package:booktaste/controllers/favourites/favourite_controller.dart';
 import 'package:booktaste/models/book_model.dart';
 import 'package:booktaste/user/user_home/user_home_page.dart';
+import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,35 +22,37 @@ class FavouritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final allbookscontroller = Get.put(AllBooksController());
-    return Scaffold(
-      appBar: MyAppBar(
-        title: Text(
-          'Favourite',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        actions: [
-          CircularIcon(
-            icon: Iconsax.add,
-            onPressed: () => Get.to(UserHomePage()),
+    return  Scaffold(
+       // backgroundColor: Colors.transparent,
+        appBar: MyAppBar(
+          title: Text(
+            'Favourite',
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(Sizes.defaultSpace),
-          child: Column(
-            children: [
-              Obx(() {
-                return MyGridLayout(
-                    itemCount: allbookscontroller.booksList.length,
-                    itemBuilder: (_, index) => ProductCardVertical(
-                          allbooks: allbookscontroller.booksList[index],
-                        ));
-              })
-            ],
+          actions: [
+            CircularIcon(
+              icon: Iconsax.add,
+              onPressed: () => Get.to(UserHomePage()),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(Sizes.defaultSpace),
+            child: Column(
+              children: [
+                Obx(() {
+                  return MyGridLayout(
+                      itemCount: allbookscontroller.booksList.length,
+                      itemBuilder: (_, index) => ProductCardVertical(
+                            allbooks: allbookscontroller.booksList[index],
+                          ));
+                })
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    
   }
 }

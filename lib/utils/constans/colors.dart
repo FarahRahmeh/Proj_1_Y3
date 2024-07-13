@@ -23,9 +23,14 @@ final List<Color> gradientColors = [
 final List<Gradient> gradients = [
   //~ white and light brown
   const LinearGradient(
-    colors: [offWhite, lightBrown],
+    colors: [
+      offWhite,
+      lightBrown,
+      lightBrown,
+    ],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
+    tileMode: TileMode.decal,
   ),
   //~ light and dark brown
   const LinearGradient(
@@ -45,13 +50,19 @@ final List<Gradient> gradients = [
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   ),
+  //~ white and gray
+  const LinearGradient(
+    colors: [offWhite, MyColors.grey],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  ),
 ];
 
 class MyColors {
   MyColors._();
 
   ///App Basic Colors
-  static const Color primary = beige2;
+  static const Color primary = gray;
   static const Color secondary = pinkish;
   static const Color accent = lightBrown;
 
@@ -59,7 +70,7 @@ class MyColors {
   static const Gradient linerGradient = LinearGradient(
       begin: Alignment(0.0, 0.0),
       end: Alignment(0.707, -0.707),
-      colors: [pinkish, beige2, beige]);
+      colors: [lightBrown, beige2, beige]);
 
   ///Text Colors
   static const Color textPrimary = brown;

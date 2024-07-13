@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:booktaste/data/services/token_manager.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -7,8 +8,6 @@ import '../../models/user_model.dart';
 import '../../utils/constans/api_constans.dart';
 
 class AuthRepository extends GetxController {
-  //final AuthService _authService = Get.find<AuthService>();
-
   ///static AuthRepository get instance => Get.find();
 
   ///Variables
@@ -30,7 +29,7 @@ class AuthRepository extends GetxController {
   //     //todo Token not null
   //   // If the user's email is verified, navigate to the main navigation
   //   if (user.emailVerified) {
-    //await LocalStorage.init(user.id);
+  //await LocalStorage.init(user.id);
   //     Get.offAll(() => const MainNavigation());
   //   } else {
   //     // If the user's email is not verified, navigate to VerifyEmailScreen
@@ -157,19 +156,77 @@ class AuthRepository extends GetxController {
 
     return response;
   }
-// Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
-//     try {
-//         return await _auth.createUserWithEmailAndPassword(email: email, password: password);
-//     } on FirebaseAuthException catch (e) {
-//         throw TFirebaseAuthException(e.code).message;
-//     } on FirebaseException catch (e) {
-//         throw TFirebaseException(e.code).message;
-//     } on FormatException catch (_) {
-//         throw const TFormatException();
-//     } on PlatformException catch (e) {
-//         throw TPlatformException(e.code).message;
-//     } catch (e) {
-//         throw 'Something went wrong. Please try again';
-//     }
-// }
+
+  ///! Forget Password Email verify
+  Future<http.Response> verifyForgetPasswordEmail(String email) async {
+    final body = jsonEncode({'email': email});
+    final response = await http.post(
+      Uri.parse('$baseUrl/forgotCode'),
+      body: body,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    );
+
+    return response;
+  }
+
+  ///! Forget Password Code confirmation
+  Future<http.Response> codeForgetPasswordConfirmation(
+      String email, String code) async {
+    final body = jsonEncode({'email': email, 'code': code});
+    final response = await http.post(
+      Uri.parse('$baseUrl/checkReset'),
+      body: body,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    );
+
+    return response;
+  }
+
+  //! Set New Password
+  Future<http.Response> setNewPassword(
+      String email, String newPass, String confirmNewPass) async {
+    final body = jsonEncode({
+      'email': email,
+      'new_password': newPass,
+      'new_password_confirmation': confirmNewPass
+    });
+    final response = await http.post(
+      Uri.parse('$baseUrl/newPass'),
+      body: body,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    );
+
+    return response;
+  }
+
+  //! Add New Admin
+  Future<http.Response> newAdmin(String name, String email, String password,
+      String passwordConfirmation) async {
+    final body = jsonEncode({
+      'name': name,
+      'email': email,
+      'password': password,
+      'password_confirmation': passwordConfirmation
+    });
+    final response = await http.post(
+      Uri.parse('$baseUrl/addAdmin'),
+      body: body,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+      },
+    );
+
+    return response;
+  }
 }

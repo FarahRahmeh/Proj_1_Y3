@@ -33,7 +33,8 @@ class Loaders {
     );
   }
 
-  static successSnackBar({required title, message = '', duration = 3}) {
+  static successSnackBar(
+      {required title, message = '', duration = 3, icon = Iconsax.check}) {
     Get.snackbar(
       title,
       message,
@@ -44,7 +45,7 @@ class Loaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
-      icon: const Icon(Iconsax.check, color: darkBrown),
+      icon: Icon(icon, color: darkBrown),
     );
   }
 

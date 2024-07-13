@@ -1,7 +1,8 @@
 import 'package:booktaste/admin/home/admin_home_page.dart';
-import 'package:booktaste/admin/library/library_page.dart';
+import 'package:booktaste/admin/library/admin_library_page.dart';
 import 'package:booktaste/admin/profile/admin_profile.dart';
 import 'package:booktaste/admin/settings/admin_setting_page.dart';
+import 'package:booktaste/common/widgets/navigation_dest/my_navigation_destination.dart';
 import 'package:booktaste/user/user_library/user_library_page.dart';
 import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:booktaste/user/user_wishlist/favourite_page.dart';
@@ -11,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../insignts/admin_insignts_page.dart';
+import '../insights/admin_insignts_page.dart';
 
 class AdminNavigationMenu extends StatelessWidget {
   const AdminNavigationMenu({super.key});
@@ -24,23 +25,33 @@ class AdminNavigationMenu extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-          indicatorColor: beige2,
           height: 80,
           elevation: 0,
           selectedIndex: controller.selectedIndex.value,
-          // backgroundColor: darkMode ? TColors.black : Colors.white,
-          // indicatorColor: darkMode
-          //     ? TColors.white.withOpacity(0.1)
-          //     : TColors.black.withOpacity(0.1),
+          indicatorColor:
+              dark ? lightBrown.withOpacity(0.3) : darkBrown.withOpacity(0.2),
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home_1), label: 'Home'),
-            NavigationDestination(
-                icon: Icon(Iconsax.book_square), label: 'Library'),
-            NavigationDestination(icon: Icon(Iconsax.layer), label: 'Insignts'),
-            NavigationDestination(
-                icon: Icon(Iconsax.setting_2), label: 'Settings'),
+          destinations: [
+            ///! Make it custom -----------------------------------
+            MyNavigationDestination(
+                label: 'Home',
+                icon: Iconsax.home_1,
+                selectedIcon: Iconsax.home_copy),
+            MyNavigationDestination(
+              label: 'Library',
+              icon: Iconsax.book_square,
+              selectedIcon: Iconsax.book_square_copy,
+            ),
+            MyNavigationDestination(
+              label: 'Insignts',
+              icon: Iconsax.layer,
+              selectedIcon: Iconsax.layer_copy,
+            ),
+            MyNavigationDestination(
+                icon: Iconsax.setting_2,
+                label: 'Settings',
+                selectedIcon: Iconsax.setting_2_copy)
           ],
         ),
       ),
@@ -52,9 +63,9 @@ class AdminNavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    const AdminHomePage(),
+    AdminHomePage(),
     const AdminLibraryPage(),
-    const InsigntsPage(),
+    const InsightsPage(),
     const AdminSettingsPage(),
   ];
 }

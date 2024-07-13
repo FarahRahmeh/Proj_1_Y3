@@ -1,4 +1,5 @@
 import 'package:booktaste/binding/general_bindings.dart';
+import 'package:booktaste/common/features/on_boarding/onboarding_pages.dart';
 import 'package:booktaste/routes/user_admin_routes/user_routes.dart';
 import 'package:booktaste/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,11 @@ class MyApp extends StatelessWidget {
       getPages: AppRoutes.pages,
 
       ///! initial Route:
-      initialRoute: UserRoutes.navigation,
+      initialRoute: AdminRoutes.navigation,
+      //initialRoute: UserRoutes.navigation,
+     // initialRoute: UserAdminRoues.login,
+
+      // initialRoute: UserAdminRoues.onBoarding,
 
       ///Other
       debugShowCheckedModeBanner: false,

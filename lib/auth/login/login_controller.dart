@@ -22,9 +22,16 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
+    clearFormFields();
+    
     emailController.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
     passwordController.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
     super.onInit();
+  }
+
+  void clearFormFields() {
+    emailController.clear();
+    passwordController.clear();
   }
 
   Future<void> loginWithEmailAndPassword() async {
@@ -44,6 +51,7 @@ class LoginController extends GetxController {
 
       final userData = json.decode(response.body); // to string
       if (response.statusCode == 200) {
+        
         final token = userData['token'];
         final role = userData['user']['role'];
 
@@ -54,7 +62,9 @@ class LoginController extends GetxController {
             name: userData['user']['name']);
         // UserCredential(userRole: role);
         await saveRole(role);
+
         navigateBasedOnRole();
+
         print(token + ' ' + role);
       } else if (response.statusCode == 401) {
         ///!Wrong Password

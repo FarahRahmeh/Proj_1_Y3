@@ -4,7 +4,9 @@ import 'package:booktaste/common/widgets/custom_shapes/Containers/search_contain
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/notification/notification_counter_icon.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
+import 'package:booktaste/controllers/category/all_categories_controller.dart';
 import 'package:booktaste/user/user_all_brands/all_brands_page.dart';
+import 'package:booktaste/user/user_home/user_home_controller.dart';
 import 'package:booktaste/user/user_library/user_library_widgets/category_tab.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
@@ -19,8 +21,10 @@ class AdminLibraryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categoriesCtrl = Get.find<AllCategoriesController>();
+    
     return DefaultTabController(
-      length: 5, //= number of tabs
+      length: categoriesCtrl.allCategoriesList.length, //= number of tabs
       child: Scaffold(
         //!Appbar
         appBar: MyAppBar(
@@ -82,25 +86,19 @@ class AdminLibraryPage extends StatelessWidget {
 
                 ///! Tabs
                 bottom: MyTapBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Science')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                  tabs: categoriesCtrl.allCategoriesList
+                      .map((category) => Tab(
+                            child: Text(category.genre),
+                          ))
+                      .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-            ],
+            children: categoriesCtrl.allCategoriesList
+                .map((category) => CategoryTab(category: category.genre))
+                .toList(),
           ),
         ),
       ),

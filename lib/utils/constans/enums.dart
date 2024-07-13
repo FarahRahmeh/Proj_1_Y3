@@ -1,4 +1,35 @@
-enum Genres { fantasy, drama, romance, thriller, horror, adventure, poetry }
+enum Genres {
+  fantasy,
+  romance,
+  poetry,
+  drama,
+  literature,
+  fairyTalesFolklore,
+  mystery,
+  thriller,
+  horror,
+  adventure,
+  crime,
+  comics,
+  manga,
+  humor,
+  scienceFiction,
+  science,
+  technology,
+  travel,
+  religion,
+  history,
+  philosophy,
+  psychology,
+  lifeStories,
+  health,
+  business,
+  selfHelp,
+  education,
+  childrensLiterature,
+  pictureBook,
+  youngAdult,
+}
 
 enum TextSizes { small, medium, large }
 /* --

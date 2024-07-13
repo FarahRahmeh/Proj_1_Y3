@@ -34,8 +34,8 @@ class TextTitleWithIcon extends StatelessWidget {
             xTextSize: titleTextSize,
           ),
         ),
-        Icon(Iconsax.path_copy, color: iconColor, size: Sizes.iconXs),
         SizedBox(width: Sizes.xs),
+        Icon(Iconsax.path_copy, color: iconColor, size: Sizes.iconXs),
       ],
     );
   }

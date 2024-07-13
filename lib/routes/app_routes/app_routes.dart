@@ -1,5 +1,5 @@
 import 'package:booktaste/admin/home/admin_home_page.dart';
-import 'package:booktaste/admin/library/library_page.dart';
+import 'package:booktaste/admin/library/admin_library_page.dart';
 import 'package:booktaste/admin/navigation/admin_navigation_menu.dart';
 import 'package:booktaste/admin/profile/admin_profile.dart';
 import 'package:booktaste/admin/settings/admin_setting_page.dart';
@@ -18,7 +18,7 @@ import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:booktaste/user/user_wishlist/favourite_page.dart';
 import 'package:get/get.dart';
 
-import '../../admin/insignts/admin_insignts_page.dart';
+import '../../admin/insights/admin_insignts_page.dart';
 import '../user_admin_routes/user_routes.dart';
 
 class AppRoutes {
@@ -34,18 +34,18 @@ class AppRoutes {
         name: UserAdminRoues.confirmEmailCode,
         page: () => const ConfirmationCodePage()),
     //! User Routes
-    GetPage(name: UserRoutes.home, page: () =>  UserHomePage()),
+    GetPage(name: UserRoutes.home, page: () => UserHomePage()),
     GetPage(
         name: UserRoutes.navigation, page: () => const UserNavigationMenu()),
     GetPage(name: UserRoutes.profile, page: () => const UserProfile()),
     GetPage(name: UserRoutes.library, page: () => const UserLibrary()),
     GetPage(name: UserRoutes.favourite, page: () => const FavouritePage()),
     GetPage(name: UserRoutes.settings, page: () => const UserSettingsPage()),
-    GetPage(name: UserRoutes.details, page: () => const ProductDetailsPage()),
+    // GetPage(name: UserRoutes.details, page: () => const ProductDetailsPage()),
 
     //! Admin Routes
-    GetPage(name: AdminRoutes.home, page: () => const AdminHomePage()),
-    GetPage(name: AdminRoutes.insignts, page: () => const InsigntsPage()),
+    GetPage(name: AdminRoutes.home, page: () => AdminHomePage()),
+    GetPage(name: AdminRoutes.insignts, page: () => const InsightsPage()),
     GetPage(
         name: AdminRoutes.navigation, page: () => const AdminNavigationMenu()),
     GetPage(name: AdminRoutes.library, page: () => const AdminLibraryPage()),

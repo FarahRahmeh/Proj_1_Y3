@@ -1,7 +1,9 @@
+import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/widgets/appbar/appbar.dart';
+import '../../../common/widgets/icons/theme_switcher_icon.dart';
 import '../../../common/widgets/notification/notification_counter_icon.dart';
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/texts.dart';
@@ -35,8 +37,11 @@ class UserHomePageAppbar extends StatelessWidget {
         ],
       ),
       actions: [
+        //! Theme Switcher
+        ThemeSwitcherIcon(),
+        //! Notification icon
         NotificationCounterIcon(
-          onPressed: () => Get.to(() => SubCategoriesPage()),
+          onPressed: () => Get.to(() => UserSettingsPage()),
           iconColor: brown,
         ),
       ],

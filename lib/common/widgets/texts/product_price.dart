@@ -6,12 +6,14 @@ class ProductPriceText extends StatelessWidget {
   const ProductPriceText({
     super.key,
     // this.currencySign = '\$',
-    required this.price,
+    required this.title,
     // this.maxLines = 1,
     // this.isLarge = false,
     // this.lineThrough = false,
+    this.color = brown,
   });
-  final String price;
+  final String title;
+  final Color color;
   // final String currencySign;
   // final int maxLines;
   // final bool isLarge;
@@ -19,18 +21,19 @@ class ProductPriceText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      // currencySign +
-     "${price}",
+        // currencySign +
+        title,
         overflow: TextOverflow.ellipsis,
         // maxLines: maxLines,
         // style: isLarge
-        style:
-        Theme.of(context).textTheme.headlineMedium!.apply(
-                color: brown)
-            // ? Theme.of(context).textTheme.headlineMedium!.apply(
-            //     decoration: lineThrough ? TextDecoration.lineThrough : null)
-            // : Theme.of(context).textTheme.titleLarge!.apply(
-            //     decoration: lineThrough ? TextDecoration.lineThrough : null)
-            );
+        style: Theme.of(context)
+            .textTheme
+            .bodyMedium!
+            .apply(color: color, fontWeightDelta: 1) //headlinesnmall
+        // ? Theme.of(context).textTheme.headlineMedium!.apply(
+        //     decoration: lineThrough ? TextDecoration.lineThrough : null)
+        // : Theme.of(context).textTheme.titleLarge!.apply(
+        //     decoration: lineThrough ? TextDecoration.lineThrough : null)
+        );
   }
 }

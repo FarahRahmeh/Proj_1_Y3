@@ -1,23 +1,20 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/user/user_address/user_address_widgets/single_address.dart';
+import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import 'user_address_widgets/add_new_address.dart';
-
-class AddressPage extends StatelessWidget {
-  const AddressPage({Key? key}) : super(key: key);
+class AddBookPage extends StatelessWidget {
+  const AddBookPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(
-          () => AddNewAddressPage(),
-        ),
+        onPressed: () => Get.back(),
         backgroundColor: MyColors.secondary,
         child: Icon(
           Iconsax.add_copy,

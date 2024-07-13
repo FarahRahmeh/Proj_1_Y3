@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class TDialogs {
+class MyDialogs {
   static defaultDialog({
     required BuildContext context,
     String title = 'Removal Confirmation',
-    String content = 'Removing this data will delete all related data. Are you sure?',
+    Widget content = const Text(
+        'Removing this data will delete all related data. Are you sure?'),
     String cancelText = 'Cancel',
     String confirmText = 'Remove',
     Function()? onCancel,
     Function()? onConfirm,
+    bool showOnlyOnConfirm = false,
   }) {
     // Show a confirmation dialog
     showDialog(
@@ -16,12 +19,13 @@ class TDialogs {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(title),
-          content: Text(content),
-          actions: <Widget>[
-            TextButton(
-              onPressed: onCancel ?? () => Navigator.of(context).pop(),
-              child: Text(cancelText),
-            ),
+          content: content,
+          actions: [
+            if (!showOnlyOnConfirm)
+              TextButton(
+                onPressed: onCancel ?? () => Get.back(),
+                child: Text(cancelText),
+              ),
             TextButton(
               onPressed: onConfirm,
               child: Text(confirmText),

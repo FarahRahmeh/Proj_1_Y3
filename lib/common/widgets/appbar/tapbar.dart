@@ -17,13 +17,21 @@ class MyTapBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
     return Material(
-      color: dark ? Colors.black : Colors.white,
-      child: TabBar(
-          tabs: tabs,
-          isScrollable: true,
-          indicatorColor: darkBrown,
-          labelColor: dark ? MyColors.white : darkBrown,
-          unselectedLabelColor: MyColors.darkGrey),
+      color: dark ? MyColors.black : Colors.white, //! Change here
+      child: Container(
+        width: double.infinity,
+        child: Center(
+          child: TabBar(
+            overlayColor: MaterialStateColor.resolveWith(
+                (states) => gray.withOpacity(0.4)),
+            tabs: tabs,
+            isScrollable: true,
+            indicatorColor: dark ? lightBrown : darkBrown,
+            labelColor: dark ? MyColors.white : darkBrown,
+            unselectedLabelColor: MyColors.darkGrey,
+          ),
+        ),
+      ),
     );
   }
 

@@ -7,7 +7,9 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
 class BottomAddToCart extends StatelessWidget {
-  const BottomAddToCart({super.key});
+  const BottomAddToCart({super.key, this.title = 'Add To Cart'});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -24,36 +26,36 @@ class BottomAddToCart extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
-            children: [
-              CircularIcon(
-                icon: Iconsax.minus_copy,
-                backgroundColor: gray,
-                width: 40,
-                height: 40,
-                color: offWhite,
+              //   children: [
+              //     CircularIcon(
+              //       icon: Iconsax.minus_copy,
+              //       backgroundColor: gray,
+              //       width: 40,
+              //       height: 40,
+              //       color: offWhite,
+              //     ),
+              //     SizedBox(
+              //       width: Sizes.spaceBtwItems,
+              //     ),
+              //     Text(
+              //       '2',
+              //       style: Theme.of(context).textTheme.titleSmall,
+              //     ),
+              //     const SizedBox(
+              //       width: Sizes.spaceBtwItems,
+              //     ),
+              //     CircularIcon(
+              //       icon: Iconsax.add_copy,
+              //       backgroundColor: lightBrown,
+              //       width: 40,
+              //       height: 40,
+              //       color: offWhite,
+              //     ),
+              //   ],
               ),
-              SizedBox(
-                width: Sizes.spaceBtwItems,
-              ),
-              Text(
-                '2',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              const SizedBox(
-                width: Sizes.spaceBtwItems,
-              ),
-              CircularIcon(
-                icon: Iconsax.add_copy,
-                backgroundColor: lightBrown,
-                width: 40,
-                height: 40,
-                color: offWhite,
-              ),
-            ],
-          ),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -61,7 +63,7 @@ class BottomAddToCart extends StatelessWidget {
               backgroundColor: lightBrown,
               side: BorderSide(color: beige2),
             ),
-            child: Text('Add to Cart'),
+            child: Text(title),
           ),
         ],
       ),

@@ -1,4 +1,4 @@
-import 'package:booktaste/admin/navigation/Admin_navigation_menu.dart';
+import 'package:booktaste/admin/navigation/admin_navigation_menu.dart';
 import 'package:booktaste/user/navigation/user_navigation_menu.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,11 +16,11 @@ Future<void> saveRole(String role) async {
 void navigateBasedOnRole() async {
   final role = await getRole(); // Retrieve the role
   if (role == 'master_admin' || role == 'admin') {
-    Get.offAll(() => const UserNavigationMenu());
+    Get.offAll(() => const AdminNavigationMenu());
 
     //todo Change the route name
   } else if (role == 'user') {
-    Get.offAll(() => const AdminNavigationMenu());
+    Get.offAll(() => const UserNavigationMenu());
 
     //todo Change the route name
   }

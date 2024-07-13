@@ -1,4 +1,4 @@
-import 'package:booktaste/user/user_home/user_home_model.dart';
+import 'package:booktaste/user/user_home/all_categories_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class VerticalImageWithText extends StatelessWidget {
       required this.categories});
   final AllCategories categories;
   final String image;
-  // , title;
+
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
@@ -31,7 +31,9 @@ class VerticalImageWithText extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(right: Sizes.spaceBtwItems),
+        padding: const EdgeInsets.only(
+            right: Sizes
+                .spaceBtwItems), //todo add spaceBtwItems / 2 to reduce the space between the genres
         child: Column(
           children: [
             //~ Circular Icon
@@ -62,11 +64,11 @@ class VerticalImageWithText extends StatelessWidget {
             SizedBox(
               // width: 55,
               child: Text(
-                "${categories.genre}",
-                style: Theme.of(context)
-                    .textTheme
-                    .labelMedium!
-                    .apply(color: textColor), //~------------color
+                categories.genre,
+                style: Theme.of(context).textTheme.labelMedium!.apply(
+                    color: textColor,
+                    fontWeightDelta: 2,
+                    fontSizeDelta: 0.4), //~------------color
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

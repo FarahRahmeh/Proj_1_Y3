@@ -15,10 +15,18 @@ class XCard extends StatelessWidget {
     this.showBorder = true,
     this.onTap,
     this.margin = 2,
+    this.image = Images.onboarding_1,
+    this.isNetworkImage = false,
+    this.subTitle = 'blahhhhhhhhhhhhhhh',
+    this.title = 'Book',
   });
   final bool showBorder;
   final void Function()? onTap;
   final double margin;
+  final String image;
+  final String title;
+  final String subTitle;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +45,8 @@ class XCard extends StatelessWidget {
             //--Icon
             Flexible(
               child: CircularImage(
-                image: Images.onboarding_1,
-                isNetworkImg: false,
+                image: image,
+                isNetworkImg: isNetworkImage,
                 backgroundColor: Colors.transparent,
                 // overlayColor: HelperFunctions.isDarkMode(context)
                 //     ? MyColors.black
@@ -54,11 +62,11 @@ class XCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   XTitleText(
-                    title: 'Book',
+                    title: title,
                     xTextSize: TextSizes.large,
                   ),
                   Text(
-                    'blah blah blah........',
+                    subTitle,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),

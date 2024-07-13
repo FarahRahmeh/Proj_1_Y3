@@ -32,9 +32,8 @@ class AnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset('animation',
-              width: MediaQuery.of(context).size.width *
-                  0.8), // Display Lottie animation
+          Lottie.asset(animation,
+              width: MediaQuery.of(context).size.width * 0.8),
           const SizedBox(height: 24),
           Text(
             text,
@@ -42,17 +41,19 @@ class AnimationLoaderWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
-          SizedBox(
-            width: 250,
-            child: OutlinedButton(
-              onPressed: onActionPressed,
-              style: OutlinedButton.styleFrom(backgroundColor: darkBrown),
-              child: Text(
-                actionText!,
-                //style: Theme.of(context).textTheme.bodyMedium.apply(color: TColors.light),
-              ),
-            ),
-          ),
+          showAction
+              ? SizedBox(
+                  width: 250,
+                  child: OutlinedButton(
+                    onPressed: onActionPressed,
+                    style: OutlinedButton.styleFrom(backgroundColor: darkBrown),
+                    child: Text(
+                      actionText!,
+                      //style: Theme.of(context).textTheme.bodyMedium.apply(color: TColors.light),
+                    ),
+                  ),
+                )
+              : SizedBox.shrink(),
         ],
       ),
     );

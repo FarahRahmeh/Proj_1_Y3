@@ -1,48 +1,34 @@
-//! Unfinished
-// class UserModel {
-  //~ final variable = do NOT want to update it
-//   final String id;
-//   final String email;
-//   final String role;
-//   final String username;
-//   final String userImage;
+class User {
+  // final variable = do NOT want to update it
+  String? email;
+  String? role;
+  String? name;
 
-//   UserModel(
-//       {required this.id,
-//       required this.email,
-//       required this.role,
-//       required this.username,
-//       required this.userImage});
+  User({
+    this.email,
+    this.role,
+    this.name,
+  });
 
-//   static UserModel empty() =>
-//       UserModel(username: '', userImage: '', email: '', role: '', id: '');
+  static User empty() => User(name: '', email: '', role: '');
 
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'username': username,
-//       'image': userImage,
-//       'email': email,
-//       'id': id,
-//       'role': role,
-//     };
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'email': email,
+      'role': role,
+    };
+  }
 
-//   }
-
-//   // factory UserModel.fromSnapshot(Map<String, dynamic> document) {
-//   // if (document.data() != null) {
-//   //   final data = document.data()!;
-//   //   return UserModel(
-//   //     id: document.id,
-//   //     firstName: data['firstName'] ?? '',
-//   //     lastName: data['lastName'] ?? '',
-//   //     username: data['Username'] ?? '',
-//   //     email: data['Email'] ?? '',
-//   //     phoneNumber: data['PhoneNumber'] ?? '',
-//   //     profilePictureUrl: data['ProfilePictureUrl'] ?? '',
-//   //   );
-//   // } else {
-//   //   return UserModel.empty();
-//   // }}
-// }
-
-
+  factory User.fromJson(Map<String, dynamic> jsonData) {
+    if (jsonData.isNotEmpty) {
+      return User(
+        name: jsonData['name'] ?? '',
+        email: jsonData['email'] ?? '',
+        role: jsonData['role'] ?? '',
+      );
+    } else {
+      return User.empty();
+    }
+  }
+}

@@ -4,8 +4,8 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../utils/helpers/helper_functions.dart';
 
-class TShimmerEffect extends StatelessWidget {
-  const TShimmerEffect({
+class ShimmerEffect extends StatelessWidget {
+  const ShimmerEffect({
     Key? key,
     required this.width,
     required this.height,

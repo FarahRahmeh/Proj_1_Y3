@@ -1,5 +1,9 @@
 import 'package:booktaste/auth/code_confirmation/code_confirmation_page.dart';
 import 'package:booktaste/auth/login/login_page.dart';
+import 'package:booktaste/auth/register/register_controller.dart';
+import 'package:booktaste/common/widgets/appbar/appbar.dart';
+import 'package:booktaste/common/widgets/images/rounded_image.dart';
+import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,52 +19,57 @@ class VerifyEmailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ConfirmationController());
-    
+    final controller = Get.put(RegisterController());
+    final dark = HelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   actions: [
-      //     IconButton(
-      //         onPressed: () => Get.offAll(() => const LoginPage()),
-      //         icon: Icon(CupertinoIcons.clear))
-      //   ],
-      // ),
+      appBar: MyAppBar(
+        showBackArrow: true,
+        title: Text('Verify Email Page'),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image(
-                image: const AssetImage(Images.verifyEmail),
-                width: HelperFunctions.screenWidth() * 0.6,
+              RoundedImage(
+                imageUrl:
+                    dark ? Images.emailVerifyDark : Images.emailVerifyLight,
+                width: double.infinity,
+                height: 240,
               ),
               const SizedBox(
-                height: 32.0,
+                height: Sizes.spaceBtwItems,
               ),
-              const Text('Verify your Email'),
+              Padding(
+                padding: const EdgeInsets.only(left: Sizes.xs),
+                child: Text(
+                  'Enter your Email: ',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
               const SizedBox(
-                height: 7.0,
+                height: Sizes.spaceBtwItems,
               ),
               Form(
                 key: controller.verifyKey,
                 child: Column(
                   children: [
                     TextFormField(
-                      controller: controller.emailController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.direct_right),
+                      controller: controller.email,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Iconsax.sms),
                         labelText: "Email",
-                        // border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: darkBrown)),
-                      ), //Texts.email
+                      ),
                       validator: (value) => Validator.validateEmail(value),
                     ),
-                    const SizedBox(
-                      height: 22.0,
+                    const SizedBox(height: Sizes.spaceBtwSections / 2),
+                    const Divider(
+                      thickness: 1,
+                      color: gray,
                     ),
+                    const SizedBox(height: Sizes.spaceBtwSections / 2),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -70,14 +79,15 @@ class VerifyEmailPage extends StatelessWidget {
                           child: Text('Continue')),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: Sizes.spaceBtwInputFields / 1.5,
                     ),
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
                           onPressed: () {
                             controller.verifyEmail();
-                          }, child: const Text('Resend Email')),
+                          },
+                          child: const Text('Resend Email')),
                     ),
                   ],
                 ),

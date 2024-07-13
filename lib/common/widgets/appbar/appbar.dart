@@ -13,14 +13,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.showBackArrow = false,
       this.leadingIcon,
       this.actions,
-      this.leadingOnPressed});
+      this.leadingOnPressed,
+      this.backOnPressed});
 
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
-
+  final VoidCallback? backOnPressed;
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
@@ -31,14 +32,21 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(
-                onPressed: () => Get.back(),
+                onPressed: () {
+                  Get.back();
+                  backOnPressed;
+                },
                 icon: Icon(
                   Icons.arrow_back,
                   color: dark ? lightBrown : brown,
                 ))
             : leadingIcon != null
                 ? IconButton(
-                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                    onPressed: leadingOnPressed,
+                    icon: Icon(
+                      leadingIcon,
+                      color: dark ? lightBrown : brown,
+                    ))
                 : null,
         title: title,
         actions: actions,

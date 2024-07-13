@@ -1,4 +1,4 @@
-import 'package:booktaste/auth/register/register_page.dart';
+import 'package:booktaste/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +21,7 @@ class OnBoardingController extends GetxController {
   ///Next: Update curr index & jump to the next page
   void nextPage() {
     if (currentPageIndex.value == 2) {
-      Get.to(RegisterPage());
+      Get.to(LoginPage());
     } else {
       int page = currentPageIndex.value + 1;
       pageController.jumpToPage(page);

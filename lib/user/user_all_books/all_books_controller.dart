@@ -18,7 +18,7 @@ class AllBooksController extends GetxController {
       isLoading(true);
       var allbooks = await AllBooksRepository.fechAllBooks();
       if (allbooks != null) {
-        print("not null");
+        print("not null books");
         booksList.value = allbooks;
       }
     } finally {

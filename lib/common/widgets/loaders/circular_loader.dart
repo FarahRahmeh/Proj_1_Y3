@@ -23,13 +23,10 @@ class CircularLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(Sizes.lg),
-      decoration: BoxDecoration(
-          color: backgroundColor,
-          shape: BoxShape.circle), // Circular background
+      decoration: BoxDecoration(color: backgroundColor, shape: BoxShape.circle),
       child: Center(
         child: CircularProgressIndicator(
-            color: foregroundColor,
-            backgroundColor: Colors.transparent), // Circular loader
+            color: foregroundColor, backgroundColor: Colors.transparent),
       ),
     );
   }

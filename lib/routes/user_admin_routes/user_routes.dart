@@ -8,8 +8,7 @@ class UserAdminRoues {
 
 class UserRoutes {
   static const home = '/';
-  static const navigation = '/navigation';
-
+  static const navigation = '/user_navigation';
   static const favourite = '/favourite';
   static const details = '/details';
   static const settings = '/user_settings';
@@ -19,4 +18,10 @@ class UserRoutes {
 
 class AdminRoutes {
   static const home = '/';
+  static const insignts = '/admin_insignts';
+  static const navigation = '/admin_navigation';
+  static const profile = '/admin_profile';
+  static const settings = '/admin_settings';
+  static const library = '/admin_library';
+
 }

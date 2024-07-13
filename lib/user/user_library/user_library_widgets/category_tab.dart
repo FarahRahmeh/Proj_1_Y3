@@ -10,7 +10,8 @@ import '../../../utils/constans/sizes.dart';
 import '../../user_all_books/all_books_controller.dart';
 
 class CategoryTab extends StatelessWidget {
-  const CategoryTab({super.key});
+  const CategoryTab({super.key, required this.category});
+  final String category;
 
   @override
   Widget build(BuildContext context) {

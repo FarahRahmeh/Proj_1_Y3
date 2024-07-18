@@ -152,7 +152,7 @@ class ProductDetailsPage extends StatelessWidget {
                                 book.summary,
                                 // bookController.book.summary,
                                 //  book.summary,
-                                numLines: 4,
+                                numLines: 5,
                                 readMoreText: 'Show more',
                                 readLessText: 'Less',
                                 readMoreIconColor: pinkish,

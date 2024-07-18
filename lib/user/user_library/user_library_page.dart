@@ -5,7 +5,7 @@ import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/notification/notification_counter_icon.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
 import 'package:booktaste/controllers/category/all_categories_controller.dart';
-import 'package:booktaste/user/user_all_brands/all_brands_page.dart';
+import 'package:booktaste/common/widgets/all_brands/all_brands_page.dart';
 import 'package:booktaste/user/user_library/user_library_widgets/category_tab.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';

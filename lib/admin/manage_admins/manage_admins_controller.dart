@@ -42,6 +42,7 @@ class ManageAdminsController extends GetxController {
           email.text.trim(),
           password.text.trim(),
           passwordConfirmation.text.trim());
+
       print(response.body.toString());
       // print();
 
@@ -56,14 +57,14 @@ class ManageAdminsController extends GetxController {
       } else if (response.statusCode == 401) {
         // final message = userData['errors']['email'][0].toString();
         //final message = userData['message'];
-        Loaders.errorSnackBAr(title: 'failed: ', message: response.body);
+        Loaders.errorSnackBar(title: 'failed: ', message: response.body);
       } else {
         //!handle backend if admin already in
-        Loaders.errorSnackBAr(title: 'Error', message: response.reasonPhrase);
+        Loaders.errorSnackBar(title: 'Error', message: response.reasonPhrase);
         //throw 'Login failed: ${response.reasonPhrase}';
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
   }

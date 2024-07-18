@@ -1,4 +1,5 @@
-import 'package:booktaste/user/user_home/all_categories_model.dart';
+import 'package:booktaste/models/all_categories_model.dart';
+import 'package:booktaste/utils/constans/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,13 +49,9 @@ class VerticalImageWithText extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  //todo   if the image of the icon is icon(not colored) uncomment the following line
-                  //  color: dark? MyColors.white: MyColors.black,   //~ change the colors if you want
-                ),
-              ),
+                  child: Image(
+                image: AssetImage(Images.book),
+              )),
             ),
 
             const SizedBox(

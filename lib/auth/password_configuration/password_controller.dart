@@ -45,10 +45,10 @@ class ForgetPasswordController extends GetxController {
         final message = userData['message'];
         //todo Need to change status code
 
-        Loaders.errorSnackBAr(title: 'faild: ', message: message);
+        Loaders.errorSnackBar(title: 'faild: ', message: message);
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
   }
@@ -69,10 +69,10 @@ class ForgetPasswordController extends GetxController {
         Get.to(() => const ResetForgottenPasswordPage());
         Loaders.successSnackBar(title: 'On Snap', message: 'successfully');
       } else {
-        Loaders.errorSnackBAr(title: 'faild: ', message: userData);
+        Loaders.errorSnackBar(title: 'faild: ', message: userData);
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
 
       print(e.toString());
     }
@@ -99,10 +99,10 @@ class ForgetPasswordController extends GetxController {
         final message = userData['message'];
         //todo Need to change status code
 
-        Loaders.errorSnackBAr(title: 'faild: ', message: message);
+        Loaders.errorSnackBar(title: 'faild: ', message: message);
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
   }

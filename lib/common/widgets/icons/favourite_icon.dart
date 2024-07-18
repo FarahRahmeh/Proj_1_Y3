@@ -1,4 +1,4 @@
-import 'package:booktaste/models/book_model.dart';
+import 'package:booktaste/models/book.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +18,8 @@ class FavouriteIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
 
-    final BookModel book =
-        BookModel(author: 'writer', cover: Images.cover6, name: 'Book');
+    final Book book =
+        Book(writer: 'writer', cover: Images.cover6, name: 'Book');
 
     final FavController controller = Get.find<FavController>();
 

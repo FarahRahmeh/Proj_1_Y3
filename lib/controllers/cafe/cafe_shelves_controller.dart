@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 
 import '../../data/repositories/cafes_repository.dart';
@@ -5,7 +7,7 @@ import '../../models/cafe_shelf_model.dart';
 
 class CafeShelvesController extends GetxController {
   var isLoading = true.obs;
-  var cafeShelvesList = <CafeShelf>[].obs;
+  var cafeShelvesList = <CafeShelf?>[];
 
   // @override
   // void onInit() {
@@ -15,17 +17,22 @@ class CafeShelvesController extends GetxController {
   //   super.onInit();
   // }
 
-  void fetchCafeShelves(var cafeId) async {
+  Future<List<CafeShelf?>?> fetchCafeShelves(var cafeId) async {
     try {
       isLoading = true.obs;
-      var shelves = await CafesRepository.fetchCafeShelves(cafeId);
-      if (shelves != null) {
-        cafeShelvesList.value = shelves;
-        print(shelves);
+      var _cafeRepository = CafesRepository();
+      var response = await _cafeRepository.fetchCafeShelves(cafeId);
+      
+      var cafeShleves = response;
+      //cafeshlevesFromJson(cafeShleves);
+      if (cafeShleves != null) {
+        cafeShelvesList = cafeShleves;
+        return cafeShleves;
       }
     } finally {
       print(cafeId);
       isLoading = false.obs;
     }
+    return null;
   }
 }

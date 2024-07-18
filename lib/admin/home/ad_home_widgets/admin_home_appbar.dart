@@ -1,12 +1,9 @@
 import 'package:booktaste/common/widgets/icons/theme_switcher_icon.dart';
-import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../common/widgets/appbar/appbar.dart';
 import '../../../common/widgets/notification/notification_counter_icon.dart';
 import '../../../utils/constans/colors.dart';
-import '../../../utils/constans/texts.dart';
 
 class AdminHomePageAppbar extends StatelessWidget {
   const AdminHomePageAppbar({

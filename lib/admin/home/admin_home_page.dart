@@ -1,4 +1,3 @@
-import 'package:booktaste/admin/home/ad_home_widgets/admin_home_slider.dart';
 import 'package:booktaste/common/widgets/custom_shapes/Containers/primary_header_container.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
@@ -10,16 +9,18 @@ import 'package:booktaste/utils/constans/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/features/books/all_books_with_filter_page.dart';
+import '../../common/features/cafes/cafes_home_slider.dart';
 import '../../common/widgets/custom_shapes/Containers/search_container.dart';
 import '../../common/widgets/texts/section_heading.dart';
 import 'ad_home_widgets/admin_home_appbar.dart';
-import 'ad_home_widgets/admin_home_categories.dart';
+import '../../common/features/categories/home_categories.dart';
 
 class AdminHomePage extends StatelessWidget {
   AdminHomePage({super.key});
 
-  final allbookscontroller = Get.find<AllBooksController>();
-  final cafescontroller = Get.find<CafesController>();
+  final allbookscontroller = Get.put(AllBooksController());
+  final cafescontroller = Get.put(CafesController());
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class AdminHomePage extends StatelessWidget {
                       ),
 
                       ///!---Categories List
-                      AdminHomeCategories(), //--->inside here //~------------ same color
+                      HomeCategories(), //--->inside here //~------------ same color
                     ],
                   ),
                 ),
@@ -86,18 +87,19 @@ class AdminHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(Sizes.md), //Sizes.defultSpace
             child: Column(
               children: [
-                ///! Promo Slider
-                AdminPromoSlider(
-                  banners: [
-                    Images.cover2,
-                    // Images.success,
-                    // Images.promoBanner,
-                    // Images.onboarding_1,
-                    // Images.onboarding_1,
-                    // Images.onboarding_1,
-                    // Images.onboarding_1,
-                  ],
-                ),
+                ///! Cafes Slider
+                CafesSlider(),
+                // AdminPromoSlider(
+                //   banners: [
+                //     Images.cover2,
+                //     // Images.success,
+                //     // Images.promoBanner,
+                //     // Images.onboarding_1,
+                //     // Images.onboarding_1,
+                //     // Images.onboarding_1,
+                //     // Images.onboarding_1,
+                //   ],
+                // ),
 
                 const SizedBox(height: Sizes.sm
                     // Sizes.spaceBtwSections / 2,
@@ -111,8 +113,9 @@ class AdminHomePage extends StatelessWidget {
                 //! Heading
                 SectionHeading(
                   title: 'Popular Books',
-                  onPressed: () {},
-                  // Get.to(() => AllProductsPage()),
+                  onPressed: () {
+                    Get.to(() => AllBooksWithFilter());
+                  },
                 ),
                 SizedBox(
                   height: Sizes.spaceBtwItems,

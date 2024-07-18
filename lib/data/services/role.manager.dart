@@ -13,6 +13,12 @@ Future<void> saveRole(String role) async {
   await box.write('ROLE', role);
 }
 
+Future<bool> isUser() async {
+  final role = await getRole(); // Retrieve the role
+  print("user is " + role.toString());
+  return role == 'user';
+}
+
 void navigateBasedOnRole() async {
   final role = await getRole(); // Retrieve the role
   if (role == 'master_admin' || role == 'admin') {

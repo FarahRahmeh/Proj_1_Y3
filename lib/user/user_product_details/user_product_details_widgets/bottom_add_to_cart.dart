@@ -6,10 +6,21 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../utils/helpers/helper_functions.dart';
 
-class BottomAddToCart extends StatelessWidget {
-  const BottomAddToCart({super.key, this.title = 'Add To Cart'});
+class BottomAddToBtn extends StatelessWidget {
+  const BottomAddToBtn({
+    super.key,
+    this.title1 = 'Add To Cart',
+    this.title2 = 'Add',
+    this.twoBtns = false,
+    this.onPressed1,
+    this.onPressed2,
+  });
 
-  final String title;
+  final String title1;
+  final String title2;
+  final bool twoBtns;
+  final VoidCallback? onPressed1;
+  final VoidCallback? onPressed2;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +30,7 @@ class BottomAddToCart extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: Sizes.defaultSpace, vertical: Sizes.defaultSpace / 2),
       decoration: BoxDecoration(
-        color: dark ? MyColors.darkGrey : MyColors.light,
+        color: dark ? MyColors.darkestGrey : MyColors.light,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Sizes.cardRadiusLg),
           topRight: Radius.circular(Sizes.cardRadiusLg),
@@ -56,16 +67,43 @@ class BottomAddToCart extends StatelessWidget {
               //     ),
               //   ],
               ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(Sizes.md),
-              backgroundColor: lightBrown,
-              side: BorderSide(color: beige2),
-            ),
-            child: Text(title),
-          ),
+          twoBtns
+              ? Row(
+                  children: [
+                    BottomButton(onPressed: onPressed1, title: title1),
+                    SizedBox(width: Sizes.spaceBtwInputFields),
+                    BottomButton(onPressed: onPressed2, title: title2),
+                  ],
+                )
+              : BottomButton(onPressed: onPressed1, title: title1),
         ],
+      ),
+    );
+  }
+}
+
+class BottomButton extends StatelessWidget {
+  const BottomButton({
+    super.key,
+    required this.onPressed,
+    required this.title,
+  });
+
+  final VoidCallback? onPressed;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 150,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.all(Sizes.md),
+          backgroundColor: lightBrown,
+          side: BorderSide(color: offWhite),
+        ),
+        child: Text(title),
       ),
     );
   }

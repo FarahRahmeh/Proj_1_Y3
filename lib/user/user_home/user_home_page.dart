@@ -1,3 +1,4 @@
+import 'package:booktaste/common/features/books/all_books_with_filter_page.dart';
 import 'package:booktaste/common/widgets/custom_shapes/Containers/primary_header_container.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
@@ -9,18 +10,18 @@ import 'package:booktaste/utils/constans/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/features/categories/home_categories.dart';
 import '../../common/widgets/custom_shapes/Containers/search_container.dart';
 import '../../common/widgets/texts/section_heading.dart';
 import 'user_home_widgets/user_home_appbar.dart';
 import 'user_home_widgets/user_home_categories.dart';
-import 'user_home_widgets/user_home_slider.dart';
+import '../../common/features/cafes/cafes_home_slider.dart';
 
 class UserHomePage extends StatelessWidget {
   // final allcategoriescontroller = Get.put(AllCategoriesController());
   UserHomePage({super.key});
 
-  final allbookscontroller = Get.find<AllBooksController>();
-  final cafescontroller = Get.find<CafesController>();
+  final allbookscontroller = Get.put(AllBooksController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,7 @@ class UserHomePage extends StatelessWidget {
                       ),
 
                       ///!---Categories List
-                      UserHomeCategories(), //--->inside here //~------------ same color
+                      HomeCategories(), //--->inside here //~------------ same color
                     ],
                   ),
                 ),
@@ -87,36 +88,37 @@ class UserHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(Sizes.md), //Sizes.defultSpace
             child: Column(
               children: [
-                ///! Promo Slider
-                PromoSlider(
-                  banners: [
-                    Images.cover2,
-                    // Images.success,
-                    // Images.promoBanner,
-                    // Images.onboarding_1,
-                    // Images.onboarding_1,
-                    // Images.onboarding_1,
-                    // Images.onboarding_1,
-                  ],
-                ),
+                ///! Cafes Slider
+                CafesSlider(
+                    // banners: [
+                    //   Images.cover2,
+                    //   // Images.success,
+                    //   // Images.promoBanner,
+                    //   // Images.onboarding_1,
+                    //   // Images.onboarding_1,
+                    //   // Images.onboarding_1,
+                    //   // Images.onboarding_1,
+                    // ],
+                    ),
 
                 const SizedBox(height: Sizes.sm
                     // Sizes.spaceBtwSections / 2,
                     ),
 
-                //! Heading
+                //! Heading Popular Books
                 SectionHeading(
                   title: 'Popular Books',
-                  onPressed: () {},
-                  // Get.to(() => AllProductsPage()),
+                  onPressed: () {
+                    Get.to(() => AllBooksWithFilter());
+                  },
                 ),
                 const SizedBox(
                   height: Sizes.spaceBtwItems,
                 ),
 
-                ///!Popular products
+                ///!Popular books grid layout
                 Obx(() {
-                  if (cafescontroller.isLoading.value) {
+                  if (allbookscontroller.isLoading.value) {
                     return Center(
                         child: Image.asset(
                       width: 90,

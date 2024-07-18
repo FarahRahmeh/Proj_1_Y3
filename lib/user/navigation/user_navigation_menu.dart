@@ -1,6 +1,7 @@
 import 'package:booktaste/common/widgets/navigation_dest/my_navigation_destination.dart';
 import 'package:booktaste/user/user_home/user_home_page.dart';
 import 'package:booktaste/user/user_library/user_library_page.dart';
+import 'package:booktaste/user/user_quotes/quotes_page.dart';
 import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:booktaste/user/user_wishlist/favourite_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
@@ -14,7 +15,7 @@ class UserNavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
+    final controller = Get.put(UserNavigationController());
     final darkMode = HelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -44,6 +45,10 @@ class UserNavigationMenu extends StatelessWidget {
                 label: 'Wishlist',
                 selectedIcon: Iconsax.heart_copy),
             MyNavigationDestination(
+                icon: Iconsax.quote_down,
+                label: 'Quotes',
+                selectedIcon: Iconsax.quote_down_copy),
+            MyNavigationDestination(
                 icon: Iconsax.user,
                 label: 'Profile',
                 selectedIcon: Iconsax.user_copy),
@@ -55,14 +60,19 @@ class UserNavigationMenu extends StatelessWidget {
   }
 }
 
-class NavigationController extends GetxController {
+class UserNavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     UserHomePage(),
     const UserLibrary(),
     const FavouritePage(),
-    // const UserProfile(),
+    const QuotesPage(),
     const UserSettingsPage(),
   ];
+  void setSelectedIndex(int index) {
+    selectedIndex.value = index;
+  }
 }
-//comment to test
+  //!Example =====>>
+  //!   final navigationController = Get.find<NavigationController>();
+  //!    navigationController.setSelectedIndex(3);

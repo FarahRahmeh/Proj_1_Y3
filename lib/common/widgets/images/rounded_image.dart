@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/sizes.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class RoundedImage extends StatelessWidget {
   const RoundedImage({
@@ -50,8 +51,9 @@ class RoundedImage extends StatelessWidget {
               : BorderRadius.zero,
           child: Image(
               image: isNetworkImage
-                  ? NetworkImage(imageUrl)
-                  : AssetImage(imageUrl) as ImageProvider,
+                  ? Image.network(imageUrl)
+                      .image //!--------------------------------------
+                  : AssetImage(imageUrl),
               fit: fit),
         ),
       ),

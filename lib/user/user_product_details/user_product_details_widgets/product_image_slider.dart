@@ -2,6 +2,7 @@ import 'package:booktaste/data/repositories/book_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import '../../../data/services/role.manager.dart';
 import '../../../utils/constans/api_constans.dart';
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/images.dart';
@@ -21,10 +22,9 @@ class ProductImageSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
-    BookRepository().getBookCover(imageurl); //!...........................
     return CurvedEdgeWidget(
       child: Container(
-        color: dark ? MyColors.darkGrey : MyColors.light,
+        color: dark ? MyColors.darkestGrey : MyColors.light,
         child: Stack(
           children: [
             ///! Main large image
@@ -34,11 +34,11 @@ class ProductImageSlider extends StatelessWidget {
                 padding: EdgeInsets.all(Sizes.productImageRadius * 2),
                 child: Center(
                   child: RoundedImage(
-                    isNetworkImage: imageurl == '/' ? false : true,
-                    //imageUrl: Images.cover6,
-                    imageUrl: imageurl == '/'
-                        ? Images.cover6
-                        : '$baseUrl${imageurl}', //!................
+                    //  isNetworkImage: imageurl == '/' ? false : true,
+                    imageUrl: Images.cover6,
+                    // imageUrl: imageurl == '/'
+                    //     ? Images.cover6
+                    //     : '$baseUrl${imageurl}', //!................
                     // applyImageRadius: true,
                   ),
                 ),
@@ -75,10 +75,27 @@ class ProductImageSlider extends StatelessWidget {
             MyAppBar(
               showBackArrow: true,
               actions: [
-                CircularIcon(
-                  icon: Iconsax.heart,
-                  color: pinkish,
-                )
+                FutureBuilder<bool>(
+                  future: isUser(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator(); // or any other placeholder widget
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      final role = snapshot.data;
+                      return role == true
+                          ? Padding(
+                              padding: const EdgeInsets.all(Sizes.sm),
+                              child: CircularIcon(
+                                icon: Iconsax.heart,
+                                color: pinkish,
+                              ),
+                            )
+                          : SizedBox.shrink();
+                    }
+                  },
+                ),
               ],
             ),
           ],

@@ -49,10 +49,10 @@ class RegisterController extends GetxController {
         final message = userData['message'];
         //todo Need to change status code
 
-        Loaders.errorSnackBAr(title: 'faild: ', message: message);
+        Loaders.errorSnackBar(title: 'faild: ', message: message);
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
   }
@@ -73,10 +73,10 @@ class RegisterController extends GetxController {
 
         Get.to(() => const ConfirmationCodePage());
       } else {
-        Loaders.errorSnackBAr(title: 'faild: ', message: userData);
+        Loaders.errorSnackBar(title: 'faild: ', message: userData);
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
 
       print(e.toString());
     }
@@ -120,14 +120,14 @@ class RegisterController extends GetxController {
       } else if (response.statusCode == 422) {
         // final message = userData['errors']['email'][0].toString();
         //final message = userData['message'];
-        Loaders.errorSnackBAr(
+        Loaders.errorSnackBar(
             title: 'register failed: ', message: response.body);
       } else {
-        Loaders.errorSnackBAr(title: 'Error', message: response.reasonPhrase);
+        Loaders.errorSnackBar(title: 'Error', message: response.reasonPhrase);
         //throw 'Login failed: ${response.reasonPhrase}';
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
   }

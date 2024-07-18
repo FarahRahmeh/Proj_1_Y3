@@ -1,11 +1,7 @@
 import 'package:booktaste/admin/home/admin_home_page.dart';
 import 'package:booktaste/admin/library/admin_library_page.dart';
-import 'package:booktaste/admin/profile/admin_profile.dart';
 import 'package:booktaste/admin/settings/admin_setting_page.dart';
 import 'package:booktaste/common/widgets/navigation_dest/my_navigation_destination.dart';
-import 'package:booktaste/user/user_library/user_library_page.dart';
-import 'package:booktaste/user/user_setting/user_setting_page.dart';
-import 'package:booktaste/user/user_wishlist/favourite_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +15,7 @@ class AdminNavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
+    final controller = Get.put(AdminNavigationController());
     final dark = HelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -60,12 +56,19 @@ class AdminNavigationMenu extends StatelessWidget {
   }
 }
 
-class NavigationController extends GetxController {
+class AdminNavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     AdminHomePage(),
     const AdminLibraryPage(),
-    const InsightsPage(),
+    InsightsPage(),
     const AdminSettingsPage(),
   ];
+  void setSelectedIndex(int index) {
+    selectedIndex.value = index;
+  }
+
+  //!Example =====>>
+  //!   final navigationController = Get.find<NavigationController>();
+  //!    navigationController.setSelectedIndex(3);
 }

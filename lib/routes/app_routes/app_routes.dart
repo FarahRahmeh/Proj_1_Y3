@@ -8,7 +8,6 @@ import 'package:booktaste/auth/login/login_page.dart';
 import 'package:booktaste/auth/register/register_page.dart';
 import 'package:booktaste/auth/verify_email/verify_email_page.dart';
 import 'package:booktaste/common/features/on_boarding/onboarding_pages.dart';
-import 'package:booktaste/models/book_model.dart';
 import 'package:booktaste/user/navigation/user_navigation_menu.dart';
 import 'package:booktaste/user/user_home/user_home_page.dart';
 import 'package:booktaste/user/user_library/user_library_page.dart';
@@ -45,7 +44,7 @@ class AppRoutes {
 
     //! Admin Routes
     GetPage(name: AdminRoutes.home, page: () => AdminHomePage()),
-    GetPage(name: AdminRoutes.insignts, page: () => const InsightsPage()),
+    GetPage(name: AdminRoutes.insignts, page: () =>  InsightsPage()),
     GetPage(
         name: AdminRoutes.navigation, page: () => const AdminNavigationMenu()),
     GetPage(name: AdminRoutes.library, page: () => const AdminLibraryPage()),

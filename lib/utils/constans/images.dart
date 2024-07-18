@@ -20,7 +20,7 @@ class Images {
   static const String forgotPassword = "assets/images/forgot_password.png";
   static const String newPasword = "assets/images/new_password.png";
   static const String codeConfirmation = "assets/images/pin_code.png";
-
+  static const String corner = "assets/images/reading_corner.png";
   //bot
   static const String heartbot = "assets/images/robot_heart.png";
   static const String newAdmin = "assets/images/new_admin.png";

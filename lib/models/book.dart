@@ -14,71 +14,60 @@ class Book {
   int rate;
   String avgReadingTime;
   int votersNum;
-  String type; //novel or not
+  String type; // novel or not
   String locked;
   int points;
+  final String? updatedAt;
+  final String? createdAt;
 
   Book({
-    required this.id,
-    required this.name,
-    required this.writer,
-    required this.bookId,
-    required this.bookFile,
-    required this.cover,
-    required this.summary,
-    required this.lang,
-    required this.pages,
-    required this.genre,
-    required this.publicationYear,
-    required this.readersNum,
-    required this.rate,
-    required this.avgReadingTime,
-    required this.votersNum,
-    required this.type,
-    required this.locked,
-    required this.points,
+    this.id = 0,
+    this.bookId = "",
+    this.bookFile = "",
+    this.name = "",
+    this.writer = "",
+    this.cover = "/",
+    this.summary = "",
+    this.lang = "",
+    this.pages = 0,
+    this.genre = const [],
+    this.publicationYear = "",
+    this.readersNum = 0,
+    this.rate = 0,
+    this.avgReadingTime = "",
+    this.votersNum = 0,
+    this.type = "",
+    this.locked = "",
+    this.points = 0,
+    this.createdAt = "",
+    this.updatedAt = "",
   });
-  static Book empty() => Book(
-      id: 0,
-      name: "",
-      writer: "",
-      bookId: "",
-      bookFile: "",
-      cover: "/",
-      summary: "",
-      lang: "",
-      pages: 0,
-      genre: [],
-      publicationYear: "",
-      readersNum: 0,
-      rate: 0,
-      avgReadingTime: "",
-      votersNum: 0,
-      type: "",
-      locked: "",
-      points: 0);
+
+  static Book empty() => Book();
 
   factory Book.fromJson(Map<String, dynamic> json) {
     if (json.isNotEmpty) {
       return Book(
-          id: json["id"],
-          name: json["name"],
-          writer: json["writer"],
+          id: json["id"] ?? 0,
+          name: json["name"] ?? "",
+          writer: json["writer"] ?? "",
           avgReadingTime: json['average_read_time'].toString(),
-          bookFile: json['book_file'],
+          bookFile: json['book_file'] ?? "",
           bookId: json["book_id"].toString(),
-          cover: json["cover"],
+          cover: json["cover"] ?? "",
           lang: json["lang"].toString(),
-          pages: json["pages"],
-          genre: List<String>.from(json["genre"]),
-          locked: json["locked?"],
-          points: json["points"],
-          publicationYear: json["published_at"],
-          rate: json["rate"],
-          readersNum: json["readers_num"],
-          summary: json["summary"],
-          type: json["type"],
-          votersNum: json["voters_num"]);
+          pages: json["pages"] ?? 0,
+          genre: List<String>.from(json["genre"] ?? []),
+          locked: json["locked?"] ?? "",
+          points: json["points"] ?? 0,
+          publicationYear: json["published_at"] ?? "",
+          rate: json["rate"] ?? 0,
+          readersNum: json["readers_num"] ?? 0,
+          summary: json["summary"] ?? "",
+          type: json["type"] ?? "",
+          votersNum: json["voters_num"] ?? 0,
+          updatedAt: json['updated_at'] ?? "",
+          createdAt: json['created_at'] ?? "");
     } else {
       return Book.empty();
     }
@@ -102,5 +91,7 @@ class Book {
         "summary": summary,
         "type": type,
         "voters_num": votersNum,
+        "created_at": createdAt,
+        "updated_at": updatedAt,
       };
 }

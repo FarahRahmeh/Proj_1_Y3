@@ -4,7 +4,9 @@ import 'package:booktaste/utils/theme/custom_themes/checkbox_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/chip_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/dialog_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/elevated_button_theme.dart';
+import 'package:booktaste/utils/theme/custom_themes/list_tile.dart';
 import 'package:booktaste/utils/theme/custom_themes/outlined_button_theme.dart';
+import 'package:booktaste/utils/theme/custom_themes/popup_menu_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/radio_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/switch_theme.dart';
 import 'package:booktaste/utils/theme/custom_themes/text_button_theme.dart';
@@ -35,6 +37,8 @@ class MyAppTheme {
     dialogTheme: MyDialogTheme.lightDialogTheme,
     switchTheme: MySwitchTheme.lightSwitchTheme,
     radioTheme: MyRadioTheme.lightRadioTheme,
+    popupMenuTheme: MyPopupMenuTheme.lightPopupMenuTheme,
+    // listTileTheme: MyListTileTheme.lightListTileTheme,
     // cardColor: beige2,
     // fontFamily: 'Poppins',
   );
@@ -57,5 +61,7 @@ class MyAppTheme {
     dialogTheme: MyDialogTheme.darkDialogTheme,
     switchTheme: MySwitchTheme.darkSwitchTheme,
     radioTheme: MyRadioTheme.darkRadioTheme,
+    popupMenuTheme: MyPopupMenuTheme.darkPopupMenuTheme,
+    // listTileTheme: MyListTileTheme.darkListTileTheme,
   );
 }

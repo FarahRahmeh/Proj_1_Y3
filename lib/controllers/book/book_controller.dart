@@ -5,37 +5,34 @@ import 'package:get/get.dart';
 
 import '../../data/repositories/categories_repository.dart';
 import '../../models/book.dart';
-import '../../user/user_home/all_categories_model.dart';
+import '../../models/all_categories_model.dart';
 import '../../utils/popups/loaders.dart';
 
 class BookDetailsController extends GetxController {
+//  static BookDetailsController get instance => Get.find();
   var isLoading = true.obs;
-  var book = Book.empty().obs;
-  // @override
-  // void onInit() {
-  //   //fetchBookDetails(book.value.bookId);
-  //   //fetchBookCover(imageUrl);
-  //   super.onInit();
-  // }
+  var book = Book();
 
-  void fetchBookDetails(String id) async {
+  Future<Book?> fetchBookDetails(String id) async {
     try {
       isLoading.value = true;
       var response = await BookRepository().getBookDetails(id);
       var bookData = json.decode(response.body);
       if (response.statusCode == 200) {
+        print("not null book details " + jsonEncode(book));
         if (response.body.isNotEmpty) {
-          book.value = Book.fromJson(bookData);
-
-          print("not null book detals " + book.toString());
+          book = Book.fromJson(bookData);
+          return book;
         } else {
           isLoading.value = false;
-          print('error with book details');
+          print('Faild to fetch book details');
+          return book;
         }
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
+    return null;
   }
 }

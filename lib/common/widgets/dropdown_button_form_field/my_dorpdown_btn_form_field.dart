@@ -1,3 +1,4 @@
+import 'package:booktaste/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -14,6 +15,7 @@ class MyDropdownBtnFormField extends StatelessWidget {
     this.onChanged,
     this.hintText = 'Filter by',
     this.label = 'Label',
+    this.validator,
   });
   final IconData prefixIcon;
   final List<String> items;
@@ -21,11 +23,14 @@ class MyDropdownBtnFormField extends StatelessWidget {
   final void Function(String?)? onChanged;
   final String hintText;
   final String label;
+  final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
 
     return DropdownButtonFormField(
+      validator: validator,
       dropdownColor: dark ? MyColors.darkestGrey : offWhite,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
@@ -47,12 +52,13 @@ class MyDropdownBtnFormField extends StatelessWidget {
       ),
       onChanged: onChanged,
       items: items
-          .map((option) => DropdownMenuItem(
+          .map(
+            (option) => DropdownMenuItem(
               value: option,
-              child: Text(
-                option,
-                style: TextStyle(color: dark ? offWhite : brown),
-              )))
+              child: Text(option,
+                  style: TextStyle(color: dark ? offWhite : brown)),
+            ),
+          )
           .toList(),
     );
   }

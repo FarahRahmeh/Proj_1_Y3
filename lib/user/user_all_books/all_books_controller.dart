@@ -9,20 +9,20 @@ class AllBooksController extends GetxController {
 
   @override
   void onInit() {
-    fetchAllBooks();
     super.onInit();
+    fetchAllBooks();
   }
 
   void fetchAllBooks() async {
     try {
-      isLoading(true);
+      isLoading.value = true;
       var allbooks = await AllBooksRepository.fechAllBooks();
       if (allbooks != null) {
         print("not null books");
         booksList.value = allbooks;
       }
     } finally {
-      isLoading(false);
+      isLoading.value = false;
     }
   }
 }

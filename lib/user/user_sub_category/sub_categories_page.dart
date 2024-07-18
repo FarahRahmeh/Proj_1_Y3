@@ -1,9 +1,6 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/images/rounded_image.dart';
-import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
-import 'package:booktaste/models/book_model.dart';
-import 'package:booktaste/user/user_all_books/all_books_model.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +19,9 @@ class SubCategoriesPage extends StatelessWidget {
     final allbookscontroller = Get.find<AllBooksController>();
     // final BookModel book = BookModel(
     //     name: 'bookTitle', author: 'authorName', cover: Images.cover3);
+    //  final filteredBooks = allbookscontroller.booksList
+    //     .where((book) => book.genre.toLowerCase() == genre.toLowerCase())
+    //     .toList();
     return Scaffold(
       appBar: MyAppBar(
         title: Text(genree),

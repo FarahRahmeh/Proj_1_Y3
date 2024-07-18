@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../user/user_home/all_categories_model.dart';
+import '../../models/all_categories_model.dart';
 import '../../utils/constans/api_constans.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,6 +11,7 @@ class AllCategoriesRepository extends GetxController {
     );
     if (response.statusCode == 200) {
       print("success");
+      
       var categories = response.body;
       return allCategoriesFromJson(categories);
     } else {
@@ -18,4 +19,12 @@ class AllCategoriesRepository extends GetxController {
       return null;
     }
   }
+
+  Future<http.Response> getCategoryBooks(String id) async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/shelfBooks/$id'), 
+    );
+    return response;
+  }
+  
 }

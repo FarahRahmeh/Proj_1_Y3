@@ -23,7 +23,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     clearFormFields();
-    
+
     emailController.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
     passwordController.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
     super.onInit();
@@ -51,7 +51,6 @@ class LoginController extends GetxController {
 
       final userData = json.decode(response.body); // to string
       if (response.statusCode == 200) {
-        
         final token = userData['token'];
         final role = userData['user']['role'];
 
@@ -69,15 +68,15 @@ class LoginController extends GetxController {
       } else if (response.statusCode == 401) {
         ///!Wrong Password
         final message = userData['message'];
-        Loaders.errorSnackBAr(title: 'login failed: ', message: message);
+        Loaders.errorSnackBar(title: 'login failed: ', message: message);
       } else if (response.statusCode == 422) {
         final message = userData['message'];
-        Loaders.errorSnackBAr(title: 'login failed: ', message: message);
+        Loaders.errorSnackBar(title: 'login failed: ', message: message);
       } else {
-        Loaders.errorSnackBAr(title: 'Error', message: response.reasonPhrase);
+        Loaders.errorSnackBar(title: 'Error', message: response.reasonPhrase);
       }
     } catch (e) {
-      Loaders.errorSnackBAr(title: 'On Snap', message: e.toString());
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
       print(e.toString());
     }
   }

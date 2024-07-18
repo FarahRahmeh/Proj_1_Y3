@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../data/repositories/categories_repository.dart';
-import '../../user/user_home/all_categories_model.dart';
+import '../../models/all_categories_model.dart';
 
 class AllCategoriesController extends GetxController {
   var isLoading = true.obs;

@@ -1,5 +1,5 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
-import 'package:booktaste/user/user_address/user_address_widgets/single_address.dart';
+import 'package:booktaste/common/widgets/address/address_widgets/single_address.dart';
 import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';

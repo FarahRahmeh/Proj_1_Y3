@@ -5,7 +5,7 @@ import '../../data/repositories/cafes_repository.dart';
 
 class CafesController extends GetxController {
   var isLoading = true.obs;
-  var cafesList = <Cafes>[].obs;
+  var cafesList = <Cafe>[];
 
   @override
   void onInit() {
@@ -13,16 +13,17 @@ class CafesController extends GetxController {
     super.onInit();
   }
 
-  void fetchAllCafes() async {
+  Future<List<Cafe?>> fetchAllCafes() async {
     try {
-      isLoading(true);
+      isLoading.value = true;
       var allcafes = await CafesRepository.fechAllCafes();
       if (allcafes != null) {
         print("Cafés not null");
-        cafesList.value = allcafes;
+        cafesList = allcafes;
       }
     } finally {
-      isLoading(false);
+      isLoading.value = false;
     }
+    return cafesList;
   }
 }

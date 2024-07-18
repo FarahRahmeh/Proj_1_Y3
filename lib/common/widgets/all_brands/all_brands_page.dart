@@ -1,12 +1,12 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/category/x_card.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
-import 'package:booktaste/user/user_all_brands/user_brands_widgets/brand_products.dart';
+import 'package:booktaste/common/widgets/all_brands/brands_widgets/brand_products.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../common/widgets/texts/section_heading.dart';
+import '../texts/section_heading.dart';
 
 class AllBrandsPage extends StatelessWidget {
   const AllBrandsPage({Key? key}) : super(key: key);

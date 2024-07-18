@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constans/colors.dart';
+import '../../../utils/constans/sizes.dart';
 
 class SettingsMenuTile extends StatelessWidget {
   const SettingsMenuTile(
@@ -18,12 +19,16 @@ class SettingsMenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon, size: 28, color: lightBrown),
-      title: Text(title, style: Theme.of(context).textTheme.titleMedium),
-      subtitle: Text(subTitle, style: Theme.of(context).textTheme.labelMedium),
-      trailing: trailing,
-      onTap: onTap,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: Sizes.defaultSpace / 2),
+      child: ListTile(
+        leading: Icon(icon, size: 28, color: lightBrown),
+        title: Text(title, style: Theme.of(context).textTheme.titleMedium),
+        subtitle:
+            Text(subTitle, style: Theme.of(context).textTheme.labelMedium),
+        trailing: trailing,
+        onTap: onTap,
+      ),
     );
   }
 }

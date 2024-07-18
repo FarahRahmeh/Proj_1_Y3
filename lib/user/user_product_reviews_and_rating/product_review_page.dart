@@ -1,4 +1,5 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
+import 'package:booktaste/models/book.dart';
 import 'package:booktaste/user/user_product_reviews_and_rating/user_product_reviews_rating_widgets/user_review_with_reply_card.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
@@ -11,12 +12,18 @@ import 'user_product_reviews_rating_widgets/overall_product_rating.dart';
 import 'user_product_reviews_rating_widgets/rating_bar_indicator.dart';
 
 class ProductReviewsPage extends StatelessWidget {
-  const ProductReviewsPage({super.key});
-
+  ProductReviewsPage({
+    Key? key,
+    required this.book,
+  }) : super(key: key);
+  final Book book;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAddToCart(title: 'Add Review! '),
+      bottomNavigationBar: BottomAddToBtn(
+        title1: 'Add Review!',
+        onPressed1: () {},
+      ),
       //! Appbar
       appBar: MyAppBar(
         title: Text('Reviews & Ratings'),

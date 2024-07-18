@@ -8,13 +8,14 @@ class Loaders {
   static hideSnackBar() =>
       ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 
-  static customToast({required message}) {
+  static customToast(
+      {required message, Duration duration = const Duration(seconds: 3)}) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
       SnackBar(
         width: 500,
         elevation: 0,
         behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 3),
+        duration: duration,
         backgroundColor: Colors.transparent,
         content: Container(
           padding: const EdgeInsets.all(12.0),
@@ -49,7 +50,8 @@ class Loaders {
     );
   }
 
-  static warningSnackBar({required title, message = ''}) {
+  static warningSnackBar(
+      {required title, message = '', duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       title,
       message,
@@ -58,13 +60,14 @@ class Loaders {
       colorText: darkBrown,
       backgroundColor: lightBrown,
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 3),
+      duration: duration,
       margin: const EdgeInsets.all(20),
       icon: const Icon(Iconsax.warning_2, color: darkBrown),
     );
   }
 
-  static errorSnackBAr({required title, message = ''}) {
+  static errorSnackBar(
+      {required title, message = '', duration = const Duration(seconds: 4)}) {
     Get.snackbar(
       title,
       message,
@@ -73,7 +76,7 @@ class Loaders {
       colorText: darkBrown,
       backgroundColor: pinkish,
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 4),
+      duration: duration,
       margin: const EdgeInsets.all(20),
       icon: const Icon(Iconsax.warning_2, color: darkBrown),
     );

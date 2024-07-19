@@ -82,8 +82,9 @@ class CafePage extends StatelessWidget {
                     //!------------------------------
                     Column(
                       children: [
-                        //Image.network(),
                         StackImageWithWidget(
+                          isNetworkImg: true,
+                          imageUrl: cafe!.image,
                           child: Container(
                             decoration: BoxDecoration(
                               color:
@@ -121,7 +122,9 @@ class CafePage extends StatelessWidget {
                         CafeShelf? cafeShelf;
                         cafeShelf = cafeShelvesCtrl.cafeShelvesList[index];
                         return XCard(
+                          // isNetworkImage: true,
                           onTap: () => Get.to(() => SubCategoriesPage(
+                              //shelf: cafeShelf,
                               genre: cafeShelf!.genre.toString())),
                           title: cafeShelf!.genre.toString(),
                           subTitle:

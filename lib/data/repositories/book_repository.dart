@@ -23,7 +23,8 @@ class BookRepository extends GetxController {
   var headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ${GetStorage().read('TOKEN')}'
+    'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+    'Connection': 'keep-alive',
   };
   //! Delete book
   Future<http.Response> deleteBook(String id) async {
@@ -71,7 +72,9 @@ class BookRepository extends GetxController {
     var headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${GetStorage().read('TOKEN')}'
+      'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+      'Connection': 'keep-alive',
+      'Accept-Encoding': 'gzip, deflate, br',
     };
     for (int i = 0; i < genres.length; i++) {
       bookData['genre[$i]'] = genres[i];
@@ -109,5 +112,16 @@ class BookRepository extends GetxController {
 
     return await http.Response.fromStream(response);
     //~ The response is the book request from the users
+  }
+
+  Future<http.Response> changeBookRequestState(String id, String state) async {
+    final response =
+        await http.get(Uri.parse('$baseUrl/approve/$id/$state'), headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+      'Connection': 'keep-alive',
+    });
+    return response;
   }
 }

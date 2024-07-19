@@ -29,7 +29,9 @@ class CafesRepository extends GetxController {
       Uri.parse('$baseUrl/cafeShelves/$cafeId'),
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Connection': 'keep-alive',
+        'Accept-Encoding': 'gzip, deflate, br',
       },
     );
 

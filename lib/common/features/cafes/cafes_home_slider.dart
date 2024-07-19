@@ -1,13 +1,18 @@
+import 'package:booktaste/common/widgets/shimmers/cafes_shimmer.dart';
+import 'package:booktaste/common/widgets/shimmers/shimmer.dart';
 import 'package:booktaste/controllers/cafe/cafes_controller.dart';
 import 'package:booktaste/data/repositories/cafes_repository.dart';
 import 'package:booktaste/models/cafe_model.dart';
 import 'package:booktaste/common/features/cafes/cafes_page.dart';
+import 'package:booktaste/utils/constans/api_constans.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../widgets/images/rounded_image.dart';
 
@@ -39,11 +44,14 @@ class CafesSlider extends StatelessWidget {
               future: CafesRepository.fechAllCafes(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: Image.asset(
-                      width: 90,
-                      Images.coffeeLoading,
-                    ),
+                  return SizedBox(
+                    height: 180,
+
+                    child: CafesShimmer(),
+                    //  Image.asset(
+                    //   width: 90,
+                    //   Images.coffeeLoading,
+                    // ),
                   );
                 } else if (snapshot.hasError) {
                   return Center(
@@ -78,9 +86,40 @@ class CafesSlider extends StatelessWidget {
                                   height: 150,
                                   width: 200,
                                   child: RoundedImage(
-                                    imageUrl: Images.book,
-                                    fit: BoxFit.cover,
+                                    imageUrl: cafe.image,
+                                    fit: BoxFit.contain,
                                     title: cafe.name,
+                                    isNetworkImage: true,
+                                    notFoundImage: Images.heartbot,
+                                    shHeight: 150,
+                                    shWidth: 200,
+                                    // networkChild: cafe.image == '/'
+                                    //     ? Center(
+                                    //         child: Image(
+                                    //             image: AssetImage(
+                                    //                 Images.defaultBookCover)))
+                                    //     : CachedNetworkImage(
+                                    //         fit: BoxFit.cover,
+                                    //         imageUrl:
+                                    //             '$baseImageUrl${cafe.image}',
+                                    //         errorWidget:
+                                    //             (context, url, error) =>
+                                    //                 SizedBox(
+                                    //           width: 230,
+                                    //           height: 180,
+                                    //           child: Center(
+                                    //               child: Icon(
+                                    //                   Iconsax.warning_2_copy)),
+                                    //         ),
+                                    //         progressIndicatorBuilder:
+                                    //             (context, url, progress) =>
+                                    //                 Center(
+                                    //           child: ShimmerEffect(
+                                    //             height: 130,
+                                    //             width: 100,
+                                    //           ),
+                                    //         ),
+                                    //       ),
                                   ),
                                 ),
                                 SizedBox(

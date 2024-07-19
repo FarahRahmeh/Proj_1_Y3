@@ -2,6 +2,7 @@ import 'package:booktaste/common/features/books/all_books_with_filter_page.dart'
 import 'package:booktaste/common/widgets/custom_shapes/Containers/primary_header_container.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
+import 'package:booktaste/common/widgets/shimmers/book_vertical_card_shimmer.dart';
 import 'package:booktaste/controllers/cafe/cafes_controller.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
 import 'package:booktaste/utils/constans/images.dart';
@@ -119,6 +120,8 @@ class UserHomePage extends StatelessWidget {
                 ///!Popular books grid layout
                 Obx(() {
                   if (allbookscontroller.isLoading.value) {
+                    // return ProductCardVerticalShimmer(
+                    //     itemCount: allbookscontroller.booksList.length);
                     return Center(
                         child: Image.asset(
                       width: 90,

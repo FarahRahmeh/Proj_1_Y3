@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:booktaste/common/widgets/images/network_image.dart';
 import 'package:booktaste/utils/constans/colors.dart';
+import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -37,12 +41,13 @@ class CircularImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
       ),
       child: Center(
-        child: Image(
-            fit: fit,
-            color: overlayColor,
-            image: isNetworkImg
-                ? NetworkImage(image)
-                : AssetImage(image) as ImageProvider),
+        child: isNetworkImg
+            ? MyNetworkImage(
+                shWidth: width,
+                shHeight: height,
+                notFoundImage: Images.onboarding_1,
+                imageUrl: image)
+            : Image(fit: fit, color: overlayColor, image: AssetImage(image)),
       ),
     );
   }

@@ -1,8 +1,8 @@
+import 'package:booktaste/common/widgets/images/network_image.dart';
+import 'package:booktaste/utils/constans/images.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/sizes.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class RoundedImage extends StatelessWidget {
   const RoundedImage({
@@ -19,6 +19,9 @@ class RoundedImage extends StatelessWidget {
     this.onPressed,
     this.borderRadius = Sizes.md,
     this.title = '',
+    this.notFoundImage = Images.defaultBookCover,
+    this.shHeight = 20,
+    this.shWidth = 20,
   });
 
   final double? width, height;
@@ -32,6 +35,8 @@ class RoundedImage extends StatelessWidget {
   final VoidCallback? onPressed;
   final double borderRadius;
   final String title;
+  final double shWidth, shHeight;
+  final String notFoundImage;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +54,14 @@ class RoundedImage extends StatelessWidget {
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
-          child: Image(
-              image: isNetworkImage
-                  ? Image.network(imageUrl)
-                      .image //!--------------------------------------
-                  : AssetImage(imageUrl),
-              fit: fit),
+          child: isNetworkImage
+              ? MyNetworkImage(
+                  fit: fit,
+                  shWidth: shWidth,
+                  shHeight: shHeight,
+                  notFoundImage: notFoundImage,
+                  imageUrl: imageUrl)
+              : Image(image: AssetImage(imageUrl), fit: fit),
         ),
       ),
     );

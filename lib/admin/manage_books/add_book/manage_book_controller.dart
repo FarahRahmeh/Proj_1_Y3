@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:booktaste/data/repositories/book_repository.dart';
+import 'package:booktaste/data/services/role.manager.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
@@ -17,7 +20,6 @@ class ManageBookController extends GetxController {
   // Variables book
   final isNovel = false.obs;
   var isApproved;
-
   final isLocked = false.obs;
   final titleController = TextEditingController();
   final authorController = TextEditingController();
@@ -86,6 +88,8 @@ class ManageBookController extends GetxController {
   //!File Varicables
   final pdfUrl = "".obs;
   final isPdfUploading = false.obs;
+  //! Book request
+  var bookRequests = <Map<String, dynamic>>[].obs;
 
   //~ Methods
   //~ strill need fixing these two following
@@ -203,7 +207,6 @@ class ManageBookController extends GetxController {
         //! these two lines are important to keep the app's books up to date ( immediately delete the selected book )
         final allBooksCtrl = Get.put(AllBooksController());
         allBooksCtrl.fetchAllBooks();
-        
       } else {
         Loaders.errorSnackBar(
             title: 'Error',
@@ -222,6 +225,9 @@ class ManageBookController extends GetxController {
       return;
     }
     try {
+      final user = await isUser();
+      print(user.toString() + 'in bookCtrl');
+
       final response = await _bookRepository.addBook(
           title: titleController.text.trim(),
           author: authorController.text.trim(),
@@ -236,17 +242,20 @@ class ManageBookController extends GetxController {
           cover: imageUrl.value,
           book: pdfUrl.value);
       if (response.statusCode == 200) {
+        if (user == true) {
+          bookRequests.add(jsonDecode(response.body));
+        }
+
         print(response.body);
-        // isUser() == true
-        //     ? Loaders.successSnackBar(
-        //         title: 'Success',
-        //         message: 'Book Added successfully! ✅',
-        //         icon: Iconsax.emoji_normal_copy)
-        //     :
-        Loaders.successSnackBar(
-            title: 'Success',
-            message: 'Book Added successfully! ✅',
-            icon: Iconsax.send_2_copy);
+        user == false
+            ? Loaders.successSnackBar(
+                title: 'Success',
+                message: 'Book Added successfully! ✅',
+                icon: Iconsax.emoji_normal_copy)
+            : Loaders.successSnackBar(
+                title: 'Success',
+                message: 'Book Request sent for approval! ✅',
+                icon: Iconsax.send_2_copy);
 
         // final bkReqCtrl = Get.put(BookRequestController());
         clearFields();
@@ -264,4 +273,17 @@ class ManageBookController extends GetxController {
           title: 'Error Catched', message: 'An error occurred: $error');
     }
   }
+
+  // void approveBookRequest(String id, String state) async {
+  //   final requestIndex =
+  //       bookRequests.indexWhere((book) => book['book_id'] == id);
+  //   if (requestIndex != -1) {
+  //     final response = await _bookRepository.changeBookRequestState(id, state);
+  //     print(bookRequests.toString() + 'before');
+  //     if (response.statusCode == 200) {
+  //       bookRequests.removeAt(requestIndex);
+  //       print(bookRequests);
+  //     }
+  //   }
+  // }
 }

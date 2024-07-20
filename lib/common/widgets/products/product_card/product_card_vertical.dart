@@ -5,16 +5,19 @@ import 'package:booktaste/common/styles/shadows.dart';
 import 'package:booktaste/common/widgets/custom_shapes/Containers/rounded_container.dart';
 import 'package:booktaste/common/widgets/images/rounded_image.dart';
 import 'package:booktaste/common/widgets/popup_menu_button/my_popup_menu_button.dart';
+import 'package:booktaste/common/widgets/shimmers/shimmer.dart';
 import 'package:booktaste/common/widgets/texts/product_title.dart';
 import 'package:booktaste/controllers/book/book_controller.dart';
 import 'package:booktaste/data/services/role.manager.dart';
 
 import 'package:booktaste/user/user_all_books/all_books_model.dart';
 import 'package:booktaste/user/user_product_details/product_details_page.dart';
+import 'package:booktaste/utils/constans/api_constans.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -64,7 +67,6 @@ class ProductCardVertical extends StatelessWidget {
                 margin: EdgeInsets.all(4),
                 width: 160,
                 //180
-
                 decoration: BoxDecoration(
                   boxShadow: [ShadowStyle.verticalProductShadow],
                   border: Border.all(
@@ -88,8 +90,36 @@ class ProductCardVertical extends StatelessWidget {
                         children: [
                           //! Thumbnail Image ........................................
                           RoundedImage(
+                            width: 90,
+                            height: 170,
                             //  isNetworkImage: allbooks.cover == '/' ? false : true,
-                            imageUrl: Images.cover6,
+                            imageUrl: allbooks.cover,
+                            isNetworkImage: true,
+                            shHeight: 130,
+                            shWidth: 100,
+                            // networkChild: allbooks.cover == '/'
+                            //     ? Center(
+                            //         child: Image(
+                            //             image: AssetImage(
+                            //                 Images.defaultBookCover)))
+                            //     : CachedNetworkImage(
+                            //         fit: BoxFit.cover,
+                            //         imageUrl: '$baseImageUrl${allbooks.cover}',
+                            //         errorWidget: (context, url, error) =>
+                            //             SizedBox(
+                            //           width: 20,
+                            //           height: 20,
+                            //           child: Center(
+                            //               child: Icon(Iconsax.warning_2_copy)),
+                            //         ),
+                            //         progressIndicatorBuilder:
+                            //             (context, url, progress) => Center(
+                            //           child: ShimmerEffect(
+                            //             height: 130,
+                            //             width: 100,
+                            //           ),
+                            //         ),
+                            //       ),
                             // imageUrl: allbooks.cover == '/'
                             //     ? Images.cover6
                             //     : '$baseUrl${allbooks.cover}',

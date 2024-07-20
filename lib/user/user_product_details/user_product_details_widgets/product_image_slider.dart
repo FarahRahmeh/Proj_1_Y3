@@ -1,4 +1,7 @@
+import 'package:booktaste/common/widgets/images/network_image.dart';
+import 'package:booktaste/common/widgets/shimmers/shimmer.dart';
 import 'package:booktaste/data/repositories/book_repository.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -33,15 +36,29 @@ class ProductImageSlider extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(Sizes.productImageRadius * 2),
                 child: Center(
-                  child: RoundedImage(
-                    //  isNetworkImage: imageurl == '/' ? false : true,
-                    imageUrl: Images.cover6,
-                    // imageUrl: imageurl == '/'
-                    //     ? Images.cover6
-                    //     : '$baseUrl${imageurl}', //!................
-                    // applyImageRadius: true,
-                  ),
-                ),
+                    child: MyNetworkImage(
+                  imageUrl: imageurl,
+                  notFoundImage: Images.defaultBookCover,
+                  fit: BoxFit.cover,
+                  shHeight: 380,
+                  shWidth: 210,
+                )
+                    // imageurl == '/'
+                    //     ? Center(child: Icon(Iconsax.warning_2_copy))
+                    //     : CachedNetworkImage(
+                    //         imageUrl: '$baseImageUrl$imageurl',
+                    //         errorWidget: (context, url, error) =>
+                    //             Icon(Iconsax.warning_2_copy),
+                    //         progressIndicatorBuilder: (context, url, progress) =>
+                    //             Center(
+                    //           child: ShimmerEffect(
+                    //             height: 230,
+                    //             width: 200,
+                    //           ),
+                    //         ),
+                    //       ),
+
+                    ),
               ),
             ),
 

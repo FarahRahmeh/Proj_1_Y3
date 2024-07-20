@@ -84,22 +84,26 @@ class ProductDetailsPage extends StatelessWidget {
             future: bookController.fetchBookDetails(bookId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(
+                    child: CircularProgressIndicator(
+                  color: darkBrown,
+                  backgroundColor: lightBrown,
+                ));
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
                 print(snapshot.data);
                 final book = snapshot.data;
                 if (book == null) {
-                  return const Text('Book  null in vertical');
+                  return const Text('Book null in vertical');
                 } else {
                   return SingleChildScrollView(
                     child: Column(
                       children: [
                         ///! 1--- Product Image slider
-                        ProductImageSlider(imageurl: Images.action
-                            // bookController.book.value.cover
-                            ),
+                        ProductImageSlider(
+                          imageurl: book.cover,
+                        ),
 
                         ///! 2--- Product Details
                         Padding(

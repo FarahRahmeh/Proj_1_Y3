@@ -9,12 +9,12 @@ class StackImageWithWidget extends StatelessWidget {
     this.alignment = Alignment.topLeft,
     this.boxFit = BoxFit.cover,
     this.isNetworkImg = false,
-    this.imgaeWidth = double.infinity,
+    this.imageWidth = double.infinity,
     this.imageHeight = 230,
     this.imageUrl = Images.cover2,
     required this.child,
   });
-  final double imageHeight, imgaeWidth;
+  final double imageHeight, imageWidth;
   final BoxFit boxFit;
   final String imageUrl;
   final bool isNetworkImg;
@@ -30,7 +30,7 @@ class StackImageWithWidget extends StatelessWidget {
           height: imageHeight,
           fit: boxFit,
           imageUrl: imageUrl,
-          width: imgaeWidth,
+          width: imageWidth,
           applyImageRadius: true,
         ),
         Align(alignment: alignment, child: child),

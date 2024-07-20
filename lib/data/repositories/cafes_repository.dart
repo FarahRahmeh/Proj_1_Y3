@@ -11,9 +11,12 @@ import 'package:http/http.dart' as http;
 
 class CafesRepository extends GetxController {
   static Future<List<Cafe>?> fechAllCafes() async {
-    final response = await http.get(
-      Uri.parse('$baseUrl/allCafe'),
-    );
+    final response = await http.get(Uri.parse('$baseUrl/allCafe'), headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Connection': 'keep-alive',
+      'Accept-Encoding': 'gzip, deflate, br',
+    });
     if (response.statusCode == 200) {
       print("success");
       var cafes = response.body;

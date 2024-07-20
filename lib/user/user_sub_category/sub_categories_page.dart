@@ -16,10 +16,10 @@ class SubCategoriesPage extends StatelessWidget {
     super.key,
     required this.genre,
     this.category,
-    // this.shelf,
+    this.shelf,
   });
   final String genre;
-  //final CafeShelf? shelf;
+  final CafeShelf? shelf;
   final AllCategories? category;
 
   @override
@@ -43,9 +43,9 @@ class SubCategoriesPage extends StatelessWidget {
                 children: [
                   RoundedImage(
                     // imageUrl: Images.promoBanner,
-                    isNetworkImage: category == null ? false : true,
+                    isNetworkImage: true,
                     imageUrl: category == null
-                        ? Images.onboarding_1
+                        ? '/' + '${shelf!.image}'
                         : category!.image,
                     shHeight: 100,
                     shWidth: 100,

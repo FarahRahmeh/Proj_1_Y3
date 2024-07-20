@@ -20,16 +20,19 @@ class MyNetworkImage extends StatelessWidget {
   final BoxFit? fit;
   @override
   Widget build(BuildContext context) {
-    return imageUrl == '/'
+    return imageUrl == '/' || imageUrl.isEmpty
         ? Center(child: Image(image: AssetImage(notFoundImage)))
         : CachedNetworkImage(
             fit: BoxFit.cover,
-            imageUrl: '$baseImageUrl$imageUrl',
-            errorWidget: (context, url, error) => SizedBox(
-              width: 20,
-              height: 20,
-              child: Center(child: Icon(Iconsax.warning_2_copy)),
-            ),
+            imageUrl: Uri.parse(baseImageUrl).resolve(imageUrl).toString(),
+            errorWidget: (context, url, error) {
+              print(error.toString() + 'error in netowrk image');
+              return SizedBox(
+                width: 20,
+                height: 20,
+                child: Center(child: Icon(Iconsax.warning_2_copy)),
+              );
+            },
             progressIndicatorBuilder: (context, url, progress) => Center(
               child: ShimmerEffect(
                 height: shHeight,

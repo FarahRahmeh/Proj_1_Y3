@@ -122,9 +122,10 @@ class CafePage extends StatelessWidget {
                         CafeShelf? cafeShelf;
                         cafeShelf = cafeShelvesCtrl.cafeShelvesList[index];
                         return XCard(
-                          // isNetworkImage: true,
+                          isNetworkImage: true,
+                          image: cafeShelf!.image,
                           onTap: () => Get.to(() => SubCategoriesPage(
-                              //shelf: cafeShelf,
+                              shelf: cafeShelf,
                               genre: cafeShelf!.genre.toString())),
                           title: cafeShelf!.genre.toString(),
                           subTitle:

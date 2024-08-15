@@ -24,7 +24,7 @@ class AdminHomePageAppbar extends StatelessWidget {
                 .apply(color: MyColors.lightGrey),
           ),
           Text(
-            'Let`s Spice Things Up at BookTaste💼',
+            'Let`s Spice Things Up at BookTaste 💼',
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge!
@@ -34,10 +34,10 @@ class AdminHomePageAppbar extends StatelessWidget {
       ),
       actions: [
         ThemeSwitcherIcon(),
-        NotificationCounterIcon(
-          onPressed: () {},
-          iconColor: brown,
-        ),
+        // NotificationCounterIcon(
+        //   onPressed: () {},
+        //   iconColor: brown,
+        // ),
       ],
     );
   }

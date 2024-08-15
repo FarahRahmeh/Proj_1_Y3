@@ -9,7 +9,9 @@ class Loaders {
       ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 
   static customToast(
-      {required message, Duration duration = const Duration(seconds: 3)}) {
+      {required message,
+      Duration duration = const Duration(seconds: 3),
+      Color color = gray}) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
       SnackBar(
         width: 500,
@@ -24,10 +26,11 @@ class Loaders {
             borderRadius: BorderRadius.circular(30),
             color: HelperFunctions.isDarkMode(Get.context!)
                 ? MyColors.darkestGrey.withOpacity(0.9)
-                : gray.withOpacity(0.9),
+                : color.withOpacity(0.9),
           ),
           child: Center(
               child: Text(message,
+                  textAlign: TextAlign.center,
                   style: Theme.of(Get.context!).textTheme.labelLarge)),
         ),
       ),
@@ -58,7 +61,7 @@ class Loaders {
       isDismissible: true,
       shouldIconPulse: true,
       colorText: darkBrown,
-      backgroundColor: lightBrown,
+      backgroundColor: MyColors.warning,
       snackPosition: SnackPosition.BOTTOM,
       duration: duration,
       margin: const EdgeInsets.all(20),

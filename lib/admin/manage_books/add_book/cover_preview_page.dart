@@ -5,17 +5,22 @@ import 'package:photo_view/photo_view.dart';
 
 class CoverPreviewPage extends StatelessWidget {
   final String imagePath;
-
-  const CoverPreviewPage({Key? key, required this.imagePath}) : super(key: key);
+  final bool isAsset;
+  const CoverPreviewPage(
+      {Key? key, required this.imagePath, this.isAsset = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
         title: Text('Cover Preview'),
+        showBackArrow: true,
       ),
       body: PhotoView(
-        imageProvider: FileImage(File(imagePath)),
+        imageProvider: isAsset
+            ? AssetImage(imagePath) as ImageProvider
+            : FileImage(File(imagePath)),
         backgroundDecoration: BoxDecoration(
           color: Theme.of(context).canvasColor,
         ),

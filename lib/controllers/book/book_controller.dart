@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:booktaste/data/repositories/book_repository.dart';
 import 'package:get/get.dart';
 
-import '../../data/repositories/categories_repository.dart';
 import '../../models/book.dart';
-import '../../models/all_categories_model.dart';
 import '../../utils/popups/loaders.dart';
 
 class BookDetailsController extends GetxController {

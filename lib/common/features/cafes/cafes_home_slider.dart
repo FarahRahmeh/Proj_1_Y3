@@ -1,18 +1,14 @@
 import 'package:booktaste/common/widgets/shimmers/cafes_shimmer.dart';
-import 'package:booktaste/common/widgets/shimmers/shimmer.dart';
 import 'package:booktaste/controllers/cafe/cafes_controller.dart';
 import 'package:booktaste/data/repositories/cafes_repository.dart';
 import 'package:booktaste/models/cafe_model.dart';
 import 'package:booktaste/common/features/cafes/cafes_page.dart';
-import 'package:booktaste/utils/constans/api_constans.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../widgets/images/rounded_image.dart';
 

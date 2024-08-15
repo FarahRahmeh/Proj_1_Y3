@@ -1,16 +1,12 @@
 import 'package:booktaste/auth/register/register_widgets/register_form.dart';
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
-import 'package:booktaste/common/widgets/divider/divider_with_text.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
-import 'package:booktaste/utils/constans/texts.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../common/widgets/images/rounded_image.dart';
 import '../../utils/constans/images.dart';
 import '../../utils/helpers/helper_functions.dart';
-import 'register_widgets/or_register_with.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -36,7 +32,6 @@ class RegisterPage extends StatelessWidget {
                 width: double.infinity,
                 height: 180,
               ),
-
               Padding(
                 padding: const EdgeInsets.only(left: Sizes.xs),
                 child: Text(
@@ -50,7 +45,6 @@ class RegisterPage extends StatelessWidget {
               SizedBox(
                 height: Sizes.sm,
               ),
-
               ///Form
               ///
               ///

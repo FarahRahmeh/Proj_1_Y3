@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:booktaste/data/repositories/auth_repository.dart';
+import 'package:booktaste/data/services/userId_manager.dart';
+import 'package:booktaste/models/auth_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -12,6 +14,7 @@ import '../../data/services/token_manager.dart';
 
 class LoginController extends GetxController {
   ///Variables
+  var authModel = Auth().obs;
   final rememberMe = false.obs;
   final hidePassword = true.obs;
   final emailController = TextEditingController();
@@ -23,7 +26,6 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     clearFormFields();
-
     emailController.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
     passwordController.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
     super.onInit();
@@ -49,19 +51,21 @@ class LoginController extends GetxController {
           emailController.text.trim(), passwordController.text.trim());
       //print(response.body.toString());
 
-      final userData = json.decode(response.body); // to string
+      final userData = json.decode(response.body);
       if (response.statusCode == 200) {
+        authModel.value = authFromJson(response.body);
+
         final token = userData['token'];
         final role = userData['user']['role'];
+        // final userId = userData['user']['id'].toString();
 
         await saveToken(token);
-        final user = User(
-            email: userData['user']['name'],
-            role: userData['user']['role'],
-            name: userData['user']['name']);
+        // final user = User(
+        //     email: userData['user']['name'],
+        //     role: userData['user']['role'],
+        //     name: userData['user']['name']);
         // UserCredential(userRole: role);
         await saveRole(role);
-
         navigateBasedOnRole();
 
         print(token + ' ' + role);

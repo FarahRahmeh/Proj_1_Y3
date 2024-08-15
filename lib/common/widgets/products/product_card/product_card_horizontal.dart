@@ -1,13 +1,14 @@
 import 'package:booktaste/common/widgets/custom_shapes/Containers/rounded_container.dart';
 import 'package:booktaste/common/widgets/icons/locked_icon.dart';
 import 'package:booktaste/common/widgets/images/rounded_image.dart';
-import 'package:booktaste/common/widgets/shimmers/shimmer.dart';
+import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:booktaste/common/widgets/texts/product_title.dart';
 import 'package:booktaste/common/widgets/texts/x_title_text.dart';
 import 'package:booktaste/data/services/role.manager.dart';
+import 'package:booktaste/models/book.dart';
 import 'package:booktaste/user/user_all_books/all_books_model.dart';
-import 'package:booktaste/utils/constans/images.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:booktaste/user/user_own_lists/read_history_list/read_history_list_controller.dart';
+import 'package:booktaste/user/user_own_lists/read_later_list/read_later_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -15,7 +16,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../admin/manage_books/add_book/manage_book_controller.dart';
 import '../../../../controllers/book/book_controller.dart';
 import '../../../../user/user_product_details/product_details_page.dart';
-import '../../../../utils/constans/api_constans.dart';
 import '../../../../utils/constans/colors.dart';
 import '../../../../utils/constans/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
@@ -27,9 +27,11 @@ import '../../texts/product_price.dart';
 class ProductCardHorizontal extends StatelessWidget {
   const ProductCardHorizontal({
     super.key,
-    required this.allbooks,
+    this.allbooks,
+    this.bookk,
   });
-  final AllBooks allbooks;
+  final AllBooks? allbooks;
+  final Book? bookk;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +51,16 @@ class ProductCardHorizontal extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 final bookCtrl = Get.put(BookDetailsController());
-                bookCtrl.fetchBookDetails(allbooks.id
-                    .toString()); //This is what fixed the problem that the first time to click on the card(on first restart) no book details shows up
+                bookCtrl.fetchBookDetails(allbooks == null
+                    ? bookk!.id.toString()
+                    : allbooks!.id
+                        .toString()); //This is what fixed the problem that the first time to click on the card(on first restart) no book details shows up
                 final book = bookCtrl.book;
                 Get.to(() => ProductDetailsPage(
                       book: book,
-                      bookId: allbooks.id.toString(),
+                      bookId: allbooks == null
+                          ? bookk!.id.toString()
+                          : allbooks!.id.toString(),
                     ));
               },
               child: Container(
@@ -87,7 +93,7 @@ class ProductCardHorizontal extends StatelessWidget {
                               child: RoundedImage(
                                 applyImageRadius: false,
                                 fit: BoxFit.cover,
-                                imageUrl: allbooks.cover,
+                                imageUrl: allbooks!.cover,
                                 isNetworkImage: true,
                                 shHeight: 100,
                                 shWidth: 80,
@@ -149,7 +155,7 @@ class ProductCardHorizontal extends StatelessWidget {
                               children: [
                                 //! Title
                                 ProductTitleText(
-                                  title: allbooks.name,
+                                  title: allbooks!.name,
                                   //title: 'Harry Potter and the Chamber of Secrets',
                                   smallSize: true,
                                 ),
@@ -158,7 +164,7 @@ class ProductCardHorizontal extends StatelessWidget {
                                 ),
                                 //! Author
                                 XTitleText(
-                                  title: allbooks.writer,
+                                  title: allbooks!.writer,
                                   color: dark ? gray : lightBrown,
                                   // 'J.K. Rowling'
                                 ),
@@ -177,39 +183,15 @@ class ProductCardHorizontal extends StatelessWidget {
                               children: [
                                 Flexible(
                                   child: ProductPriceText(
-                                    title: '${allbooks.stars} Rating',
+                                    title: '${allbooks!.stars} Rating',
                                     color: pinkish,
                                   ),
                                 ),
                                 // !Add to
                                 user == true
-                                    ? GestureDetector(
-                                        onTap: () {
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (context) =>
-                                                  MyBottomSheet(
-                                                    title: 'Add this book to :',
-                                                  ));
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: lightBrown,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(
-                                                  Sizes.cardRadiusMd),
-                                              bottomRight: Radius.circular(
-                                                  Sizes.productImageRadius),
-                                            ),
-                                          ),
-                                          child: SizedBox(
-                                            width: Sizes.iconLg * 1.2,
-                                            height: Sizes.iconLg * 1.2,
-                                            child: Center(
-                                                child: Icon(Icons.add,
-                                                    color: MyColors.white)),
-                                          ),
-                                        ),
+                                    ? AddToListsBtn(
+                                        allbooks: allbooks,
+                                        bookk: bookk,
                                       )
                                     : Container(
                                         decoration: BoxDecoration(
@@ -277,9 +259,12 @@ class ProductCardHorizontal extends StatelessWidget {
                                                     onConfirm: () {
                                                       final ctrl = Get.put(
                                                           ManageBookController());
-                                                      ctrl.removeBook(allbooks
-                                                          .id
-                                                          .toString());
+                                                      ctrl.removeBook(
+                                                          allbooks == null
+                                                              ? bookk!.id
+                                                                  .toString()
+                                                              : allbooks!.id
+                                                                  .toString());
                                                       Get.back();
                                                     },
                                                   );

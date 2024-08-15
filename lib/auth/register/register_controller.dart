@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:booktaste/auth/code_confirmation/code_confirmation_page.dart';
 import 'package:booktaste/auth/login/login_page.dart';
 import 'package:booktaste/auth/register/register_page.dart';
+import 'package:booktaste/user/user_profile/profile_set_up/profile_set_up_info_view.dart';
 import 'package:booktaste/utils/popups/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -107,11 +108,10 @@ class RegisterController extends GetxController {
           passwordConfirmation.text.trim());
       print(response.body.toString());
 
-      final userData = json.decode(response.body); // to string
+      // final userData = json.decode(response.body); // to string
       if (response.statusCode == 200) {
         Get.offAll(() => const LoginPage());
       } else if (response.statusCode == 401)
-
       //!Wrong Password
       {
         //final message = userData['message'];
@@ -124,7 +124,6 @@ class RegisterController extends GetxController {
             title: 'register failed: ', message: response.body);
       } else {
         Loaders.errorSnackBar(title: 'Error', message: response.reasonPhrase);
-        //throw 'Login failed: ${response.reasonPhrase}';
       }
     } catch (e) {
       Loaders.errorSnackBar(title: 'On Snap', message: e.toString());

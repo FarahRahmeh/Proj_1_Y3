@@ -2,6 +2,7 @@ import 'package:booktaste/admin/home/admin_home_page.dart';
 import 'package:booktaste/admin/library/admin_library_page.dart';
 import 'package:booktaste/admin/settings/admin_setting_page.dart';
 import 'package:booktaste/common/widgets/navigation_dest/my_navigation_destination.dart';
+import 'package:booktaste/user/user_library/user_library_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -32,22 +33,22 @@ class AdminNavigationMenu extends StatelessWidget {
             ///! Make it custom -----------------------------------
             MyNavigationDestination(
                 label: 'Home',
-                icon: Iconsax.home_1,
-                selectedIcon: Iconsax.home_copy),
+                icon: Iconsax.home_copy,
+                selectedIcon: Iconsax.home_1),
             MyNavigationDestination(
               label: 'Library',
-              icon: Iconsax.book_square,
-              selectedIcon: Iconsax.book_square_copy,
+              icon: Iconsax.book_square_copy,
+              selectedIcon: Iconsax.book_square,
             ),
             MyNavigationDestination(
               label: 'Insignts',
-              icon: Iconsax.layer,
-              selectedIcon: Iconsax.layer_copy,
+              icon: Iconsax.layer_copy,
+              selectedIcon: Iconsax.layer,
             ),
             MyNavigationDestination(
-                icon: Iconsax.setting_2,
+                icon: Iconsax.setting_2_copy,
                 label: 'Settings',
-                selectedIcon: Iconsax.setting_2_copy)
+                selectedIcon: Iconsax.setting_2)
           ],
         ),
       ),
@@ -60,7 +61,7 @@ class AdminNavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     AdminHomePage(),
-    const AdminLibraryPage(),
+    UserLibrary(),
     InsightsPage(),
     const AdminSettingsPage(),
   ];

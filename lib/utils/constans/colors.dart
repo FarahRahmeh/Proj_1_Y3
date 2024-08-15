@@ -10,6 +10,10 @@ const pinkish = Color(0xffE68888);
 const pinkishMore = Color(0xffE27070);
 const gray = Color(0xffD1C4C4);
 
+const bluish = Color(0xff68749c);
+const bluish2 = Color(0xffa5b0cc);
+const bluish3 = Color(0xffcfdcff);
+
 final List<Color> gradientColors = [
   offWhite,
   lightBrown,
@@ -19,7 +23,44 @@ final List<Color> gradientColors = [
   pinkish,
   gray,
 ];
-
+final List<Color> colorList = [
+  lightBrown.withOpacity(0.6),
+  lightBrown.withOpacity(0.3),
+  bluish3.withOpacity(0.8),
+  bluish.withOpacity(0.9),
+  // beige.withOpacity(0.7),
+  // beige2.withOpacity(0.7),
+  pinkish.withOpacity(0.7),
+  bluish.withOpacity(0.5),
+  gray.withOpacity(0.5),
+  pinkish.withOpacity(0.3),
+  lightBrown.withOpacity(0.2),
+  bluish3.withOpacity(0.7),
+  bluish2.withOpacity(0.7),
+  beige.withOpacity(0.6),
+  beige2.withOpacity(0.6),
+  pinkish.withOpacity(0.5),
+  pinkishMore.withOpacity(0.3),
+  gray.withOpacity(0.5),
+  beige2.withOpacity(0.5),
+  lightBrown.withOpacity(0.7),
+  bluish2.withOpacity(0.5),
+  bluish.withOpacity(0.5),
+  beige.withOpacity(0.3),
+  beige2.withOpacity(0.4),
+  pinkish.withOpacity(0.7),
+  pinkishMore.withOpacity(0.1),
+  gray.withOpacity(0.2),
+  bluish3.withOpacity(0.6),
+  bluish.withOpacity(0.9),
+  bluish2.withOpacity(0.4),
+  bluish.withOpacity(0.6),
+  beige.withOpacity(0.4),
+  beige2.withOpacity(0.3),
+  pinkish.withOpacity(0.1),
+  pinkishMore.withOpacity(0.4),
+  bluish3.withOpacity(0.4),
+];
 final List<Gradient> gradients = [
   //~ white and light brown
   const LinearGradient(

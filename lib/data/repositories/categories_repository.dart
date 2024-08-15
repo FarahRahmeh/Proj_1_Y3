@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../models/all_categories_model.dart';
 import '../../utils/constans/api_constans.dart';
@@ -26,10 +27,11 @@ class AllCategoriesRepository extends GetxController {
     }
   }
 
-  Future<http.Response> getCategoryBooks(String id) async {
-    final response = await http.get(
-      Uri.parse('$baseUrl/shelfBooks/$id'),
-    );
+  static Future<http.Response> getCategoryBooks(String id) async {
+    final response =
+        await http.get(Uri.parse('$baseUrl/shelfBooks/$id'), headers: {
+      'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+    });
     return response;
   }
 }

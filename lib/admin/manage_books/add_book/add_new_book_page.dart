@@ -5,7 +5,9 @@ import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/choice_chip/my_choice_chip.dart';
 import 'package:booktaste/common/widgets/custom_shapes/Containers/rounded_container.dart';
 import 'package:booktaste/common/widgets/dropdown_button_form_field/my_dorpdown_btn_form_field.dart';
+import 'package:booktaste/common/widgets/images/network_image.dart';
 import 'package:booktaste/data/services/role.manager.dart';
+import 'package:booktaste/models/book.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
@@ -19,18 +21,32 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../utils/popups/dialogs.dart';
 
 class AddNewBookPage extends StatelessWidget {
-  const AddNewBookPage({super.key});
+  AddNewBookPage({Key? key, this.book}) : super(key: key) {
+    if (book != null) {
+      controller.book.value = book!;
+      controller.titleController.text = book!.name;
+      controller.authorController.text = book!.writer;
+      controller.pubYearController.text = book!.publicationYear;
+      controller.pagesController.text = book!.pages.toString();
+      controller.summaryController.text = book!.summary;
+      controller.selectedLanguage.value = book!.lang;
+      controller.selecedGenres.value = book!.genre;
+      controller.imageUrl.value = book!.cover;
+      controller.pdfUrl.value = book!.bookFile;
+      controller.isNovel.value = book!.type == '1';
+      controller.isLocked.value = book!.locked == '0';
+    }
+  }
+  final Book? book;
+  final controller = Get.put(ManageBookController());
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
-
-    final controller = Get.put(ManageBookController());
-
     return Scaffold(
       appBar: MyAppBar(
         title: Text(
-          'Add New Book',
+          book == null ? 'Add New Book' : 'Update New Book',
         ),
         showBackArrow: true,
       ),
@@ -146,45 +162,59 @@ class AddNewBookPage extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  Obx(() => Container(
-                                        height: 130,
-                                        width: 100,
-                                        margin: EdgeInsets.all(Sizes.xs),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(14),
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .background
-                                              .withOpacity(0.2),
-                                        ),
-                                        child: Center(
-                                          child: controller
-                                                  .isImageUploading.value
-                                              ? CircularProgressIndicator(
-                                                  color: lightBrown)
-                                              : controller.imageUrl.value ==
-                                                      Images.defaultBookCover
-                                                  ? ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              14),
-                                                      child: Image.asset(
-                                                          Images
-                                                              .defaultBookCover,
-                                                          fit: BoxFit.cover),
-                                                    )
-                                                  : ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              14),
-                                                      child: Image.file(
-                                                          File(controller
-                                                              .imageUrl.value),
-                                                          fit: BoxFit.cover),
-                                                    ),
-                                        ),
-                                      )),
+                                  Obx(
+                                    () => Container(
+                                      height: 130,
+                                      width: 100,
+                                      margin: EdgeInsets.all(Sizes.xs),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(14),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .background
+                                            .withOpacity(0.2),
+                                      ),
+                                      child: Center(
+                                        child: controller.isImageUploading.value
+                                            ? CircularProgressIndicator(
+                                                color: lightBrown)
+                                            : controller.imageUrl.value
+                                                    .startsWith('/covers')
+                                                ? ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14),
+                                                    child: MyNetworkImage(
+                                                      imageUrl: book!.cover,
+                                                      shHeight: 30,
+                                                      shWidth: 40,
+                                                      notFoundImage:
+                                                          Images.coffeeLoading,
+                                                    ))
+                                                : controller.imageUrl.value ==
+                                                        Images.defaultBookCover
+                                                    ? ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(14),
+                                                        child: Image.asset(
+                                                            Images
+                                                                .defaultBookCover,
+                                                            fit: BoxFit.cover),
+                                                      )
+                                                    : ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(14),
+                                                        child: Image.file(
+                                                            File(controller
+                                                                .imageUrl
+                                                                .value),
+                                                            fit: BoxFit.cover),
+                                                      ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -627,10 +657,15 @@ class AddNewBookPage extends StatelessWidget {
                             message: 'Please pick a PDF file for the book.',
                             duration: Duration(milliseconds: 2500));
                       } else {
-                        controller.saveBook();
+                        if (book != null) {
+                          controller.updateBook(book!.id.toString());
+                        } else {
+                          controller.saveBook();
+                        }
+                        //  controller.saveBook();
                       }
                     },
-                    child: Text('Save'),
+                    child: Text(book == null ? 'Save' : 'Update'),
                   ),
                 ),
               ],

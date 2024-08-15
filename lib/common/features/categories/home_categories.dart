@@ -1,9 +1,5 @@
-import 'dart:typed_data';
 
-import 'package:booktaste/common/widgets/custom_shapes/Containers/rounded_container.dart';
-import 'package:booktaste/common/widgets/images/rounded_image.dart';
 import 'package:booktaste/common/widgets/shimmers/category_shimmer.dart';
-import 'package:booktaste/models/book.dart';
 import 'package:booktaste/models/all_categories_model.dart';
 import 'package:booktaste/user/user_sub_category/sub_categories_page.dart';
 import 'package:booktaste/utils/constans/api_constans.dart';
@@ -11,15 +7,12 @@ import 'package:booktaste/utils/constans/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../data/repositories/categories_repository.dart';
 import '../../../utils/constans/sizes.dart';
-import '../../widgets/image_with_text/vertical_image_text.dart';
 import '../../../controllers/category/all_categories_controller.dart';
 import '../../../utils/constans/images.dart';
-import '../../../admin/home/admin_sub_category/sub_categories_page.dart';
 import '../../widgets/shimmers/shimmer.dart';
 
 class HomeCategories extends StatelessWidget {

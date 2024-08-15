@@ -1,7 +1,6 @@
+import 'package:booktaste/admin/manage_admins/all_admins_page.dart';
 import 'package:booktaste/admin/manage_admins/manage_admins_controller.dart';
-import 'package:booktaste/auth/register/register_widgets/register_form.dart';
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
-import 'package:booktaste/common/widgets/divider/divider_with_text.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/constans/texts.dart';
@@ -28,6 +27,14 @@ class AddNewAdminPage extends StatelessWidget {
           'Add New Admin',
         ),
         showBackArrow: true,
+        actions: [
+          IconButton(
+            icon: Icon(Iconsax.people_copy),
+            onPressed: () {
+              Get.to(() => AllAdminsPage());
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

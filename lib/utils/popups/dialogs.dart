@@ -1,3 +1,4 @@
+import 'package:booktaste/utils/constans/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,12 +13,13 @@ class MyDialogs {
     Function()? onCancel,
     Function()? onConfirm,
     bool showOnlyOnConfirm = false,
+    Color? backgroundColor= gray
   }) {
     // Show a confirmation dialog
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return AlertDialog(backgroundColor: backgroundColor,
           title: Text(title),
           content: content,
           actions: [

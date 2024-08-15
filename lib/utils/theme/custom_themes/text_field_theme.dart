@@ -8,6 +8,7 @@ class MyTextFormFieldTheme {
     errorMaxLines: 3,
     prefixIconColor: gray,
     suffixIconColor: gray,
+    
     labelStyle: const TextStyle().copyWith(fontSize: 14, color: brown),
     hintStyle: const TextStyle().copyWith(fontSize: 14, color: brown),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
@@ -33,6 +34,7 @@ class MyTextFormFieldTheme {
       borderRadius: BorderRadius.circular(14),
       borderSide: const BorderSide(width: 2, color: pinkish),
     ),
+    
   );
 
   //! Dark

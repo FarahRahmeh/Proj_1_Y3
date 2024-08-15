@@ -1,0 +1,511 @@
+  
+    '5th_book' => [
+        'book_data' => [
+            'book_id' => '#H3pL2v6',
+            'book' => 'books/how_to_change_your_mind.pdf',
+            'name' => 'How to Change Your Mind',
+            'writer' => 'Michael Pollan',
+            'cover' => 'covers/how_to_change_your_mind.jpg',
+            'summary' => 'Explores the history and science of psychedelics and their potential to treat mental health issues, offering insights into how these substances might help us understand the mind and improve our well-being.',
+            'pages_num' => '384',
+            'lang' => 'English',
+            'published_at' => '2018',
+            'is_novel' => false,
+            'is_locked' => false,
+            'points' => 0,
+            'approved' => true
+        ],
+        'shelves' => [22,26]
+    ],
+    '6th_book' => [
+        'book_data' => [
+            'book_id' => '#J7nQ4x2',
+            'book' => 'books/principles.pdf',
+            'name' => 'Principles',
+            'writer' => 'Ray Dalio',
+            'cover' => 'covers/principles.jpg',
+            'summary' => 'Ray Dalio shares his principles for life and work, offering guidance on how to make better decisions and build a successful organization.',
+            'pages_num' => '592',
+            'lang' => 'English',
+            'published_at' => '2017',
+            'is_novel' => false,
+            'is_locked' => false,
+            'points' => 0,
+            'approved' => true
+        ],
+        'shelves' => [6,25]
+    ],
+    '7th_book' => [
+        'book_data' => [
+            'book_id' => '#T2mK9p5',
+            'book' => 'books/the_hard_thing_about_hard_things.pdf',
+            'name' => 'The Hard Thing About Hard Things',
+            'writer' => 'Ben Horowitz',
+            'cover' => 'covers/the_hard_thing_about_hard_things.jpg',
+            'summary' => 'Ben Horowitz offers practical advice for managing the challenges of leading a technology company, sharing insights from his own experiences as an entrepreneur.',
+            'pages_num' => '304',
+            'lang' => 'English',
+            'published_at' => '2014',
+            'is_novel' => false,
+            'is_locked' => false,
+            'points' => 0,
+            'approved' => true
+        ],
+        'shelves' => [6,25]
+    ],
+    '8th_book' => [
+        'book_data' => [
+            'book_id' => '#K6fL8y4',
+            'book' => 'books/the_checklist_manifesto.pdf',
+            'name' => 'The Checklist Manifesto',
+            'writer' => 'Atul Gawande',
+            'cover' => 'covers/the_checklist_manifesto.jpg',
+            'summary' => 'Atul Gawande examines the use of checklists in various fields to improve outcomes and manage complexity, applying lessons from aviation, construction, and medicine.',
+            'pages_num' => '224',
+            'lang' => 'English',
+            'published_at' => '2009',
+            'is_novel' => false,
+            'is_locked' => false,
+            'points' => 0,
+            'approved' => true
+        ],
+        'shelves' => [6,25]
+    ],
+
+  '9th_book' => [
+                'book_data' => [
+                    'book_id' => '#H4rQ1z7',
+                    'book' => 'books/harry_potter_and_the_philosophers_stone.pdf',
+                    'name' => 'Harry Potter and the Philosopher\'s Stone',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_philosophers_stone.jpg',
+                    'summary' => 'The first book in the Harry Potter series, introducing Harry as he discovers his wizarding heritage and attends Hogwarts School of Witchcraft and Wizardry.',
+                    'pages_num' => '223',
+                    'lang' => 'English',
+                    'published_at' => '1997',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ],
+            '10th_book' => [
+                'book_data' => [
+                    'book_id' => '#J9fT5r8',
+                    'book' => 'books/harry_potter_and_the_chamber_of_secrets.pdf',
+                    'name' => 'Harry Potter and the Chamber of Secrets',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_chamber_of_secrets.jpg',
+                    'summary' => 'The second book in the Harry Potter series, following Harry’s second year at Hogwarts as he faces new magical challenges and uncovers secrets about the school.',
+                    'pages_num' => '251',
+                    'lang' => 'English',
+                    'published_at' => '1998',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ],
+            '11th_book' => [
+                'book_data' => [
+                    'book_id' => '#K3fT7v2',
+                    'book' => 'books/harry_potter_and_the_prisoner_of_azkaban.pdf',
+                    'name' => 'Harry Potter and the Prisoner of Azkaban',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_prisoner_of_azkaban.jpg',
+                    'summary' => 'The third book in the Harry Potter series, where Harry returns for his third year at Hogwarts and learns about the escaped prisoner Sirius Black and his connection to Harry’s past.',
+                    'pages_num' => '317',
+                    'lang' => 'English',
+                    'published_at' => '1999',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ],
+            '12th_book' => [
+                'book_data' => [
+                    'book_id' => '#L4mJ1s8',
+                    'book' => 'books/harry_potter_and_the_goblet_of_fire.pdf',
+                    'name' => 'Harry Potter and the Goblet of Fire',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_goblet_of_fire.jpg',
+                    'summary' => 'The fourth book in the Harry Potter series, detailing Harry’s fourth year at Hogwarts and his participation in the dangerous Triwizard Tournament.',
+                    'pages_num' => '636',
+                    'lang' => 'English',
+                    'published_at' => '2000',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ],
+            '13th_book' => [
+                'book_data' => [
+                    'book_id' => '#M5qT2u9',
+                    'book' => 'books/harry_potter_and_the_order_of_the_phoenix.pdf',
+                    'name' => 'Harry Potter and the Order of the Phoenix',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_order_of_the_phoenix.jpg',
+                    'summary' => 'The fifth book in the Harry Potter series, where Harry faces new threats and discovers the existence of the Order of the Phoenix, a secret group opposing Voldemort.',
+                    'pages_num' => '766',
+                    'lang' => 'English',
+                    'published_at' => '2003',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ],
+            '14th_book' => [
+                'book_data' => [
+                    'book_id' => '#N6rJ4v1',
+                    'book' => 'books/harry_potter_and_the_half_blood_prince.pdf',
+                    'name' => 'Harry Potter and the Half-Blood Prince',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_half_blood_prince.jpg',
+                    'summary' => 'The sixth book in the Harry Potter series, exploring Harry’s sixth year at Hogwarts as he uncovers crucial information about Voldemort’s past and the Half-Blood Prince.',
+                    'pages_num' => '607',
+                    'lang' => 'English',
+                    'published_at' => '2005',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ],
+            '15th_book' => [
+                'book_data' => [
+                    'book_id' => '#O7sM3z4',
+                    'book' => 'books/harry_potter_and_the_deathly_hallows.pdf',
+                    'name' => 'Harry Potter and the Deathly Hallows',
+                    'writer' => 'J.K. Rowling',
+                    'cover' => 'covers/harry_potter_and_the_deathly_hallows.jpg',
+                    'summary' => 'The seventh and final book in the Harry Potter series, concluding Harry’s journey as he faces the ultimate battle against Voldemort and his followers.',
+                    'pages_num' => '759',
+                    'lang' => 'English',
+                    'published_at' => '2007',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1,30]
+            ]و  '16th_book' => [
+                'book_data' => [
+                    'book_id' => '#B1sQ7x2',
+                    'book' => 'books/fn_lhya_albsyt.pdf',
+                    'name' => 'فن الحياة البسيطة',
+                    'writer' => 'شونميو ماسونو',
+                    'cover' => 'covers/fn_lhya_albsyt.jpg',
+                    'summary' => 'فن الحياة البسيطة هو نهج يهدف إلى تبسيط الحياة والتركيز على الأشياء الأساسية والهامة. يتضمن هذا النهج تجاهلاً للأشياء الزائدة والتخلص من العناصر الغير ضرورية في الحياة اليومية. يهدف فن الحياة البسيطة إلى تحقيق السعادة والرضا الداخلي من خلال تحسين الجودة الحياتية وتقليل التوتر والضغوط والتشتت الذهني.',
+                    'pages_num' => '231',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2019',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [22, 24, 26]
+            ],
+            '17th_book' => [
+                'book_data' => [
+                    'book_id' => '#C2rP5y9',
+                    'book' => 'books/bsohb_kob_mn_alshy.pdf',
+                    'name' => 'بصحبة كوب من الشاي',
+                    'writer' => 'ساجد العبدلي',
+                    'cover' => 'covers/bsohb_kob_mn_alshy.jpg',
+                    'summary' => 'هذا الكتاب عبارة عن مجموعة من المشاهدات والتأملات التي ألفها الكاتب في جلسات متعاقبة من حياته، في حضرة كوب من الشاي، مشاهدات وتأملات وتفكرات حول نفسه ومشاعره ومزاجه تجاه الحياة وتقلباتها وظواهرها والناس وأطوارهم.',
+                    'pages_num' => '196',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2014',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [6, 26, 23]
+            ],
+            '18th_book' => [
+                'book_data' => [
+                    'book_id' => '#D3mQ8v4',
+                    'book' => 'books/lo_knt_tyra.pdf',
+                    'name' => 'لو كنت طيرا',
+                    'writer' => 'سلمان العودة',
+                    'cover' => 'covers/lo_knt_tyra.jpg',
+                    'summary' => 'الحرف هو أوّل شرارات النور، والكلمة هي أولى درجات التغيير، وقدرٌ من البوح يعيد للنفس توازنها، فالطيور حينما تغرد فإنها لا تكترث بطلقات الصيادين أو تعبأ بمناطق الحظر الجوي، أو تخشى مشانق التقاليد، ومعتقلات الأعراف، وأسلاك السياسة الشائكة.',
+                    'pages_num' => '268',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2012',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [23, 4, 5, 19]
+            ],
+            '19th_book' => [
+                'book_data' => [
+                    'book_id' => '#E4nT3x1',
+                    'book' => 'books/aljmma.pdf',
+                    'name' => 'الجريمة',
+                    'writer' => 'نجيب محفوظ',
+                    'cover' => 'covers/aljmma.jpg',
+                    'summary' => 'الجريمة مجموعة قصصية لنجيب محفوظ وتتضمن مسرحية ذات فصل واحد بالإضافة إلى عدد من القصص القصيرة التي يغلب على بعضها الطابع البوليسي كما في قصص «التحقيق»، «الجريمة».',
+                    'pages_num' => '122',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '1973',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [8, 9, 23, 7]
+            ],
+            '20th_book' => [
+                'book_data' => [
+                    'book_id' => '#F5rQ2y8',
+                    'book' => 'books/athr_alfrasha.pdf',
+                    'name' => 'أثر الفراشة',
+                    'writer' => 'محمود درويش',
+                    'cover' => 'covers/athr_alfrasha.jpg',
+                    'summary' => 'أثر الفراشة، أحد الكتب النثرية من مؤلفات الشاعر العربي الفلسطيني محمود درويش.',
+                    'pages_num' => '288',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2008',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [3, 2]
+            ],
+            '21st_book' => [
+                'book_data' => [
+                    'book_id' => '#G6mT7v3',
+                    'book' => 'books/ard_albrtqal_alhzn.pdf',
+                    'name' => 'أرض البرتقال الحزين',
+                    'writer' => 'غسان كنفاني',
+                    'cover' => 'covers/ard_albrtqal_alhzn.jpg',
+                    'summary' => 'تحدثت الرواية عن أهم قضايا الوطن العربي، وهي القضية الفلسطينية وما تناولتها من أحداث حرب ولجوء ونزوح للعديد من الفلسطينيين وعن الآلام التي عانى منها الشعب الفلسطيني من خسارة أراضيهم وتهجير لمنازلهم وخوف وجوع، لتقوم الرواية أن أرض الإنسان من أغلى ما يملك ويجب الدفاع عنها واسترجاعها من أيدي الغاصبين.',
+                    'pages_num' => '120',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '1962',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [4, 6, 23]
+            ],
+            '22nd_book' => [
+                'book_data' => [
+                    'book_id' => '#H7rP4y6',
+                    'book' => 'books/mmyz_baalsfr.pdf',
+                    'name' => 'مميز بالأصفر',
+                    'writer' => 'جاكسون براون',
+                    'cover' => 'covers/mmyz_baalsfr.jpg',
+                    'summary' => 'حيث يقدم للقارئ مقررًا مختصرًا في العيش بحكمة والاختيار بذكاء. هو كتاب يعتبر دليلًا مناسبًا للراغبين في الحصول على نصائح واقتباسات قيمة لتحسين حياتهم واتخاذ قرارات ذكية ومستدامة، مما يمنحهم فهمًا أعمق للحياة ويساعدهم في تحقيق السعادة والتوازن في حياتهم.',
+                    'pages_num' => '229',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2001',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [27, 22]
+            ],
+            '23rd_book' => [
+                'book_data' => [
+                    'book_id' => '#I8nQ3v7',
+                    'book' => 'books/almr.pdf',
+                    'name' => 'العملاق أديل ما',
+                    'writer' => 'Shahira Abdul Hamid',
+                    'cover' => 'covers/almr.jpg',
+                    'summary' => 'رواية خيالية تتحدث عن عملاق وحيد بجزيرته، يقوم بإختطاف بشرية لتدور بينهم رحلة غامضة.',
+                    'pages_num' => '73',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2024',
+                    'is_novel' => true,
+                    'is_locked' => true,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [1, 6, 7, 9, 11]
+            ], '32nd_book' => [
+                'book_data' => [
+                    'book_id' => '#R7sQ2w1',
+                    'book' => 'books/almtm.pdf',
+                    'name' => 'المتهم',
+                    'writer' => 'أرسلان فاروق',
+                    'cover' => 'covers/almtm.jpg',
+                    'summary' => 'يشد مؤيد الرحال إلى مدينة بعيدة ذات قوانين غريبة جعلته يتورط بشيء لم يكن في الحسبان. ما الذي حصل معه وما يكون مصيره؟',
+                    'pages_num' => '57',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2023',
+                    'is_novel' => true,
+                    'is_locked' => true,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [6, 1, 7, 9, 11]
+            ],
+        
+            '33rd_book' => [
+                'book_data' => [
+                    'book_id' => '#S8tR3u2',
+                    'book' => 'books/koma.pdf',
+                    'name' => 'كوما',
+                    'writer' => 'شرف الدين دكير',
+                    'cover' => 'covers/koma.jpg',
+                    'summary' => 'رواية: تحكي قصة شاب، يدخل في غيبوبة بسبب حادثة سير مميتة، وينتقل إلى عالم خيالي، لتتطور الأحداث وتاخذنا في عالم مليء بالتشويق والإثارة.',
+                    'pages_num' => '67',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2023',
+                    'is_novel' => true,
+                    'is_locked' => true,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [9, 1, 6]
+            ],
+        
+            '34th_book' => [
+                'book_data' => [
+                    'book_id' => '#T9uP4x3',
+                    'book' => 'books/fi_alshar_aljahili_w_allgha_alarby.pdf',
+                    'name' => 'في الشعر الجاهلي واللغة العربية
+                    ',
+                    'writer' => 'أحمد عثمان',
+                    'cover' => 'covers/fi_alshar_aljahili_w_allgha_alarby.jpg',
+                    'summary' => 'في هذا الكتيب الصغير يحاول الباحث أحمد عثمان أن يكشف للقارئ ما أسفرت عنه البحوث العلمية والحفريات الحديثة بخصوص اللغة Arabic
+                     وعلاقتها باللغات الأخرى، ومن هم الساميون ومن أين جاءوا، ومن أبرز من جاء في الكتاب النبذة عن قضية اللسانيات في الجدل حول إطروحه طه حسين في الشعر الجاهلي، بين المؤلف أن أغلب الذين ردوا على طه حسين في قضية (اللغة وتفرعاتها واللهجات) أخطئوا فأراد أن يُعقّب على هذا الجانب الذي لم يُصب بهِ الكثير، فتكلم عن اللغات وأصلها وكيف تفرعت ومدى انعكاس ذلك على بحث طه حسين نفسه (في الشعر الجاهلي).',
+                    'pages_num' => '131',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '1996',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [3, 20]
+            ],
+        
+            '35th_book' => [
+                'book_data' => [
+                    'book_id' => '#U1vP5y2',
+                    'book' => 'books/adab_alatfal_alenglzy.pdf',
+                    'name' => 'أدب الأطفال الانكليزي',
+                    'writer' => 'د. عمار شرقية',
+                    'cover' => 'covers/adab_alatfal_alenglzy.jpg',
+                    'summary' => 'لقد تمكن كتاب أدب الأطفال من تكوين عوالم قابلة للتصديق انطلاقاً من عناصر أولية خيالية وذلك في محاكاة لطبيعة الطفل الذي يصنع أثناء لعبه عوالم خيالية يعيش فيها أو يهرب إليها من واقعه. و الأمر الأكثر أهمية ليس مدى قابلية هذا الموضوع أو ذاك للتصديق بل مدى تناسق و انسجام العناصر الخيالية التي استخدمت في كتابة العمل الأدبي مع بعضها البعض و امتثالها لقواعد معينة فالخيال بلا قواعد تحكمه يصبح مجرد سخافة و هذيان, بل إن ألعاب الأطفال مع بعضهم البعض تخضع لقواعد صارمة هم الذين يضعونها و هم الذين يلتزمون بها.',
+                    'pages_num' => '61',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2020',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [28, 5, 27]
+            ],
+        
+            '36th_book' => [
+                'book_data' => [
+                    'book_id' => '#V2wQ6y3',
+                    'book' => 'books/alnabatat_w_alzhar_fy_aladab_alenklzy.pdf',
+                    'name' => 'النباتات والأزهار في الأدب الانكليزي الكلاسيكي',
+                    'writer' => 'د. عمار شرقية',
+                    'cover' => 'covers/alnabatat_w_alzhar_fy_aladab_alenklzy.jpg',
+                    'summary' => 'شقائق النعمان زهرة لا رائحة لها ويقال بأنها قد انبعثت من دماء أدونيس وكذلك فإن نيكاندار يقول بأن شقائق النعمان قد انبعثت من دماء أدونيس. ومن المعتقد بأن معلومات شكسبير المتعلقة بنبات شقائق النعمان قد حصل عليها من كتابات (أوفيد) التي ترجمها غولدن Golding في العام 1567.',
+                    'pages_num' => '193',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2020',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [5, 12]
+            ],
+        
+            '37th_book' => [
+                'book_data' => [
+                    'book_id' => '#W3xR7u4',
+                    'book' => 'books/mhat_balhmaq.pdf',
+                    'name' => 'محاط بالحمقى',
+                    'writer' => 'توماس اريكوس',
+                    'cover' => 'covers/mhat_balhmaq.jpg',
+                    'summary' => 'كتاب محاط بالحمقى لمعرفة الأنماط الأربعة للسلوك البشري وكيفية التعامل معها.',
+                    'pages_num' => '320',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2021',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [22, 26]
+            ],
+        
+            '38th_book' => [
+                'book_data' => [
+                    'book_id' => '#X4yS8z5',
+                    'book' => 'books/alasdqa_alathlatha.pdf',
+                    'name' => 'الأصدقاء الثلاثة',
+                    'writer' => 'رافع آدم الهاشمي',
+                    'cover' => 'covers/alasdqa_alathlatha.jpg',
+                    'summary' => 'يتخلل الكتاب مجموعة من اللوحات الفنيَّة المبتكرة الحصرية بهذا الكتاب بلغ عددها (32) اثنين و ثلاثين لوحة فنيَّة و هي رسوم ملونة في غاية الروعة و الجمال تحاكي خيال الطفل بامتياز موجَّهة لقرّاء و قارئات الكتاب من إبداعات الرسامة المبدعة آية عموري عضو فريق العمل الفني في دار المنشورات العالمية و جميعها من أفكار المبدعة آية عموري صاحبة الرسوم الداخلية في الكتاب.',
+                    'pages_num' => '99',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '2022',
+                    'is_novel' => false,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [15]
+            ],
+        
+            '39th_book' => [
+                'book_data' => [
+                    'book_id' => '#Y5zQ9x6',
+                    'book' => 'books/alllayaly_albida.pdf',
+                    'name' => 'الليالي البيضاء',
+                    'writer' => 'فيودور دوستويفسكي',
+                    'cover' => 'covers/alllayaly_albida.jpg',
+                    'summary' => 'الليالي البيضاء (بالروسية: Белые ночи) قصة قصيرة من تأليف الكاتب الروسي فيودور دوستويفسكي. القصة تُعدُّ من أوائل أعماله، ونُشِرت للمرة الأولى في عام 1848. وكالعديد من مؤلفات دوستويفسكي تُروَى القصة من منظور الراوي المجهول الاسم، وفي القصة يعيش الراوي في مدينة سانت بطرسبورغ، وهو يعاني من الوحدة. تُعدُّ هذه القصة من أفضل قصصه القصيرة، وعُرِضت على السينما في روسيا وإيطاليا وفرنسا وأمريكا والهند وإيران.',
+                    'pages_num' => '111',
+                    'lang' => 'Arabic
+                    ',
+                    'published_at' => '1848',
+                    'is_novel' => true,
+                    'is_locked' => false,
+                    'points' => 0,
+                    'approved' => true
+                ],
+                'shelves' => [5]
+            ],

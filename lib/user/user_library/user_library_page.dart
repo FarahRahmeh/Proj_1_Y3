@@ -1,19 +1,17 @@
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/appbar/tapbar.dart';
 import 'package:booktaste/common/widgets/custom_shapes/Containers/search_container.dart';
-import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/notification/notification_counter_icon.dart';
-import 'package:booktaste/common/widgets/texts/section_heading.dart';
 import 'package:booktaste/controllers/category/all_categories_controller.dart';
-import 'package:booktaste/common/widgets/all_brands/all_brands_page.dart';
+import 'package:booktaste/data/services/role.manager.dart';
 import 'package:booktaste/user/user_library/user_library_widgets/category_tab.dart';
+import 'package:booktaste/user/user_library/user_library_widgets/library_card_view.dart';
 import 'package:booktaste/utils/constans/colors.dart';
+import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../common/widgets/category/x_card.dart';
 
 class UserLibrary extends StatelessWidget {
   const UserLibrary({super.key});
@@ -31,12 +29,12 @@ class UserLibrary extends StatelessWidget {
             'Library',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          actions: [
-            NotificationCounterIcon(
-              onPressed: () {},
-              iconColor: lightBrown,
-            ),
-          ],
+          // actions: [
+          //   NotificationCounterIcon(
+          //     onPressed: () {},
+          //     iconColor: lightBrown,
+          //   ),
+          // ],
         ),
         //!Body
         body: NestedScrollView(
@@ -48,7 +46,7 @@ class UserLibrary extends StatelessWidget {
                 backgroundColor: HelperFunctions.isDarkMode(context)
                     ? MyColors.black
                     : MyColors.white,
-                expandedHeight: 440,
+                expandedHeight: 320,
                 automaticallyImplyLeading: false,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Padding(
@@ -66,19 +64,38 @@ class UserLibrary extends StatelessWidget {
                         ),
                         SizedBox(height: Sizes.spaceBtwSections),
 
-                        //! ---Featured brands
-                        SectionHeading(
-                          title: 'Featured ~~~',
-                          onPressed: () => Get.to(() => AllBrandsPage()),
-                        ),
-                        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-
-                        MyGridLayout(
-                            mainAxisExtent: 80,
-                            itemCount: 4,
-                            itemBuilder: (_, index) {
-                              return XCard();
+                        // //! ---Featured brands
+                        // SectionHeading(
+                        //   title: 'Featured ',
+                        //   onPressed: () => Get.to(() => AllBrandsPage()),
+                        // ),
+                        // const SizedBox(height: Sizes.spaceBtwItems / 1.5),
+                        FutureBuilder<bool>(
+                            future: isUser(),
+                            builder: (builder, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              } else if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              } else {
+                                final user = snapshot.data;
+                                return LibraryCard(
+                                  cardNumber: '21016071',
+                                  imagePath: Images.user,
+                                  isAdmin: user == true ? false : true,
+                                );
+                              }
                             }),
+
+                        // MyGridLayout(
+                        //     mainAxisExtent: 80,
+                        //     itemCount: 4,
+                        //     itemBuilder: (_, index) {
+                        //       return XCard();
+                        //     }),
                       ],
                     ),
                   ),
@@ -97,7 +114,7 @@ class UserLibrary extends StatelessWidget {
           },
           body: TabBarView(
             children: categoriesCtrl.allCategoriesList
-                .map((category) => CategoryTab(category: category.genre))
+                .map((category) => CategoryTab(category: category))
                 .toList(),
           ),
         ),

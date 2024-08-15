@@ -61,19 +61,19 @@ class LoginForm extends StatelessWidget {
 
         ///!Forget password & remember me
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Row(
-              children: [
-                Obx(
-                  () => Checkbox(
-                      value: controller.rememberMe.value,
-                      onChanged: (value) => controller.rememberMe.value =
-                          !controller.rememberMe.value),
-                ),
-                const Text('remember me'),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Obx(
+            //       () => Checkbox(
+            //           value: controller.rememberMe.value,
+            //           onChanged: (value) => controller.rememberMe.value =
+            //               !controller.rememberMe.value),
+            //     ),
+            //     const Text('remember me'),
+            //   ],
+            // ),
             TextButton(
               onPressed: () => Get.to(
                 () => const ForgetPasswordPage(),

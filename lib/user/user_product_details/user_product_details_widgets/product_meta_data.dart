@@ -1,17 +1,13 @@
 import 'dart:convert';
+import 'dart:math';
 
-import 'package:booktaste/common/widgets/images/circular_image.dart';
-import 'package:booktaste/common/widgets/texts/product_title.dart';
-import 'package:booktaste/controllers/book/book_controller.dart';
 import 'package:booktaste/models/book.dart';
 import 'package:booktaste/utils/constans/colors.dart';
-import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../common/widgets/custom_shapes/Containers/rounded_container.dart';
-import '../../../common/widgets/texts/product_price.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
 class ProductMetaData extends StatelessWidget {
@@ -23,30 +19,15 @@ class ProductMetaData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Random random = Random();
+
     print('in meta data' + jsonEncode(book));
     final dark = HelperFunctions.isDarkMode(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        /// Price & Sale Price
         Row(
           children: [
-            ///! Sale Tag
-            // RoundedContainer(
-            //   radius: Sizes.sm,
-            //   backgroundColor: MyColors.secondary.withOpacity(0.8),
-            //   padding: const EdgeInsets.symmetric(
-            //       horizontal: Sizes.sm, vertical: Sizes.xs),
-            //   child: Text(
-            //     '25%',
-            //     style: Theme.of(context)
-            //         .textTheme
-            //         .labelLarge!
-            //         .apply(color: MyColors.black),
-            //   ),
-            // ),
-            // const SizedBox(width: Sizes.spaceBtwItems),
-
             //! Price
             // Text(
             //   '\$250',
@@ -60,169 +41,130 @@ class ProductMetaData extends StatelessWidget {
             // // , isLarge: true),
           ],
         ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
+        // const SizedBox(height: Sizes.spaceBtwItems / 1.5),
 
-        //!Title
+        //!pages
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          //! this center work
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ProductTitleText(title: 'Book Title :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Expanded(
+            RoundedContainer(
+              radius: Sizes.sm,
+              backgroundColor: gray.withOpacity(0.8),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Sizes.sm, vertical: Sizes.xs),
               child: Text(
-                book.name,
-                style: Theme.of(context).textTheme.titleMedium,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
+                '${book.pages} pages',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .apply(color: MyColors.black),
+              ),
+            ),
+            const SizedBox(width: Sizes.spaceBtwItems / 1.5),
+
+            //! novel
+            RoundedContainer(
+              radius: Sizes.sm,
+              backgroundColor: gray.withOpacity(0.8),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Sizes.sm, vertical: Sizes.xs),
+              child: Text(
+                book.type == '1' ? 'Novel' : 'Book',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .apply(color: MyColors.black),
+              ),
+            ),
+            //! language
+            const SizedBox(width: Sizes.spaceBtwItems / 1.5),
+            RoundedContainer(
+              radius: Sizes.sm,
+              backgroundColor: gray.withOpacity(0.8),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Sizes.sm, vertical: Sizes.xs),
+              child: Row(
+                children: [
+                  Icon(
+                    Iconsax.global_copy,
+                    size: 16,
+                  ),
+                  Text(
+                    ' ${book.lang}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .apply(color: MyColors.black),
+                  ),
+                ],
+              ),
+            ),
+            //! year of publication
+            const SizedBox(width: Sizes.spaceBtwItems / 1.5),
+            RoundedContainer(
+              radius: Sizes.sm,
+              backgroundColor: gray.withOpacity(0.8),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Sizes.sm, vertical: Sizes.xs),
+              child: Row(
+                children: [
+                  Icon(
+                    Iconsax.calendar_1_copy,
+                    size: 16,
+                  ),
+                  Text(
+                    ' ${book.publicationYear}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .apply(color: MyColors.black),
+                  ),
+                ],
               ),
             ),
           ],
         ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
 
-        //!Stack status
-        Row(
-          children: [
-            ProductTitleText(title: 'Author :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Expanded(
-              child: Text(
-                book.writer
-                //author
-                ,
-                style: Theme.of(context).textTheme.titleMedium,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            ProductTitleText(title: 'number of pages :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.pages.toString(),
-              // pages,
-              style: Theme.of(context).textTheme.titleMedium,
-            )
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            ProductTitleText(title: 'Language :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.lang,
-              // language,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
-        ),
         const SizedBox(height: Sizes.spaceBtwItems / 1.5),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ProductTitleText(title: 'genres :'),
+            Text('genres :', style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(width: Sizes.spaceBtwItems),
             Expanded(
               child: Wrap(
                 // spacing: 4.0, // Horizontal spacing between genres
                 // runSpacing: 4.0, // Vertical spacing between lines of genres
                 children: book.genre.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  String genre = entry.value;
-                  bool isLast = index == genre.length - 1;
-                  String separator = isLast ? '.' : ', ';
-
-                  return Text(
-                    genre + separator,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  final Color genreColor =
+                      colorList[random.nextInt(colorList.length)];
+                  return GestureDetector(
+                    // onTap: () {
+                    //   Get.to(() => SubCategoriesPage(genre: entry.value));
+                    // },
+                    child: RoundedContainer(
+                      borderColor: MyColors.darkGrey,
+                      showBorder: true,
+                      margin: EdgeInsets.all(Sizes.xs),
+                      radius: Sizes.sm,
+                      backgroundColor: genreColor,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Sizes.sm, vertical: Sizes.xs),
+                      child: Text(
+                        '${entry.value}',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .apply(color: dark ? offWhite : MyColors.black),
+                      ),
+                    ),
                   );
                 }).toList(),
               ),
             ),
           ],
         ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-
-        Row(
-          children: [
-            ProductTitleText(title: 'Published Year :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.publicationYear,
-              style: Theme.of(context).textTheme.titleMedium,
-            )
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            ProductTitleText(title: 'Number of readers :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.readersNum.toString(),
-              style: Theme.of(context).textTheme.titleMedium,
-            )
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            ProductTitleText(title: 'Book type :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.type,
-              style: Theme.of(context).textTheme.titleMedium,
-            )
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            ProductTitleText(title: 'Points :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.points.toString(),
-              style: Theme.of(context).textTheme.titleMedium,
-            )
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-        Row(
-          children: [
-            ProductTitleText(title: 'Average reading time :'),
-            const SizedBox(width: Sizes.spaceBtwItems),
-            Text(
-              book.avgReadingTime,
-              style: Theme.of(context).textTheme.titleMedium,
-            )
-          ],
-        ),
-        const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-
-        // //! Brand
-        // Row(
-        //   children: [
-        //     // CircularImage(
-        //     //   image: Images.book,
-        //     //   width: 32,
-        //     //   height: 32,
-        //     //   // overlayColor: dark ? MyColors.white : MyColors.black,
-        //     // ),
-        //     Text(
-        //       'Author : ',
-        //       style: Theme.of(context).textTheme.titleLarge,
-        //     ),
-        //     // TextTitleWithIcon(
-        //     //   title: 'Author  ',
-        //     //   titleTextSize: TextSizes.medium,
-        //     // ),
-        //   ],
-        // ),
       ],
     );
   }

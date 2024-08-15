@@ -18,6 +18,7 @@ class CircularImage extends StatelessWidget {
     this.overlayColor,
     this.backgroundColor,
     this.isNetworkImg = false,
+    this.showBorder = false,
   });
 
   final double width, height, padding;
@@ -26,6 +27,7 @@ class CircularImage extends StatelessWidget {
   final Color? overlayColor;
   final Color? backgroundColor;
   final bool isNetworkImg;
+  final bool showBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CircularImage extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
+        border: showBorder ? Border.all(color: brown) : null,
         color: backgroundColor ??
             (HelperFunctions.isDarkMode(context)
                 ? MyColors.black

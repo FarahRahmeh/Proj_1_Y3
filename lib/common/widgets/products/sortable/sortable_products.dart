@@ -42,7 +42,7 @@ class SortableProducts extends StatelessWidget {
           return MyGridLayout(
             itemCount: allbookscontroller.booksList.length,
             itemBuilder: (_, index) => ProductCardVertical(
-              allbooks: allbookscontroller.booksList[index],
+              bookk: allbookscontroller.booksList[index],
             ),
           );
         }),

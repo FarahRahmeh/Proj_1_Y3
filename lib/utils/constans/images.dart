@@ -6,6 +6,8 @@ class Images {
   static const String logoDark = "assets/logos/logo_dark.png";
   static const String darkLogo = "assets/logos/dark_logo.jpeg";
   static const String lightLogo = "assets/logos/light_logo.jpeg";
+  //! bookbux
+  static const String bookbux = "assets/images/bookbux.png";
 
   //SM logos
   static const String google = "assets/logos/google.png";
@@ -13,6 +15,7 @@ class Images {
   ///
   //~images folder
   static const String verifyEmail = "assets/images/verify_email.png";
+  static const String user = "assets/images/user.png";
   static const String success = "assets/images/success.png";
   static const String emailVerifyLight = "assets/images/verfiy_light.png";
   static const String emailVerifyDark = "assets/images/verfiy_dark.png";
@@ -27,6 +30,7 @@ class Images {
   static const String defaultBookCover = "assets/images/default_cover.png";
 
   ///Banner
+
   static const String promoBanner = "assets/images/banner.jpg";
 
   ///book covers
@@ -53,11 +57,43 @@ class Images {
   ///
   //~gif
   static const String verify = "assets/images/verify.gif";
+  static const String reading_list = "assets/images/reading.gif";
   static const String coffeeLoading = "assets/images/coffee_loading.gif";
   static const String profileDark = "assets/images/complete_profile_dark.gif";
   static const String profileLight = "assets/images/complete_profile_light.gif";
   static const String feedbackDark = "assets/images/Feedback_dark.gif";
   static const String feedbackLight = "assets/images/Feedback_light.gif";
+  static const String gridPaper = "assets/images/grid_paper.jpg";
+  static const String booksCoffee = "assets/images/books-coffee.png";
+  static const String quoteCoffee = "assets/images/notebook_coffee.png";
+  static const String notesGlasses = "assets/images/Notebook-bro.png";
+  static const String notesHand = "assets/images/Notes-bro.png";
+  static const String quoteLetters = "assets/images/quotes_letters.png";
+  static const String notificationPush = "assets/images/notification.png";
+  static const String insightsDaily1 = "assets/images/insights_floating.png";
+  static const String insightsMonthly1 = "assets/images/insights_monthly.png";
+  // static const String  = "assets/images/";
+  static const String fireTime = "assets/images/fire-time.gif";
+  static const String bookPage = "assets/images/book.gif";
+  static const String session = "assets/images/activity-feed.gif";
+  static const String read = "assets/images/read.gif";
+  static const String time = "assets/images/time.gif";
+  static const String bookShelf = "assets/images/bookshelf.gif";
+  static const String shelves = "assets/images/shelves.gif";
+  static const String journal = "assets/images/book2.gif";
+  static const String timefire = "assets/images/timefire.gif";
+  static const String hourglass = "assets/images/hourglass.gif";
+  static const String percentage = "assets/images/percent.gif";
+  static const String bookmarkPage = "assets/images/bookmark1.gif";
+
+  static const String fav = "assets/images/lists/fav.gif";
+  static const String later = "assets/images/lists/later.gif";
+  static const String reading = "assets/images/lists/reading.gif";
+  static const String history = "assets/images/lists/history.gif";
+  static const String approved = "assets/images/lists/approved.gif";
+  static const String unlocked = "assets/images/lists/unlocked.gif";
+
+  // static const String  = "assets/images/";
 
   //Profile
   // static const String profileLight = "assets/images/profile.gif";
@@ -74,4 +110,23 @@ class Images {
 
   ///Categories Icons
   static const String book = "assets/images/bookIcon.png";
+  static const String librarycard = "assets/images/librarycard.gif";
+
+  /// qoutesBooks covers
+  static const String quotebook1 = "assets/images/quoteBooks/quotebook1.jpg";
+  static const String quotebook2 = "assets/images/quoteBooks/quotebook2.jpg";
+  static const String quotebook3 = "assets/images/quoteBooks/quotebook3.jpg";
+  static const String quotebook4 = "assets/images/quoteBooks/quotebook4.jpg";
+  static const String quotebook5 = "assets/images/quoteBooks/quotebook5.jpg";
+  static const String quotebook6 = "assets/images/quoteBooks/quotebook6.jpg";
+  static const String quotebook7 = "assets/images/quoteBooks/quotebook7.jpg";
+  static const String quotebook8 = "assets/images/quoteBooks/quotebook8.jpg";
+  static const String quotebook9 = "assets/images/quoteBooks/quotebook9.jpg";
+  static const String quotebook10 = "assets/images/quoteBooks/quotebook10.jpg";
+  static const String quotebook11 = "assets/images/quoteBooks/quotebook11.jpg";
+  static const String quotebook12 = "assets/images/quoteBooks/quotebook12.jpg";
+  static const String quotebook13 = "assets/images/quoteBooks/quotebook13.jpg";
+  static const String quotebook14 = "assets/images/quoteBooks/quotebook14.jpg";
+  static const String general_image =
+      "assets/images/quoteBooks/general_image.jpg";
 }

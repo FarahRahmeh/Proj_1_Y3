@@ -21,6 +21,7 @@ class ProductReviewsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAddToBtn(
+        oneBtn: true,
         title1: 'Add Review!',
         onPressed1: () {},
       ),

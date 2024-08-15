@@ -21,7 +21,11 @@ class RatingsAndShare extends StatelessWidget {
         Text.rich(TextSpan(
           children: [
             TextSpan(text: rate, style: Theme.of(context).textTheme.bodyLarge),
-            TextSpan(text: ' ( $votersNum voters) '),
+            TextSpan(
+                text: votersNum != '0'
+                    ? ' ( $votersNum voters ) '
+                    : ' (no votes yet)',
+                style: Theme.of(context).textTheme.bodySmall),
           ],
         )),
       ],

@@ -8,13 +8,15 @@ class ProfileMenu extends StatelessWidget {
     super.key,
     this.icon = Iconsax.arrow_right_2,
     required this.title,
-    required this.value,
+    this.value = '',
     required this.onPressed,
+    this.showIcon = false,
   });
 
   final IconData icon;
   final String title, value;
   final VoidCallback onPressed;
+  final bool showIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,20 +28,24 @@ class ProfileMenu extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-                flex: 3,
+                flex: 4,
                 child: Text(title,
+                    maxLines: 2,
                     style: Theme.of(context).textTheme.bodySmall,
                     overflow: TextOverflow.ellipsis)),
             Expanded(
-                flex: 5,
+                flex: 4,
                 child: Text(value,
                     style: Theme.of(context).textTheme.bodyMedium,
                     overflow: TextOverflow.ellipsis)),
             Expanded(
-                child: Icon(
-              icon,
-              size: 18,
-            )),
+              child: showIcon
+                  ? Icon(
+                      icon,
+                      size: 18,
+                    )
+                  : SizedBox.shrink(),
+            ),
           ],
         ),
       ),

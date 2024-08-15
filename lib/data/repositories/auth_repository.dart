@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'package:booktaste/data/services/token_manager.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
-import '../../models/user_model.dart';
 import '../../utils/constans/api_constans.dart';
 
 class AuthRepository extends GetxController {
@@ -93,7 +91,8 @@ class AuthRepository extends GetxController {
 
   ///! [EmailAuthentication] - LOGIN
   Future<http.Response> login(String email, String password) async {
-    final body = jsonEncode({'email': email, 'password': password});
+    final body = jsonEncode(
+        {'email': email, 'password': password, 'device_token': '1234567890'});
     final response = await http.post(
       Uri.parse('$baseUrl/login'),
       body: body,
@@ -208,6 +207,26 @@ class AuthRepository extends GetxController {
     return response;
   }
 
+  //! Change  Password
+  Future<http.Response> changePasswordByOldPassword(
+      String oldPass, String newPass, String confirmNewPass) async {
+    final body = jsonEncode({
+      'password': oldPass,
+      'new_password': newPass,
+      'new_password_confirmation': confirmNewPass
+    });
+    final response = await http.post(
+      Uri.parse('$baseUrl/resetPassword'),
+      body: body,
+      headers: {
+        'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
+    return response;
+  }
+
   //! Add New Admin
   Future<http.Response> newAdmin(String name, String email, String password,
       String passwordConfirmation) async {
@@ -227,6 +246,44 @@ class AuthRepository extends GetxController {
       },
     );
 
+    return response;
+  }
+
+//! Admins list
+  Future<http.Response> fetchAllAdmins() async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/adminsList'),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+      },
+    );
+
+    return response;
+  }
+
+//! Delete Admin
+  Future<http.Response> removeAdmin(int id) async {
+    final response = await http.delete(
+      Uri.parse('$baseUrl/removeAdmin/$id'),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+      },
+    );
+
+    return response;
+  }
+
+//! Logout
+  Future<http.Response> logout() async {
+    final response = await http.get(Uri.parse('$baseUrl/logout'), headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+    });
     return response;
   }
 }

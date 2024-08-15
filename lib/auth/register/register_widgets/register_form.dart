@@ -36,6 +36,7 @@ class RegisterForm extends StatelessWidget {
 
           ///!Email
           TextFormField(
+            readOnly: true,
             controller: controller.email,
             decoration: const InputDecoration(
               labelText: Texts.edtEmail,

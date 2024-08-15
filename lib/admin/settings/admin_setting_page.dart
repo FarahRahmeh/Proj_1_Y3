@@ -1,8 +1,13 @@
+import 'package:booktaste/admin/admin_book_request/admin_book_request_view.dart';
 import 'package:booktaste/admin/manage_admins/add_new_admin_page.dart';
+import 'package:booktaste/auth/login/login_page.dart';
+import 'package:booktaste/common/features/challenges/challenges_view.dart';
+import 'package:booktaste/common/features/contact_us/all_contact_us_view.dart';
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/list_tile/setting_menu_tile.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
-import 'package:booktaste/user/user_profile/user_profile.dart';
+import 'package:booktaste/data/repositories/auth_repository.dart';
+import 'package:booktaste/user/user_profile/user_profile_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/popups/dialogs.dart';
 import 'package:booktaste/utils/popups/loaders.dart';
@@ -46,7 +51,7 @@ class AdminSettingsPage extends StatelessWidget {
 
                   /// User Profile Card
                   UserProfileTile(
-                      onPressed: () => Get.to(() => const UserProfile())),
+                      onPressed: () => Get.to(() => const UserProfilePage())),
                   SizedBox(height: Sizes.spaceBtwSections),
                 ],
               ),
@@ -67,10 +72,12 @@ class AdminSettingsPage extends StatelessWidget {
 
                 //Tiles
                 SettingsMenuTile(
-                  icon: Iconsax.profile_circle_copy,
-                  title: 'Title',
-                  subTitle: 'Add, remove,edit products ....',
-                  onTap: () {},
+                  icon: Iconsax.cup_copy,
+                  title: 'Challenges',
+                  subTitle: 'good  ....',
+                  onTap: () {
+                    Get.to(() => ChallengesView());
+                  },
                 ),
 
 //!
@@ -79,14 +86,14 @@ class AdminSettingsPage extends StatelessWidget {
                     title: 'Add New Book',
                     subTitle: 'Add new book to BookTaste Library.',
                     onTap: () {
-                      Get.to(() => const AddNewBookPage());
+                      Get.to(() => AddNewBookPage());
                     }),
 
 //!
                 SettingsMenuTile(
                     icon: Iconsax.profile_add_copy,
                     title: 'Add New Admin',
-                    subTitle: 'Only Master Admin can add new admins',
+                    subTitle: 'Only Master Admin can add manage admins',
                     //! Handling ...!!!!!!!!!!!
                     onTap: () {
                       if (GetStorage().read('ROLE') != 'master_admin') {
@@ -117,16 +124,18 @@ class AdminSettingsPage extends StatelessWidget {
                   title: 'Book Requests',
                   subTitle: 'Accept, reject, edit users book requests.',
                   onTap: () {
-                    //  Get.to(() => BookRequestsPage());
+                    Get.to(() => AdminBookRequestsView());
                   },
                 ),
 
                 //! Unedited
                 SettingsMenuTile(
-                  icon: Iconsax.chart_1_copy,
-                  title: 'Title',
-                  subTitle: 'blah blahhh blahhhhh',
-                  onTap: () {},
+                  icon: Iconsax.messages_1_copy,
+                  title: 'Contact Us',
+                  subTitle: 'reply and show messages from users',
+                  onTap: () {
+                    Get.to(() => AllContactUsPage());
+                  },
                 ),
 
                 ///! App Settings-----------------------------------------------------
@@ -201,39 +210,67 @@ class AdminSettingsPage extends StatelessWidget {
                       );
                     }),
 
-                SettingsMenuTile(
-                  icon: Iconsax.location,
-                  title: 'Geolocation',
-                  subTitle: 'Set recommendation based on Location',
-                  trailing: Switch(
-                    value: true,
-                    onChanged: (value) {},
-                    inactiveThumbColor: gray,
-                  ),
-                ), //
+                // SettingsMenuTile(
+                //   icon: Iconsax.location,
+                //   title: 'Geolocation',
+                //   subTitle: 'Set recommendation based on Location',
+                //   trailing: Switch(
+                //     value: true,
+                //     onChanged: (value) {},
+                //     inactiveThumbColor: gray,
+                //   ),
+                // ), //
 
-                SettingsMenuTile(
-                  icon: Iconsax.security_user,
-                  title: 'Safe Mode',
-                  subTitle: 'Search result is safe for all ages',
-                  trailing: Switch(
-                    value: false,
-                    onChanged: (value) {},
-                    inactiveThumbColor: gray,
-                  ),
-                ), //
+                // SettingsMenuTile(
+                //   icon: Iconsax.security_user,
+                //   title: 'Safe Mode',
+                //   subTitle: 'Search result is safe for all ages',
+                //   trailing: Switch(
+                //     value: false,
+                //     onChanged: (value) {},
+                //     inactiveThumbColor: gray,
+                //   ),
+                // ), //
 
-                SettingsMenuTile(
-                  icon: Iconsax.image,
-                  title: 'HD Image Quality',
-                  subTitle: 'Set image quality to be seen',
-                  trailing: Switch(
-                    value: false,
-                    onChanged: (value) {},
-                    inactiveThumbColor: gray,
-                  ),
-                ),
+                // SettingsMenuTile(
+                //   icon: Iconsax.image,
+                //   title: 'HD Image Quality',
+                //   subTitle: 'Set image quality to be seen',
+                //   trailing: Switch(
+                //     value: false,
+                //     onChanged: (value) {},
+                //     inactiveThumbColor: gray,
+                //   ),
+                // ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(Sizes.defaultSpace),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      final response = await AuthRepository().logout();
+                      if (response.statusCode == 200) {
+                        Loaders.successSnackBar(
+                            title: 'Logout success',
+                            message: 'see you later..🤍 ');
+                        GetStorage().remove('TOKEN');
+                        Get.offAll(() => LoginPage());
+                      } else {
+                        print(response.body.toString());
+                        Loaders.errorSnackBar(title: 'Logout failed');
+                      }
+                    } catch (e) {
+                      print(e.toString());
+                      Loaders.errorSnackBar(
+                          title: 'Logout failed with exception');
+                    }
+                  },
+                  child: Text('Logout'),
+                ),
+              ),
             ),
           ],
         ),

@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:booktaste/models/cafe_model.dart';
 import 'package:booktaste/utils/popups/loaders.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../models/cafe_shelf_model.dart';
 import '../../models/all_categories_model.dart';
@@ -48,8 +47,19 @@ class CafesRepository extends GetxController {
       print(response.statusCode);
       Loaders.errorSnackBar(title: response.body.toString());
       return null;
-      //throw Exception('Failed to load cafe shelves');
     }
     return null;
+  }
+
+  static Future<http.Response> getCafeBooks(String id) async {
+    final response =
+        await http.get(Uri.parse('$baseUrl/cafeBooks/$id'), headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Connection': 'keep-alive',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Authorization': 'Bearer ${GetStorage().read('TOKEN')}',
+    });
+    return response;
   }
 }

@@ -11,6 +11,8 @@ class MyGridLayout extends StatelessWidget {
     this.crossAxisCount = 2,
     this.mainAxisSpacing = 4,
     this.padding = EdgeInsets.zero,
+    this.physics = const NeverScrollableScrollPhysics(),
+
     // this.scrollDirection = Axis.vertical,
   });
 
@@ -20,6 +22,7 @@ class MyGridLayout extends StatelessWidget {
   final int crossAxisCount;
   final double mainAxisSpacing;
   final EdgeInsetsGeometry? padding;
+  final ScrollPhysics? physics;
   // final Axis scrollDirection;
 
   @override
@@ -30,7 +33,7 @@ class MyGridLayout extends StatelessWidget {
       shrinkWrap: true,
       padding: padding,
       // padding: EdgeInsets.all(Sizes.md),
-      physics: const NeverScrollableScrollPhysics(),
+      physics: physics,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         mainAxisSpacing: mainAxisSpacing,

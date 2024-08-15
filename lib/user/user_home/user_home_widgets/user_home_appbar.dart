@@ -7,7 +7,6 @@ import '../../../common/widgets/icons/theme_switcher_icon.dart';
 import '../../../common/widgets/notification/notification_counter_icon.dart';
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/texts.dart';
-import '../../user_sub_category/sub_categories_page.dart';
 
 class UserHomePageAppbar extends StatelessWidget {
   const UserHomePageAppbar({

@@ -1,9 +1,9 @@
 import 'package:booktaste/common/widgets/navigation_dest/my_navigation_destination.dart';
 import 'package:booktaste/user/user_home/user_home_page.dart';
 import 'package:booktaste/user/user_library/user_library_page.dart';
-import 'package:booktaste/user/user_quotes/quotes_page.dart';
+import 'package:booktaste/user/user_own_lists/user_all_lists_view.dart';
+import 'package:booktaste/user/user_quotes/quotes_and_qbooks.dart';
 import 'package:booktaste/user/user_setting/user_setting_page.dart';
-import 'package:booktaste/user/user_wishlist/favourite_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -32,26 +32,26 @@ class UserNavigationMenu extends StatelessWidget {
               controller.selectedIndex.value = index,
           destinations: [
             MyNavigationDestination(
-                icon: Iconsax.home_1,
+                icon: Iconsax.home_copy,
                 label: 'Home',
-                selectedIcon: Iconsax.home_copy),
+                selectedIcon: Iconsax.home_1),
             MyNavigationDestination(
               label: 'Library',
-              icon: Iconsax.book_square,
-              selectedIcon: Iconsax.book_square_copy,
+              icon: Iconsax.book_square_copy,
+              selectedIcon: Iconsax.book_square,
             ),
             MyNavigationDestination(
-                icon: Iconsax.heart,
-                label: 'Wishlist',
-                selectedIcon: Iconsax.heart_copy),
+                icon: Iconsax.heart_copy,
+                label: 'My Nook',
+                selectedIcon: Iconsax.heart),
             MyNavigationDestination(
-                icon: Iconsax.quote_down,
+                icon: Iconsax.quote_down_copy,
                 label: 'Quotes',
-                selectedIcon: Iconsax.quote_down_copy),
+                selectedIcon: Iconsax.quote_down),
             MyNavigationDestination(
-                icon: Iconsax.user,
+                icon: Iconsax.user_copy,
                 label: 'Profile',
-                selectedIcon: Iconsax.user_copy),
+                selectedIcon: Iconsax.user),
           ],
         ),
       ),
@@ -65,8 +65,8 @@ class UserNavigationController extends GetxController {
   final screens = [
     UserHomePage(),
     const UserLibrary(),
-    const FavouritePage(),
-    const QuotesPage(),
+    UserAllListsView(),
+    QuotesAndNotesPage(),
     const UserSettingsPage(),
   ];
   void setSelectedIndex(int index) {

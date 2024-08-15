@@ -1,7 +1,8 @@
-import 'dart:convert';
 
 import 'package:booktaste/data/repositories/book_repository.dart';
 import 'package:booktaste/data/services/role.manager.dart';
+import 'package:booktaste/models/book.dart';
+import 'package:booktaste/user/navigation/user_navigation_menu.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
@@ -18,18 +19,19 @@ import 'cover_preview_page.dart';
 
 class ManageBookController extends GetxController {
   // Variables book
-  final isNovel = false.obs;
+  var book = Book().obs;
+  var isNovel = false.obs;
   var isApproved;
-  final isLocked = false.obs;
-  final titleController = TextEditingController();
-  final authorController = TextEditingController();
-  final pubYearController = TextEditingController();
-  final pointsController = TextEditingController();
-  final pagesController = TextEditingController();
-  final summaryController = TextEditingController();
+  var isLocked = false.obs;
+  var titleController = TextEditingController();
+  var authorController = TextEditingController();
+  var pubYearController = TextEditingController();
+  var pointsController = TextEditingController();
+  var pagesController = TextEditingController();
+  var summaryController = TextEditingController();
 
-  final localStorage = GetStorage();
-  final _bookRepository = Get.put(BookRepository());
+  var localStorage = GetStorage();
+  var _bookRepository = Get.put(BookRepository());
 
   GlobalKey<FormState> addBookFormKey = GlobalKey<FormState>();
 
@@ -88,8 +90,7 @@ class ManageBookController extends GetxController {
   //!File Varicables
   final pdfUrl = "".obs;
   final isPdfUploading = false.obs;
-  //! Book request
-  var bookRequests = <Map<String, dynamic>>[].obs;
+  
 
   //~ Methods
   //~ strill need fixing these two following
@@ -107,7 +108,6 @@ class ManageBookController extends GetxController {
     pointsController.clear();
     pagesController.clear();
     summaryController.clear();
-    selecedGenres.clear();
     selectedLanguage.value = 'Unknown';
     selecedGenres.value = [];
     pdfUrl.value = "";
@@ -169,6 +169,7 @@ class ManageBookController extends GetxController {
     }
   }
 
+  //! pdf handling
   void pickPdf() async {
     isPdfUploading.value = true;
     try {
@@ -243,7 +244,6 @@ class ManageBookController extends GetxController {
           book: pdfUrl.value);
       if (response.statusCode == 200) {
         if (user == true) {
-          bookRequests.add(jsonDecode(response.body));
         }
 
         print(response.body);
@@ -274,6 +274,49 @@ class ManageBookController extends GetxController {
     }
   }
 
+  Future<void> updateBook(String bookId) async {
+    if (!addBookFormKey.currentState!.validate()) {
+      return;
+    }
+    try {
+      final response = await _bookRepository.updateBook(
+        bookId: bookId.toString(),
+        title: titleController.text.trim(),
+        author: authorController.text.trim(),
+        publishedAt: pubYearController.text.trim(),
+        points: pointsController.text.trim(),
+        pagesNum: pagesController.text.trim(),
+        language: selectedLanguage.value,
+        summary: summaryController.text.trim(),
+        genres: selecedGenres,
+        isNovel: isNovel.value ? 1 : 0,
+        isLocked: isLocked.value ? 1 : 0,
+        cover: imageUrl.value,
+        book: pdfUrl.value,
+      );
+
+      if (response.statusCode == 200) {
+        Loaders.successSnackBar(
+            title: 'Success', message: 'Book updated successfully! ✅');
+
+        // Refresh the book list
+        clearFields();
+        final allBooksCtrl = Get.put(AllBooksController());
+        allBooksCtrl.fetchAllBooks();
+        Get.off(() => UserNavigationMenu());
+      } else {
+        Loaders.errorSnackBar(
+            title: 'Error',
+            message: 'Failed to update book: ${response.statusCode}');
+        print('Error body ' + pdfUrl.toString() + response.body);
+      }
+    } catch (error) {
+      print(error);
+      Loaders.errorSnackBar(
+          title: 'Error Catched', message: 'An error occurred: $error');
+    }
+  }
+
   // void approveBookRequest(String id, String state) async {
   //   final requestIndex =
   //       bookRequests.indexWhere((book) => book['book_id'] == id);
@@ -286,4 +329,27 @@ class ManageBookController extends GetxController {
   //     }
   //   }
   // }
+//   void pickImage() async {
+//   isImageUploading.value = true;
+//   try {
+//     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+//     if (image != null) {
+//       // Upload image and get the URL
+//       final uploadedImageUrl = await uploadImageToServer(image.path);
+//       if (uploadedImageUrl != null) {
+//         imageUrl.value = uploadedImageUrl; // Set the new image URL
+//       }
+//     }
+//   } catch (error) {
+//     Loaders.errorSnackBar(title: 'Error', message: 'Failed to pick image: $error');
+//   } finally {
+//     isImageUploading.value = false;
+//   }
+// }
+
+// // Example upload method (you need to implement this)
+// Future<String?> uploadImageToServer(String filePath) async {
+//   // Your logic to upload the image and return the URL
+//   // For example, using http package to send a multipart request
+// }
 }

@@ -89,17 +89,6 @@ class AdminHomePage extends StatelessWidget {
               children: [
                 ///! Cafes Slider
                 CafesSlider(),
-                // AdminPromoSlider(
-                //   banners: [
-                //     Images.cover2,
-                //     // Images.success,
-                //     // Images.promoBanner,
-                //     // Images.onboarding_1,
-                //     // Images.onboarding_1,
-                //     // Images.onboarding_1,
-                //     // Images.onboarding_1,
-                //   ],
-                // ),
 
                 const SizedBox(height: Sizes.sm
                     // Sizes.spaceBtwSections / 2,
@@ -133,7 +122,7 @@ class AdminHomePage extends StatelessWidget {
                     return MyGridLayout(
                       itemCount: allbookscontroller.booksList.length,
                       itemBuilder: (_, index) => ProductCardVertical(
-                        allbooks: allbookscontroller.booksList[index],
+                        bookk: allbookscontroller.booksList[index],
                       ),
                     );
                   }

@@ -4,6 +4,7 @@ import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
+import 'package:booktaste/controllers/cafe/cafes_controller.dart';
 import 'package:booktaste/models/cafe_model.dart';
 import 'package:booktaste/models/cafe_shelf_model.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
@@ -28,7 +29,9 @@ class CafePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cafeShelvesCtrl = Get.put(CafeShelvesController());
-    final allbookscontroller = Get.find<AllBooksController>();
+    // final allbookscontroller = Get.find<AllBooksController>();
+    final cafeBooksCtrl = Get.put(CafesController());
+    cafeBooksCtrl.fetchCafeBooks(cafeId);
     print('Cafe id in cafe page' + cafeId);
     return Scaffold(
       //backgroundColor: gray,
@@ -134,30 +137,30 @@ class CafePage extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: Sizes.spaceBtwSections / 2),
+                    SectionHeading(
+                      title: 'Cafe Books',
+                      showActionButton: false,
+                    ),
+
                     Obx(() {
-                      if (allbookscontroller.isLoading.value) {
+                      if (cafeBooksCtrl.isBooksLoading.value) {
                         return Center(
                             child: Image.asset(
-                          width: 110,
+                          width: 90,
                           Images.coffeeLoading,
                         ));
+                      } else if (cafeBooksCtrl.cafeBooks.isEmpty) {
+                        return Center(
+                          child: Text('data empty'),
+                        );
                       } else {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SectionHeading(
-                              showActionButton: false,
-                              title: 'Cafe Books',
-                              //   onPressed: () => Get.to(() => AllBrandsPage()),
-                            ),
-                            const SizedBox(height: Sizes.spaceBtwItems / 1.5),
-                            MyGridLayout(
-                              itemCount: allbookscontroller.booksList.length,
-                              itemBuilder: (_, index) => ProductCardVertical(
-                                allbooks: allbookscontroller.booksList[index],
-                              ),
-                            ),
-                          ],
+                        return MyGridLayout(
+                          itemCount: cafeBooksCtrl.cafeBooks.length,
+                          itemBuilder: (_, index) => ProductCardVertical(
+                              bookk: cafeBooksCtrl.cafeBooks[index]),
+                          // ListTile(
+                          //   title: Text(genreBooksCtrl.categoryBooks[index].name),
+                          // ),
                         );
                       }
                     }),

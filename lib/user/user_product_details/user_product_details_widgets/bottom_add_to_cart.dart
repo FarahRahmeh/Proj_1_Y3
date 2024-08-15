@@ -1,26 +1,31 @@
-import 'package:booktaste/common/widgets/icons/circular_icon.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../utils/helpers/helper_functions.dart';
 
 class BottomAddToBtn extends StatelessWidget {
-  const BottomAddToBtn({
-    super.key,
-    this.title1 = 'Add To Cart',
-    this.title2 = 'Add',
-    this.twoBtns = false,
-    this.onPressed1,
-    this.onPressed2,
-  });
+  const BottomAddToBtn(
+      {super.key,
+      this.title1 = 'Add To Cart',
+      this.title2 = 'Add',
+      this.titleRead = 'Read',
+      this.twoBtns = false,
+      this.onPressed1,
+      this.onPressed2,
+      this.threeBtns = false,
+      this.oneBtn = false,
+      this.onPressedRead});
 
   final String title1;
   final String title2;
+  final String titleRead;
   final bool twoBtns;
+  final bool oneBtn;
+  final bool threeBtns;
   final VoidCallback? onPressed1;
   final VoidCallback? onPressed2;
+  final VoidCallback? onPressedRead;
 
   @override
   Widget build(BuildContext context) {
@@ -39,43 +44,41 @@ class BottomAddToBtn extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-              //   children: [
-              //     CircularIcon(
-              //       icon: Iconsax.minus_copy,
-              //       backgroundColor: gray,
-              //       width: 40,
-              //       height: 40,
-              //       color: offWhite,
-              //     ),
-              //     SizedBox(
-              //       width: Sizes.spaceBtwItems,
-              //     ),
-              //     Text(
-              //       '2',
-              //       style: Theme.of(context).textTheme.titleSmall,
-              //     ),
-              //     const SizedBox(
-              //       width: Sizes.spaceBtwItems,
-              //     ),
-              //     CircularIcon(
-              //       icon: Iconsax.add_copy,
-              //       backgroundColor: lightBrown,
-              //       width: 40,
-              //       height: 40,
-              //       color: offWhite,
-              //     ),
-              //   ],
-              ),
-          twoBtns
-              ? Row(
-                  children: [
-                    BottomButton(onPressed: onPressed1, title: title1),
-                    SizedBox(width: Sizes.spaceBtwInputFields),
-                    BottomButton(onPressed: onPressed2, title: title2),
-                  ],
-                )
-              : BottomButton(onPressed: onPressed1, title: title1),
+          Row(),
+          if (threeBtns)
+            Row(
+              children: [
+                BottomButton(onPressed: onPressed1, title: title1),
+                SizedBox(width: Sizes.spaceBtwInputFields / 2),
+                BottomButton(onPressed: onPressed2, title: title2),
+                SizedBox(width: Sizes.spaceBtwInputFields / 2),
+                BottomButton(onPressed: onPressedRead, title: titleRead),
+              ],
+            )
+          else if (twoBtns)
+            Row(
+              children: [
+                BottomButton(onPressed: onPressed1, title: title1),
+                SizedBox(width: Sizes.spaceBtwInputFields / 2),
+                BottomButton(onPressed: onPressedRead, title: titleRead),
+              ],
+            )
+          else if (oneBtn)
+            Row(
+              children: [
+                BottomButton(
+                  onPressed: onPressed1,
+                  title: title1,
+                  width: 150,
+                ),
+              ],
+            )
+          else
+            Row(
+              children: [
+                BottomButton(onPressed: onPressedRead, title: titleRead),
+              ],
+            )
         ],
       ),
     );
@@ -87,15 +90,17 @@ class BottomButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.title,
+    this.width = 100,
   });
 
   final VoidCallback? onPressed;
   final String title;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: width,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

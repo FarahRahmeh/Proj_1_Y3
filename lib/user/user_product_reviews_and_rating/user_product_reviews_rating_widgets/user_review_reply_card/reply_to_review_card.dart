@@ -4,7 +4,7 @@ import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:read_more_text/read_more_text.dart';
 
-import '../../../utils/helpers/helper_functions.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 
 class ReplyToReviewCard extends StatelessWidget {
   const ReplyToReviewCard({

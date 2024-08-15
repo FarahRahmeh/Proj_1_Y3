@@ -1,4 +1,8 @@
+import 'package:booktaste/controllers/category/all_categories_controller.dart';
+import 'package:booktaste/models/all_categories_model.dart';
+import 'package:booktaste/user/user_all_books/all_books_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/sizes.dart';
@@ -7,11 +11,13 @@ import '../custom_shapes/Containers/rounded_container.dart';
 import 'x_card.dart';
 
 class XShowcase extends StatelessWidget {
-  const XShowcase({
+   XShowcase({
     super.key,
-    required this.images,
+    required this.images, required this.cat,
   });
   final List<String> images;
+  final AllCategories cat;
+  // final allcacontroller = Get.put(AllCategoriesController())
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
@@ -27,6 +33,7 @@ class XShowcase extends StatelessWidget {
           /// genre with books count
           XCard(
             showBorder: false,
+            catid: cat.id.toString(),
           ),
           const SizedBox(
             height: Sizes.spaceBtwItems,

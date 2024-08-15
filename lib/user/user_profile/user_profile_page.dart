@@ -1,15 +1,21 @@
+import 'package:booktaste/auth/login/login_page.dart';
 import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/images/circular_image.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
 import 'package:booktaste/user/user_profile/user_profile_widgets/profile_menu.dart';
+import 'package:booktaste/user/user_profile/user_profile_widgets/user_delete_profile.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
+import 'package:booktaste/utils/popups/dialogs.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+  UserProfile({super.key});
+
+  final deletecontroller = Get.put(DeleteaccountRepository());
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +96,25 @@ class UserProfile extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MyDialogs.defaultDialog(
+                        context: context,
+                        title: 'Delete Account',
+                        content: Text(
+                            'Are you sure you wont to delete your account?'),
+                        onConfirm: () {
+                          deletecontroller.deleteAccount();
+                          Get.offAll(LoginPage());
+                        },
+                        onCancel: () => Get.back(),
+                        confirmText: 'Delete');
+                  },
                   child: Text(
-                    'close account',
+                    'Delete Account',
                     style: TextStyle(color: pinkish),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

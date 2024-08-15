@@ -1,5 +1,6 @@
 import 'package:booktaste/user/user_all_books/all_books_model.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 import '../../utils/constans/api_constans.dart';
@@ -8,6 +9,10 @@ class AllBooksRepository extends GetxController {
   static Future<List<AllBooks>?> fechAllBooks() async {
     final response = await http.get(
       Uri.parse('$baseUrl/allBooks'),
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${GetStorage().read('TOKEN')}'
+      },
     );
     if (response.statusCode == 200) {
       print("success all books");

@@ -9,17 +9,21 @@ import 'package:get/get.dart';
 
 import '../controllers/book/book_controller.dart';
 import '../data/repositories/book_repository.dart';
+import '../user/user_product_reviews_and_rating/user_product_reviews_rating_widgets/user_review_reply_card/add_feedback/add_feedback_controller.dart';
+import '../user/user_product_reviews_and_rating/user_product_reviews_rating_widgets/user_review_reply_card/like_dislike_feedback/like_dislike_controller.dart';
 
 class GeneralBindings extends Bindings {
   @override
   void dependencies() {
-    Get.put(NetworkManager());
-    Get.put(FavController());
+    Get.lazyPut(() => NetworkManager());
+    Get.lazyPut(() => FavController());
     //Get.put(AllCategoriesController(), permanent: true); //, permanent: true
     // Get.put(CafesController());
-    //   Get.put(AllBooksController());
+    Get.lazyPut(() => AllBooksController());
     // Get.put(CafeShelvesController());
     // Get.put(BookDetailsController());
-    Get.put(ThemeController());
+    Get.lazyPut(() => ThemeController());
+    Get.put(FeedbackController());
+    Get.put(Like_dislikeController());
   }
 }

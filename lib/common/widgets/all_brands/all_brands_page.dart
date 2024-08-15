@@ -2,6 +2,7 @@ import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/category/x_card.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/all_brands/brands_widgets/brand_products.dart';
+import 'package:booktaste/controllers/category/all_categories_controller.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,8 @@ import 'package:get/get.dart';
 import '../texts/section_heading.dart';
 
 class AllBrandsPage extends StatelessWidget {
-  const AllBrandsPage({Key? key}) : super(key: key);
+   AllBrandsPage({Key? key}) : super(key: key);
+  final allcatcontroller = Get.put(AllCategoriesController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,11 @@ class AllBrandsPage extends StatelessWidget {
                 itemCount: 10,
                 mainAxisExtent: 80,
                 itemBuilder: (context, index) => XCard(
+                  catid: allcatcontroller.allCategoriesList[index].id.toString(),
                   margin: 4,
                   showBorder: true,
                   onTap: () => Get.to(
-                    () => BrandProducts(),
+                    () => BrandProducts(catid:allcatcontroller.allCategoriesList[index].id.toString() ),
                   ),
                 ),
               ),

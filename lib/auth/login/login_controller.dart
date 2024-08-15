@@ -52,6 +52,7 @@ class LoginController extends GetxController {
       final userData = json.decode(response.body); // to string
       if (response.statusCode == 200) {
         final token = userData['token'];
+        // await GetStorage().write('TOKEN', token);
         final role = userData['user']['role'];
 
         await saveToken(token);

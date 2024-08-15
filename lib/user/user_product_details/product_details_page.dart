@@ -2,35 +2,42 @@ import 'package:booktaste/common/widgets/bottom_sheet/my_bottom_sheet.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
 import 'package:booktaste/controllers/book/book_controller.dart';
 import 'package:booktaste/data/services/role.manager.dart';
+import 'package:booktaste/user/unl/unlock_book_controller.dart';
+import 'package:booktaste/user/user_product_details/PdfViewerPage.dart';
+import 'package:booktaste/user/user_product_details/pdf.dart';
 import 'package:booktaste/user/user_product_details/user_product_details_widgets/product_meta_data.dart';
 import 'package:booktaste/user/user_product_reviews_and_rating/product_review_page.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:read_more_text/read_more_text.dart';
 import '../../admin/manage_books/add_book/manage_book_controller.dart';
 import '../../models/book.dart';
+import '../../utils/constans/api_constans.dart';
 import '../../utils/constans/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
 import '../../utils/popups/dialogs.dart';
 import 'user_product_details_widgets/bottom_add_to_cart.dart';
+import 'pdfController.dart';
 import 'user_product_details_widgets/product_image_slider.dart';
 import 'user_product_details_widgets/product_ratings_and_share.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({Key? key, required this.bookId, required this.book})
-      : super(key: key);
+  ProductDetailsPage({Key? key, required this.bookId}) : super(key: key);
 
   final String bookId;
-  final Book book;
-
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
 
+    // final pdfcontroller = Get.put(PdfController());
     final bookController = Get.put(BookDetailsController());
+    final unlockController = Get.put(UnlockBookController());
+
+    final pdfcontroller = Get.put(YourWidget());
     return Scaffold(
         //!bottom bar
         bottomNavigationBar: FutureBuilder<bool>(
@@ -111,7 +118,7 @@ class ProductDetailsPage extends StatelessWidget {
                             children: [
                               ///! -Rating & Share
                               RatingsAndShare(
-                                rate: book.rate.toString(),
+                                // rate: book.rate,
                                 votersNum: book.votersNum.toString(),
                               ),
 
@@ -137,6 +144,51 @@ class ProductDetailsPage extends StatelessWidget {
                               // SizedBox(
                               //   height: Sizes.spaceBtwSections,
                               // ),
+
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  // onPressed: () async {
+                                  //   try {
+                                  //   //   final filePath = await pdfcontroller
+                                  //   //       .downloadAndSaveFile(
+                                  //   //           book.id, 'book.pdf');
+                                  //   //   Get.to(() =>
+                                  //   //       PdfViewerPage(pdfPath: filePath, bookId:bookId));
+                                  //   unlockController.fetchUnlockBook(bookId);
+                                  //   }
+                                  //   catch (e) {
+                                  //     print("Error downloading file: $e");
+
+                                  //   }
+                                  // },
+                                  onPressed: () async {
+                                    Get.defaultDialog(
+                                      title: "unlock book",
+                                      middleText:
+                                          "Are you sure you wont to unlock this book",
+                                      textCancel: "cansle",
+                                      textConfirm: "yes",
+                                      onConfirm: () async {
+                                        try {
+                                          await unlockController
+                                              .fetchUnlockBook(bookId);
+                                          Get.back();
+                                        } catch (e) {
+                                          print("Error: $e");
+                                          Get.back();
+                                        }
+                                      },
+                                    );
+                                  },
+                                  child: Text(
+                                    'Read',
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: Sizes.spaceBtwItems,
+                              ),
 
                               ///! -Description
                               SectionHeading(
@@ -179,13 +231,13 @@ class ProductDetailsPage extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   SectionHeading(
-                                    title: 'Reviews (222)',
+                                    title: 'Reviews',
                                     showActionButton: false,
                                   ),
                                   IconButton(
                                     onPressed: () =>
                                         Get.to(() => ProductReviewsPage(
-                                              book: book,
+                                              book: bookController.book,
                                             )),
                                     icon:
                                         const Icon(Iconsax.arrow_right_3_copy),

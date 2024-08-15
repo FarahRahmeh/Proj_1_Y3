@@ -1,6 +1,7 @@
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
+import 'package:booktaste/models/all_categories_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/widgets/category/x_show_case.dart';
@@ -8,7 +9,8 @@ import '../../../utils/constans/images.dart';
 import '../../../utils/constans/sizes.dart';
 
 class CategoryTab extends StatelessWidget {
-  const CategoryTab({super.key});
+  const CategoryTab({super.key, required this.cat});
+  final AllCategories cat;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CategoryTab extends StatelessWidget {
               children: [
                 ///Genres
                 XShowcase(
+                  cat: cat,
                     images: [Images.cover1, Images.cover2, Images.cover7]),
                 SizedBox(
                   height: Sizes.spaceBtwItems,

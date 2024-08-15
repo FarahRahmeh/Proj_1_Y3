@@ -78,7 +78,7 @@ class AdminLibraryPage extends StatelessWidget {
                           mainAxisExtent: 80,
                           itemCount: 4,
                           itemBuilder: (_, index) {
-                            return XCard();
+                            return XCard(catid:categoriesCtrl.allCategoriesList[index].id.toString() ,);
                           }),
                     ],
                   ),
@@ -97,7 +97,7 @@ class AdminLibraryPage extends StatelessWidget {
           },
           body: TabBarView(
             children: categoriesCtrl.allCategoriesList
-                .map((category) => CategoryTab(category: category.genre))
+                .map((category) => CategoryTab(category: category.genre,cat: category,))
                 .toList(),
           ),
         ),

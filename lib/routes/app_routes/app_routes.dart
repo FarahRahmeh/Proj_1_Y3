@@ -12,7 +12,7 @@ import 'package:booktaste/user/navigation/user_navigation_menu.dart';
 import 'package:booktaste/user/user_home/user_home_page.dart';
 import 'package:booktaste/user/user_library/user_library_page.dart';
 import 'package:booktaste/user/user_product_details/product_details_page.dart';
-import 'package:booktaste/user/user_profile/user_profile.dart';
+import 'package:booktaste/user/user_profile/user_profile_page.dart';
 import 'package:booktaste/user/user_setting/user_setting_page.dart';
 import 'package:booktaste/user/user_wishlist/favourite_page.dart';
 import 'package:get/get.dart';
@@ -36,7 +36,7 @@ class AppRoutes {
     GetPage(name: UserRoutes.home, page: () => UserHomePage()),
     GetPage(
         name: UserRoutes.navigation, page: () => const UserNavigationMenu()),
-    GetPage(name: UserRoutes.profile, page: () => const UserProfile()),
+    GetPage(name: UserRoutes.profile, page: () =>  UserProfile()),
     GetPage(name: UserRoutes.library, page: () => const UserLibrary()),
     GetPage(name: UserRoutes.favourite, page: () => const FavouritePage()),
     GetPage(name: UserRoutes.settings, page: () => const UserSettingsPage()),

@@ -8,6 +8,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../controllers/favourites/favourite_controller.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import 'circular_icon.dart';
+import '';
 
 class FavouriteIcon extends StatelessWidget {
   const FavouriteIcon({
@@ -21,7 +22,8 @@ class FavouriteIcon extends StatelessWidget {
     final Book book =
         Book(writer: 'writer', cover: Images.cover6, name: 'Book');
 
-    final FavController controller = Get.find<FavController>();
+    // final FavController controller = Get.find<FavController>();
+    final controller = Get.put(FavController());
 
     return Obx(() => CircularIcon(
           onPressed: () {

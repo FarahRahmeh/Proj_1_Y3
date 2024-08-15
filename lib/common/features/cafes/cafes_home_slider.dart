@@ -1,5 +1,7 @@
 import 'package:booktaste/controllers/cafe/cafes_controller.dart';
+import 'package:booktaste/controllers/category/all_categories_controller.dart';
 import 'package:booktaste/data/repositories/cafes_repository.dart';
+import 'package:booktaste/models/all_categories_model.dart';
 import 'package:booktaste/models/cafe_model.dart';
 import 'package:booktaste/common/features/cafes/cafes_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
@@ -12,16 +14,18 @@ import 'package:get/get.dart';
 import '../../widgets/images/rounded_image.dart';
 
 class CafesSlider extends StatelessWidget {
-  const CafesSlider({
+   CafesSlider({
     super.key,
     // required this.banners,
   });
 
   // final List<String> banners;
+  final catcontroller = Get.put(AllCategoriesController());
 
   @override
   Widget build(BuildContext context) {
     final allCafesController = Get.put(CafesController());
+
     final dark = HelperFunctions.isDarkMode(context);
 
     return Column(
@@ -66,6 +70,7 @@ class CafesSlider extends StatelessWidget {
                               () => CafePage(
                                 cafe: cafe,
                                 cafeId: cafe.id.toString(),
+                                cat: catcontroller.allCategoriesList[index],
                               ),
                             );
                           },

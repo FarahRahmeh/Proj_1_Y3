@@ -3,7 +3,7 @@ import 'package:booktaste/common/widgets/list_tile/setting_menu_tile.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
 import 'package:booktaste/controllers/theme/theme_controller.dart';
 import 'package:booktaste/common/widgets/address/address_page.dart';
-import 'package:booktaste/user/user_profile/user_profile.dart';
+import 'package:booktaste/user/user_profile/user_profile_page.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,7 +44,7 @@ class UserSettingsPage extends StatelessWidget {
 
                   /// User Profile Card
                   UserProfileTile(
-                      onPressed: () => Get.to(() => const UserProfile())),
+                      onPressed: () => Get.to(() =>  UserProfile())),
                   SizedBox(height: Sizes.spaceBtwSections),
                 ],
               ),

@@ -175,7 +175,7 @@ class ProductMetaData extends StatelessWidget {
             ProductTitleText(title: 'Book type :'),
             const SizedBox(width: Sizes.spaceBtwItems),
             Text(
-              book.type,
+              book.type.toString(),
               style: Theme.of(context).textTheme.titleMedium,
             )
           ],

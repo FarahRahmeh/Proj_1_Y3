@@ -1,6 +1,8 @@
+import 'package:booktaste/common/widgets/category/chat/chatPage.dart';
 import 'package:booktaste/common/widgets/custom_shapes/Containers/rounded_container.dart';
 import 'package:booktaste/utils/constans/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/constans/enums.dart';
 import '../../../utils/constans/images.dart';
@@ -19,6 +21,7 @@ class XCard extends StatelessWidget {
     this.isNetworkImage = false,
     this.subTitle = 'blahhhhhhhhhhhhhhh',
     this.title = 'Book',
+    required this.catid,
   });
   final bool showBorder;
   final void Function()? onTap;
@@ -27,6 +30,7 @@ class XCard extends StatelessWidget {
   final String title;
   final String subTitle;
   final bool isNetworkImage;
+  final String catid;
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +69,22 @@ class XCard extends StatelessWidget {
                     title: title,
                     xTextSize: TextSizes.large,
                   ),
-                  Text(
-                    subTitle,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
+                  // Text(
+                  //   subTitle,
+                  //   overflow: TextOverflow.ellipsis,
+                  //   style: Theme.of(context).textTheme.labelMedium,
+                  // ),
                 ],
               ),
             ),
+            IconButton(
+              onPressed: () {
+                Get.to(ChatPage(catId: catid));
+              },
+              icon: Icon(
+                Icons.chat,
+              ),
+            )
           ],
         ),
       ),

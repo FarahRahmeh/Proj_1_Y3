@@ -11,6 +11,7 @@ class ThemeSwitcherIcon extends StatelessWidget {
     this.iconColor = brown,
   }) : super(key: key);
   final themeController = Get.find<ThemeController>();
+  
   final Color iconColor;
 
   @override

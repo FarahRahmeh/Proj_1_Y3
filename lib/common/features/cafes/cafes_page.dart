@@ -4,6 +4,8 @@ import 'package:booktaste/common/widgets/appbar/appbar.dart';
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:booktaste/common/widgets/texts/section_heading.dart';
+import 'package:booktaste/controllers/category/all_categories_controller.dart';
+import 'package:booktaste/models/all_categories_model.dart';
 import 'package:booktaste/models/cafe_model.dart';
 import 'package:booktaste/models/cafe_shelf_model.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
@@ -23,7 +25,9 @@ import '../../../controllers/cafe/cafe_shelves_controller.dart';
 class CafePage extends StatelessWidget {
   final String cafeId;
   final Cafe? cafe;
-  CafePage({super.key, required this.cafeId, required this.cafe});
+  final AllCategories cat;
+  CafePage(
+      {super.key, required this.cafeId, required this.cafe, required this.cat});
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +44,12 @@ class CafePage extends StatelessWidget {
         ),
         //! Search
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Iconsax.search_normal_copy,
-            ),
-          )
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(
+          //     Iconsax.search_normal_copy,
+          //   ),
+          // )
         ],
       ),
       //!Body
@@ -126,6 +130,7 @@ class CafePage extends StatelessWidget {
                           title: cafeShelf!.genre.toString(),
                           subTitle:
                               'cafeId:${cafeShelf!.cafeId}id ${cafeShelf!.id}',
+                          catid: cat.id.toString(),
                         );
                       },
                     ),

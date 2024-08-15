@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../../products/sortable/sortable_products.dart';
 
 class BrandProducts extends StatelessWidget {
-  const BrandProducts({Key? key}) : super(key: key);
-
+  const BrandProducts({Key? key, required this.catid}) : super(key: key);
+final catid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class BrandProducts extends StatelessWidget {
           child: Column(
             children: [
               ///! Brand Detail
-              XCard(showBorder: true),
+              XCard(showBorder: true, catid:catid ),
               SizedBox(height: Sizes.spaceBtwItems),
               SortableProducts(),
             ],

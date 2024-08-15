@@ -3,6 +3,7 @@ import 'package:booktaste/common/widgets/custom_shapes/Containers/primary_header
 import 'package:booktaste/common/widgets/layouts/grid_layout.dart';
 import 'package:booktaste/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:booktaste/controllers/cafe/cafes_controller.dart';
+import 'package:booktaste/models/all_categories_model.dart';
 import 'package:booktaste/user/user_all_books/all_books_controller.dart';
 import 'package:booktaste/utils/constans/images.dart';
 import 'package:booktaste/utils/constans/sizes.dart';
@@ -19,8 +20,9 @@ import '../../common/features/cafes/cafes_home_slider.dart';
 
 class UserHomePage extends StatelessWidget {
   // final allcategoriescontroller = Get.put(AllCategoriesController());
-  UserHomePage({super.key});
-
+  UserHomePage({super.key,});
+  
+  // final AllCategories cat;
   final allbookscontroller = Get.put(AllBooksController());
 
   @override
@@ -90,6 +92,8 @@ class UserHomePage extends StatelessWidget {
               children: [
                 ///! Cafes Slider
                 CafesSlider(
+                  
+                  
                     // banners: [
                     //   Images.cover2,
                     //   // Images.success,

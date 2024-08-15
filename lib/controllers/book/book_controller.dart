@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:booktaste/data/repositories/book_repository.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../data/repositories/categories_repository.dart';
@@ -9,9 +10,9 @@ import '../../models/all_categories_model.dart';
 import '../../utils/popups/loaders.dart';
 
 class BookDetailsController extends GetxController {
-//  static BookDetailsController get instance => Get.find();
   var isLoading = true.obs;
   var book = Book();
+ 
 
   Future<Book?> fetchBookDetails(String id) async {
     try {
@@ -35,4 +36,5 @@ class BookDetailsController extends GetxController {
     }
     return null;
   }
+
 }

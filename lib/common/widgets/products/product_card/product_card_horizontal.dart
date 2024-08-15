@@ -50,7 +50,6 @@ class ProductCardHorizontal extends StatelessWidget {
                     .toString()); //This is what fixed the problem that the first time to click on the card(on first restart) no book details shows up
                 final book = bookCtrl.book;
                 Get.to(() => ProductDetailsPage(
-                      book: book,
                       bookId: allbooks.id.toString(),
                     ));
               },

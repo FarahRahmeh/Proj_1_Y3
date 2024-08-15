@@ -52,7 +52,6 @@ class ProductCardVertical extends StatelessWidget {
                 final book = bookCtrl.book;
 
                 Get.to(() => ProductDetailsPage(
-                      book: book,
                       bookId: allbooks.id.toString(),
                     ));
                 print('All Books:$allbooks' +

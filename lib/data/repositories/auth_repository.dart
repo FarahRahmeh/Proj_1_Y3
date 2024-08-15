@@ -93,7 +93,7 @@ class AuthRepository extends GetxController {
 
   ///! [EmailAuthentication] - LOGIN
   Future<http.Response> login(String email, String password) async {
-    final body = jsonEncode({'email': email, 'password': password});
+    final body = jsonEncode({'email': email, 'password': password, 'device_token': 'aaaaaaaa'});
     final response = await http.post(
       Uri.parse('$baseUrl/login'),
       body: body,
